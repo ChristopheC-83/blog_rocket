@@ -1,0 +1,14 @@
+@use "sass:map";
+
+// Modif des fichiers de bootstrap comme primary, taille spacers par exemple
+@import "./style/updateBS";
+// import de BS pour récupérer les variables
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+// Modif et créations des variables comme box-shadow, nouvelles couleurs...
+@import "./style/addIntoBS";
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+// classes personnalisées qui n'entrent pas dans Bootstrap
+@import "./style/custom";
