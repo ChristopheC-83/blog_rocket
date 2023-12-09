@@ -7,8 +7,12 @@
 
 
 <h3>9/12/23</h3>
-Départ Mise en plac ede la structure MVC.<br>
-MEP Boostrap (par npm, pas cdn afin de le personnaliser).
+Départ  de la mise en place de la structure MVC.<br>
+MEP Boostrap (par npm, pas cdn afin de le personnaliser).<br>
+Header accueil avec fond video (custom css, bootstrap non adapté)<br>
+phrase font fam manuscrite qui se coupe à 660px au niveau de la virgule.<br>
+Navbar ok sauf écran < 360px.<br>
+Footer à changer par des liens (github, codepen, linkedin, barpat.fun).<br>
 
 <br>
 <h3>Ogjectifs : </h3>
