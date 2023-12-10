@@ -19,7 +19,7 @@ class Functions
     // pour hasher et sécuriser les mdp utilisateurs avant envoi dans la DB
     public function hashFunction($psw)
     {
-        $hashedPsw = password_hash($psw, PASSWORD_ARGON2ID);
+        $hashedPsw = password_hash($psw, PASSWORD_DEFAULT);
         return $hashedPsw;
     }
 

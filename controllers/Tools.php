@@ -2,11 +2,11 @@
 class Tools
 {
 
-    public static function alertMsg($message, $type)
+    public static function alertMessage($message, $type)
     {
         $_SESSION['alert'][] = [
             "message" => $message,
-            "type" => $type." my-3"
+            "type" => $type." mt-5 mb-3 text-center"
         ];
     }
 
@@ -45,9 +45,9 @@ class Tools
     {
         $headers = "From : christophe@barpat.fun";
         if (mail($to, $subject, $message, $headers)) {
-            Tools::alertMsg("Mail envoyé.", "alert-success");
+            Tools::alertMessage("Mail envoyé.", "alert-success");
         } else {
-            Tools::alertMsg("Mail non envoyé.", "alert-danger");
+            Tools::alertMessage("Mail non envoyé.", "alert-danger");
         }
     }
     // nom détourné pour la crétion d'un cookie pour sécuriser la connexion
@@ -70,7 +70,7 @@ class Tools
     // action si le cookie n'est pas vérifié
     public static function  badCookie()
     {
-        Tools::alertMsg("Veuillez vous reconnecter.", "alert-warning");
+        Tools::alertMessage("Veuillez vous reconnecter.", "alert-warning");
         setcookie(Tools::COOKIE_NAME, "", time() - 3600);
         unset($_SESSION['profile']);
         header('Location: ' . URL . 'connection');

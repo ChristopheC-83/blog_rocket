@@ -14,7 +14,7 @@
 
 </head>
 
-<body class="min-vh-100 d-flex flex-column bg-dark">
+<body class="min-vh-100 d-flex flex-column bg-dark text-light">
 
 
     <!-- insertion du hezader / menu -->

@@ -20,13 +20,13 @@ $themes = $userManager->getAllThemes();
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li class="nav-item">
-          <a class="nav-link text-primary fs-3" aria-current="page" href="<?= URL; ?>home">
+          <a class="nav-link text-primary fs-4" aria-current="page" href="<?= URL; ?>home">
             Accueil
           </a>
         </li>
 
         <li class="nav-item dropdown mr-auto">
-          <a class="nav-link dropdown-toggle text-primary text-shadow-white  fs-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle text-primary fs-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Thèmes
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -42,25 +42,36 @@ $themes = $userManager->getAllThemes();
 
 
         <!-- si pas connecté -->
-        <!-- inscription dans la page de connaxion -->
-        <li class="nav-item ml-auto">
-          <a class="nav-link text-primary text-shadow-white fs-3 d-none d-md-block" aria-current="page" href="<?= URL ?>home">
-            Connexion
-          </a>
-          <a class="nav-link text-primary text-shadow-white fs-3  d-block d-md-none  " aria-current="page" href="<?= URL ?>home">
-            <i class="fa-solid fa-right-to-bracket"></i>
-          </a>
-        </li>
+        <!-- inscription dans la page de connexion -->
+        <?php if (isset($_SESSION['profile']['login']) && !empty($_SESSION['profile']['login'])) :   ?>
 
         <!-- si connecté -->
         <!-- profil sera l'avatar de l'utilisateur -->
-        <!-- <li class="nav-item">
-          <a class="nav-link text-primary text-shadow-white" aria-current="page" href="<?= URL; ?>home"><p class="m-0">Profil</p></a>
-        </li>
-       //déconnexion, un logo pris sur fontaawesome
         <li class="nav-item">
-          <a class="nav-link text-primary text-shadow-white" aria-current="page" href="<?= URL; ?>home"><p class="m-0"></p></a>
-        </li> -->
+          <a class="nav-link " aria-current="page" href="<?= URL?>home">
+          
+          <img src="<?=URL?>public/assets/images/avatars/<?=$_SESSION['profile']['avatar'] ?>"<?=$_SESSION['profile']['avatar'] ?> class="pastille-menu" alt="">
+        
+        </a>
+        </li>
+       <!-- déconnexion, un logo pris sur fontaawesome -->
+       <li class="nav-item d-flex align-items-center ">
+          <a class="nav-link text-primary px-3 px-md-5" aria-current="page" href="<?= URL; ?>home">
+          <i class="fa-solid fa-right-from-bracket fs-1"></i>
+          </a>
+        </li>
+        <?php else : ?>
+          <li class="nav-item ml-auto">
+            <a class="nav-link text-primary fs-3 d-none d-md-block" aria-current="page" href="<?= URL ?>connection">
+              Connexion
+            </a>
+            <a class="nav-link text-primary fs-3  d-block d-md-none  " aria-current="page" href="<?= URL ?>home">
+              <i class="fa-solid fa-right-to-bracket"></i>
+            </a>
+          </li>
+        <?php endif ?>
+
+       
 
       </ul>
     </div>
