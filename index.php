@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+
+//  on définit la constante URL comme racine du site
 define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") .
     "://" . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
 
@@ -31,5 +33,5 @@ try {
             throw new Exception("La page n'existe pas");
     }
 } catch (Exception $e) {
-    $mainController->pageErreur($e->getMessage());
+    $mainController->errorPage($e->getMessage());
 }
