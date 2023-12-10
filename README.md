@@ -22,7 +22,7 @@ Navbar ok sauf écran < 360px.<br>
 Footer à changer par des liens (github, codepen, linkedin, barpat.fun).<br>
 
 <br>
-<h3>Ogjectifs : </h3>
+<h3>Objectifs : </h3>
 Conception d'un blog.<br>
 Technos : <br>
 - php en POO sur un design pattern MVC.<br>

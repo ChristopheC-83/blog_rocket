@@ -1,6 +1,6 @@
 <?php
 require_once("models/MainManager.model.php");
-require_once("controllers/Toolbox.php");
+require_once("controllers/Tools.php");
 require_once("controllers/Functions.php");
 
 class MainController{
@@ -12,18 +12,11 @@ class MainController{
         $this->functions = new Functions();
     }
 
-    private function genererPage($data){
-        extract($data);
-        ob_start();
-        require_once($view);
-        $page_content = ob_get_clean();
-        require_once($template);
-    }
-
-    //Propriété "page_css" : tableau permettant d'ajouter des fichiers CSS spécifiques
     //Propriété "page_javascript" : tableau permettant d'ajouter des fichiers JavaScript spécifiques
+
+    // Direction vers la parge d'accueil
     public function homePage(){
-        // Toolbox::ajouterMessageAlerte("test", Toolbox::COULEUR_VERTE);
+        // Tools::alertMsg("Alert test", "alert-danger");
 
         $data_page = [
             "page_description" => "Description de la page d'accueil",
@@ -34,6 +27,7 @@ class MainController{
         $this->functions->generatePage($data_page);
     }
 
+    // Direction vers la page d'erreur
     public function pageErreur($msg){
         $data_page = [
             "page_description" => "Page permettant de gérer les erreurs",

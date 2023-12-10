@@ -5,6 +5,7 @@ define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" :
     "://" . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
 
 require_once("./controllers/MainController.controller.php");
+require_once("./controllers/Tools.php");
 $mainController = new MainController();
 
 try {
