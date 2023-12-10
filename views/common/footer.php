@@ -4,7 +4,7 @@
         <a href="https://codepen.io/your-work" class="text-white"><i class="fa-brands fa-codepen"></i></a>
         <a href="https://www.linkedin.com/in/christophe-chiappetta-b3623b262/" class="text-secondary"><i class="fa-brands fa-linkedin"></i></a>
         <a href="" class="text-danger"><i class="fa-solid fa-at"></i></a>
-        <a href="https://barpat.fun/" class="text-success"><i class="fa-solid fa-passport"></i></a>
+        <a href="https://barpat.fun/" class="text-kiki"><i class="fa-solid fa-passport"></i></a>
         <a href="" class=""><i class="fa-solid fa-circle-info"></i></a>
     </footer>
 </div>

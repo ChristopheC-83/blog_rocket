@@ -8,6 +8,7 @@
 
 <h3>10/12/23</h3>
 Navbar faite pour le commencement.<br>
+Footer, logos en place.<br>
 
 
 

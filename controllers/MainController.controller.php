@@ -1,12 +1,15 @@
 <?php
 require_once("models/MainManager.model.php");
-require_once("controllers/Toolbox.class.php");
+require_once("controllers/Toolbox.php");
+require_once("controllers/Functions.php");
 
 class MainController{
     private $mainManager;
+    private $functions;
 
     public function __construct(){
         $this->mainManager = new MainManager();
+        $this->functions = new Functions();
     }
 
     private function genererPage($data){
@@ -25,10 +28,10 @@ class MainController{
         $data_page = [
             "page_description" => "Description de la page d'accueil",
             "page_title" => "Titre de la page d'accueil",
-            "view" => "views/homePage.view.php",
-            "template" => "views/common/template.php"
+            "view" => "views/pages/homePage.view.php",
+            "template" => "./views/common/template.php"
         ];
-        $this->genererPage($data_page);
+        $this->functions->generatePage($data_page);
     }
 
     public function pageErreur($msg){
@@ -36,9 +39,9 @@ class MainController{
             "page_description" => "Page permettant de gérer les erreurs",
             "page_title" => "Page d'erreur",
             "msg" => $msg,
-            "view" => "./views/erreur.view.php",
+            "view" => "./views/pages/erreur.view.php",
             "template" => "views/common/template.php"
         ];
-        $this->genererPage($data_page);
+        $this->functions->generatePage($data_page);
     }
 }

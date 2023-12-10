@@ -1,5 +1,5 @@
 <?php
-require_once("Model.class.php");
+require_once("PDO.model.php");
 
 class MainManager extends Model{
 
