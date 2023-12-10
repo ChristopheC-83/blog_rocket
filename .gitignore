@@ -1,4 +1,4 @@
-./node_modules
+node_modules/
 models/donnees_perso.model.php
 .htaccess
-.todo.txt
+todo.txt
