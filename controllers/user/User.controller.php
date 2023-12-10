@@ -41,34 +41,35 @@ class UserController extends MainController
         }
     }
     // affichage page de profile
-    // public function profilePage()
-    // {
-    //     $datasUser = $this->userManager->getUserInfo($_SESSION['profile']['login']);
+    public function profilePage()
+    {
+        $datasUser = $this->userManager->getUserInfo($_SESSION['profile']['login']);
 
-    //     $data_page = [
-    //         "page_description" => "Page de profil",
-    //         "page_title" => "Page de profil",
-    //         "datasUser" => $datasUser,
-    //         "jsm" => ['profile_modify_mail.js', 'profile_delete_account.js', 'profile_modify_avatar.js'],
-    //         "view" => "./views/User/profilePage.view.php",
-    //         "template" => "./views/templates/template.php",
+        $data_page = [
+            "page_description" => "Page de profil",
+            "page_title" => "Page de profil",
+            "datasUser" => $datasUser,
+            // "jsm" => ['profile_modify_mail.js', 'profile_delete_account.js', 'profile_modify_avatar.js'],
+            "title_page" => "Profil de " . $_SESSION['profile']['login'] ,
+            "view" => "./views/pages/User/profilePage.view.php",
+            "template" => "./views/common/template.php",
 
-    //     ];
-    //     $this->functions->generatePage($data_page);
-    // }
+        ];
+        $this->functions->generatePage($data_page);
+    }
     // déconnexion de l'utilisateur + desctruction cookie
-    // public function logout()
-    // {
-    //     unset($_SESSION['profile']);
-    //     unset($_SESSION['profil']);
-      //  // setcookie(Tools::COOKIE_NAME, '', time() - 3600 * 24 * 365);
-    //     if ($_SESSION['profile']) {
-    //         Tools::alertMessage("La déconnexion a échoué.", "alert-danger");
-    //     } else {
-    //         Tools::alertMessage("Vous êtes bien déconnecté(e).", "alert-success");
-    //     }
-    //     header('Location: ' . URL . 'home');
-    // }
+    public function logout()
+    {
+        unset($_SESSION['profile']);
+        unset($_SESSION['profil']);
+       // setcookie(Tools::COOKIE_NAME, '', time() - 3600 * 24 * 365);
+        if ($_SESSION['profile']) {
+            Tools::alertMessage("La déconnexion a échoué.", "alert-danger");
+        } else {
+            Tools::alertMessage("Vous êtes bien déconnecté(e).", "alert-success");
+        }
+        header('Location: ' . URL . 'home');
+    }
     // envoi mail validation compte
     // private function sendMailValidation($login, $mail, $account_key)
     // {

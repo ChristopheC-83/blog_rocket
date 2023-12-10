@@ -48,15 +48,14 @@ $themes = $userManager->getAllThemes();
         <!-- si connecté -->
         <!-- profil sera l'avatar de l'utilisateur -->
         <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="<?= URL?>home">
+          <a class="nav-link " aria-current="page" href="<?= URL?>account/profile">
           
-          <img src="<?=URL?>public/assets/images/avatars/<?=$_SESSION['profile']['avatar'] ?>"<?=$_SESSION['profile']['avatar'] ?> class="pastille-menu" alt="">
+          <img src="<?=AVATARS_PATH?><?=$_SESSION['profile']['avatar'] ?>"<?=$_SESSION['profile']['avatar'] ?> class="pastille-menu" alt="">
         
         </a>
         </li>
-       <!-- déconnexion, un logo pris sur fontaawesome -->
        <li class="nav-item d-flex align-items-center ">
-          <a class="nav-link text-primary px-3 px-md-5" aria-current="page" href="<?= URL; ?>home">
+          <a class="nav-link text-primary px-3 px-md-5" aria-current="page" href="<?= URL ?>account/logout">
           <i class="fa-solid fa-right-from-bracket fs-1"></i>
           </a>
         </li>
