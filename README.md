@@ -9,7 +9,11 @@
 <h3>10/12/23</h3>
 Navbar faite pour le commencement.<br>
 Footer, logos en place.<br>
-
+MAJ couleurs BS :<br>
+$primary: #A565CA <br>
+$secondary: #0485f5 <br>
+$dark: #050011 <br>
+Mise en place de la DB (users, articles, themes, comments... pour le moment)<br>
 
 
 <br>
