@@ -6,6 +6,12 @@
 
 
 
+<h3>10/12/23</h3>
+Navbar faite pour le commencement.<br>
+
+
+
+<br>
 <h3>9/12/23</h3>
 Départ  de la mise en place de la structure MVC.<br>
 MEP Boostrap (par npm, pas cdn afin de le personnaliser).<br>

@@ -6,15 +6,15 @@
         <h1>Autour du code</h1>
         <h2 class="mb-5">Partageons, échangeons !</h2>
         <br>
-        <div class="d-none d-lg-block ">
-          <h2 class="arizona fs-1 text-center ">
+        <div class="d-none d-xl-block ">
+          <h2 class="arizona text-center display-3">
             Seul on va plus vite, ensemble on va plus loin !
           </h2>
         </div>
-        <div class="d-block d-lg-none ">
-          <h2 class="arizona fs-1 text-center ">
+        <div class="d-block d-xl-none ">
+          <p class="arizona  text-center display-3">
             Seul on va plus vite,<br> ensemble on va plus loin !
-          </h2>
+          </p>
         </div>
       </div>
       <video autoplay loop muted class="fullscreen-video">

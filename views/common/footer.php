@@ -1,39 +1,10 @@
-<div class="container">
-    <footer class="pt-4 my-md-5 pt-md-5 border-top">
-        <div class="row">
-        <div class="col-12 col-md">
-        <img src="<?= URL; ?>public/Assets/images/logo.png" width="40" alt="logo du site" />
-            <small class="d-block mb-3 text-muted">&copy; 2017–2021</small>
-        </div>
-        <div class="col-6 col-md">
-            <h5>Features</h5>
-            <ul class="list-unstyled text-small">
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
-            </ul>
-        </div>
-        <div class="col-6 col-md">
-            <h5>Resources</h5>
-            <ul class="list-unstyled text-small">
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
-            </ul>
-        </div>
-        <div class="col-6 col-md">
-            <h5>About</h5>
-            <ul class="list-unstyled text-small">
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
-            </ul>
-        </div>
-        </div>
+<div class="container ">
+    <footer class="pt-4 my-5 mx-auto w-100 w-lg-75 w-xl-50 border-top d-flex justify-content-evenly align-items-center fs-3">
+        <a href="https://github.com/ChristopheC-83" class="text-light"><i class="fa-brands fa-github"></i></a>
+        <a href="https://codepen.io/your-work" class="text-white"><i class="fa-brands fa-codepen"></i></a>
+        <a href="https://www.linkedin.com/in/christophe-chiappetta-b3623b262/" class="text-secondary"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="" class="text-danger"><i class="fa-solid fa-at"></i></a>
+        <a href="https://barpat.fun/" class="text-success"><i class="fa-solid fa-passport"></i></a>
+        <a href="" class=""><i class="fa-solid fa-circle-info"></i></a>
     </footer>
 </div>
