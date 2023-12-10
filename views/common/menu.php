@@ -64,7 +64,7 @@ $themes = $userManager->getAllThemes();
             <a class="nav-link text-primary fs-3 d-none d-md-block" aria-current="page" href="<?= URL ?>connection">
               Connexion
             </a>
-            <a class="nav-link text-primary fs-3  d-block d-md-none  " aria-current="page" href="<?= URL ?>home">
+            <a class="nav-link text-primary fs-3  d-block d-md-none  " aria-current="page" href="<?= URL ?>connection">
               <i class="fa-solid fa-right-to-bracket"></i>
             </a>
           </li>

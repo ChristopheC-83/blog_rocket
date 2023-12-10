@@ -74,7 +74,7 @@ try {
                 $mail = Tools::secureHTML($_POST['mail']);
                 $userController->validationRegistration($login, $password, $mail);
             } else {
-                Tools::alertMessage("Il faut remplir les 3 champs !", "orange");
+                Tools::alertMessage("Il faut remplir les 3 champs !", "alert-warning");
                 header('Location: ' . URL . 'registration');
             }
             break;
@@ -100,7 +100,7 @@ try {
                 $mail = Tools::secureHTML($_POST['mail']);
                 $userController->sendForgotPassword($login, $mail);
             } else {
-                Tools::alertMessage('Login ou mail non renseigné.', 'red');
+                Tools::alertMessage('Login ou mail non renseigné.', 'alert-danger');
                 header('location:' . URL . "forgot_password");
                 exit;
             }

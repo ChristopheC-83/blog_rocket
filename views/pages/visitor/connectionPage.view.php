@@ -1,4 +1,4 @@
-<div class="container row">
+<div class="container row mx-auto">
     <div class="col-12 col-lg-10 col-xl-8 col-xxl-6 mx-auto border border-3 border-primary mt-5 rounded-3 box-shadow-white fs-5">
 
 
