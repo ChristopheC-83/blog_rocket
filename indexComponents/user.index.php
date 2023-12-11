@@ -15,12 +15,8 @@ switch ($url[1]) {
         $newMail = Tools::secureHTML($_POST['new_mail']);
         $userController->modifyMail($newMail);
         break;
-        // page modification du mot de passe de l'utilisateur
-    case "modify_password":
-        $userController->modifyPasswordPage();
-        break;
         // validation modification du mot de passe de l'utilisateur
-    case "send_new_password":
+    case "modify_password":
         if (!empty($_POST['password']) && !empty($_POST['new_password']) && !empty($_POST['verif_password'])) {
             $old_password = Tools::secureHTML($_POST["password"]);
             $new_password = Tools::secureHTML($_POST["new_password"]);

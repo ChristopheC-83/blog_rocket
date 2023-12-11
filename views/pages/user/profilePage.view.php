@@ -21,24 +21,17 @@
                 <p><span class="h3">Pseudo : </span> <?= $datasUser['login'] ?></p>
                 <p><span class="h3">Role : </span> <?= $datasUser['role'] ?></p>
                 <p id="btnModifyMail" class="cupo"><span class="h3">Mail : </span> <?= $datasUser['mail'] ?> <i class="fa-solid fa-pen"></i></p>
+                <div class="d-none" id="formModifyMail">
+                    <?php require_once("views/components/modifyMailBlock.php")  ?>
+                </div>
+                <p id="btnModifyPassword" class="cupo"><span class="h3">Mot de passe : </span> modification <i class="fa-solid fa-pen"></i></p>
+
+                <div class="d-none" id="formModifyPassword">
+                    <?php require_once("views/components/modifyPasswordBlock.php")  ?>
+                </div>
             </div>
-            <div class="d-none" id="formModifyMail">
-
-                <?php  require_once("views/components/modifyMailBlock.php")  ?>  
 
 
-
-
-
-
-
-
-
-
-
-
-
-            </div>
         </div>
     </div>
 </div>

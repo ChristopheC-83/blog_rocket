@@ -23,12 +23,12 @@ class UserController extends MainController
 
         if ($this->userManager->isCombinationValid($login, $password)) {
             // if ($this->userManager->isAccountValidated($login)) {
-                Tools::alertMessage("You're welcome !", "alert-success");
-                $_SESSION['profile']['login'] = $login;
-                $_SESSION['profile']['role'] =  $datasUser['role'];
-                $_SESSION['profile']['avatar'] =  $datasUser['avatar'];
-                // Tools::generateCookieConnection();
-                header('Location: ' . URL . 'account/profile');
+            Tools::alertMessage("You're welcome !", "alert-success");
+            $_SESSION['profile']['login'] = $login;
+            $_SESSION['profile']['role'] =  $datasUser['role'];
+            $_SESSION['profile']['avatar'] =  $datasUser['avatar'];
+            // Tools::generateCookieConnection();
+            header('Location: ' . URL . 'account/profile');
             // } else {
             //     Tools::alertMessage("Compte en attente validation", "alert-warning");
             //     $msg = "<a id='resendMailValidation' href='resend_validation_mail/" . $login . "'>=> Renvoyer le mail de validation <=</a> ";
@@ -49,8 +49,8 @@ class UserController extends MainController
             "page_description" => "Page de profil",
             "page_title" => "Page de profil",
             "datasUser" => $datasUser,
-            "javascript" => ['profile_modify_mail.js', 'profile_delete_account.js', 'profile_modify_avatar.js'],
-            "title_page" => "Profil de " . $_SESSION['profile']['login'] ,
+            "javascript" => ['profile_modifications.js', 'profile_delete_account.js', 'profile_modify_avatar.js', 'passwordVerify.js'],
+            "title_page" => "Profil de " . $_SESSION['profile']['login'],
             "view" => "./views/pages/User/profilePage.view.php",
             "template" => "./views/common/template.php",
 
@@ -62,7 +62,7 @@ class UserController extends MainController
     {
         unset($_SESSION['profile']);
         unset($_SESSION['profil']);
-       // setcookie(Tools::COOKIE_NAME, '', time() - 3600 * 24 * 365);
+        // setcookie(Tools::COOKIE_NAME, '', time() - 3600 * 24 * 365);
         if ($_SESSION['profile']) {
             Tools::alertMessage("La déconnexion a échoué.", "alert-danger");
         } else {
@@ -93,7 +93,7 @@ class UserController extends MainController
         $avatar = "site/astroshiba.jpg";
         if ($this->userManager->registerAccountDB($login, $password, $mail, $account_key, $avatar)) {
             // $this->sendMailValidation($login, $mail, $account_key);
-            Tools::alertMessage($login.", votre compte est créé !", "alert-success");
+            Tools::alertMessage($login . ", votre compte est créé !", "alert-success");
             header('Location: ' . URL . 'home');
         } else {
             Tools::alertMessage("La création a échoué, Réessayez !", "alert-danger");
@@ -147,20 +147,7 @@ class UserController extends MainController
         header('Location: ' . URL . 'account/profile');
     }
     // page modification password
-    public function modifyPasswordPage()
-    {
-        $datasUser = $this->userManager->getUserInfo($_SESSION['profile']['login']);
-
-        $data_page = [
-            "page_description" => "Page de profil",
-            "page_title" => "Page de profil",
-            "datasUser" => $datasUser,
-            "js" => ['passwordVerify.js'],
-            "view" => "./views/User/modifyPasswordPage.view.php",
-            "template" => "./views/templates/template.php",
-        ];
-        $this->functions->generatePage($data_page);
-    }
+  
     // validation modification password
     public function validationNewPassword($old_password, $new_password)
     {
@@ -200,7 +187,7 @@ class UserController extends MainController
             "page_description" => "mot de passe oublié",
             "page_title" => "mot de passe oublié",
             "jsm" => ['loader.js'],
-            "title_page" => "Mot de passe oublié ?"  ,
+            "title_page" => "Mot de passe oublié ?",
             "view" => "./views/pages/visitor/forgotPasswordPage.view.php",
             "template" => "./views/common/template.php",
 
@@ -261,70 +248,70 @@ class UserController extends MainController
             header('Location: ' . URL . 'account/profile');
         }
     }
-      // efface l'avatar personnalisé de l'utilisateur s'il en change
-      public function deleteUserAvatar($login)
-      {
-          if ($this->userManager->getImageSiteUser($login) == 0) {
-              $oldAvatar = $this->userManager->getImageUser($login);
-              unlink("public/assets/images/avatars/" . $oldAvatar);
-          }
-          return;
-      }
-      // modifie l'avatar de l'utilisateur
-      public function modifyAvatarByPerso($file)
-      {
-          $this->deleteUserAvatar($_SESSION['profile']['login']);
-          try {
-              $repertoire = "public/assets/images/avatars/users/"  . $_SESSION['profile']['login'] . "/";
-              $nomImage = $this->addImage($file, $repertoire);
-              $nomImageBd = "users/" . $_SESSION['profile']['login'] . "/" . $nomImage;
-              if ($this->userManager->addImageDB($_SESSION['profile']['login'], $nomImageBd, 0)) {
-                  $_SESSION['profile']['avatar'] = $nomImageBd;
-                  header('location:' . URL . "account/profile");
-              } else {
-                  Tools::alertMessage("Modfication de l'image non effectuée.", "rouge");
-                  header('location:' . URL . "account/profile");
-              }
-          } catch (Exception $e) {
-              Tools::alertMessage($e->getMessage(), "red");
-              header('location:' . URL . "account/profile");
-          }
-      }
-      // ajoute l'avatar personnalisé à la bdd
-      public function addImage($file, $repertoire)
-      {   // le fichier est il choisi ?
-          if (!isset($file['name']) || empty($file['name'])) {
-              throw new Exception("Vous devez sélectionner une image.");
-          }
-          //le dossier de recption existe il ? si non création.
-          if (!file_exists($repertoire)) mkdir($repertoire, 0777, true);
-          $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-          $random = rand(0, 999999);
-          $target_file = $repertoire . "/" . $random . "_" . $file['name'];
-          // test du fichier proposé
-          if (!getimagesize($file["tmp_name"]))
-              throw new Exception("Le fichier n'est pas une image");
-          if ($extension !== "jpg" && $extension !== "jpeg" && $extension !== "png" && $extension !== "gif")
-              throw new Exception("L'extension du fichier n'est pas reconnue");
-          if (file_exists($target_file))
-              throw new Exception("Le fichier existe déjà.");
-          if ($file['size'] > 500000)
-              throw new Exception("Le fichier est trop volumineux (500ko maximum).");
-          if (!move_uploaded_file($file['tmp_name'], $target_file))
-              throw new Exception("L'ajout de l'image n'a pas fonctionné");
-          else return ($random . "_" . $file['name']);
-      }
-      // modification de l'avatar par un générique du site
-      public function modifyAvatarBySite($avatar)
-      {
-          $this->deleteUserAvatar($_SESSION['profile']['login']);
-          $linkAvatar = "site/" . $avatar;
-          if ($this->userManager->ModifyAvatarDB($_SESSION['profile']['login'], $linkAvatar, 1)) {
-              $_SESSION['profile']['avatar'] = $linkAvatar;
-              header('location:' . URL . "account/profile");
-          } else {
-              Tools::alertMessage("Modification de l'image non effectuée.", "red");
-              header('location:' . URL . "account/profile");
-          }
-      }
+    // efface l'avatar personnalisé de l'utilisateur s'il en change
+    public function deleteUserAvatar($login)
+    {
+        if ($this->userManager->getImageSiteUser($login) == 0) {
+            $oldAvatar = $this->userManager->getImageUser($login);
+            unlink("public/assets/images/avatars/" . $oldAvatar);
+        }
+        return;
+    }
+    // modifie l'avatar de l'utilisateur
+    public function modifyAvatarByPerso($file)
+    {
+        $this->deleteUserAvatar($_SESSION['profile']['login']);
+        try {
+            $repertoire = "public/assets/images/avatars/users/"  . $_SESSION['profile']['login'] . "/";
+            $nomImage = $this->addImage($file, $repertoire);
+            $nomImageBd = "users/" . $_SESSION['profile']['login'] . "/" . $nomImage;
+            if ($this->userManager->addImageDB($_SESSION['profile']['login'], $nomImageBd, 0)) {
+                $_SESSION['profile']['avatar'] = $nomImageBd;
+                header('location:' . URL . "account/profile");
+            } else {
+                Tools::alertMessage("Modfication de l'image non effectuée.", "rouge");
+                header('location:' . URL . "account/profile");
+            }
+        } catch (Exception $e) {
+            Tools::alertMessage($e->getMessage(), "red");
+            header('location:' . URL . "account/profile");
+        }
+    }
+    // ajoute l'avatar personnalisé à la bdd
+    public function addImage($file, $repertoire)
+    {   // le fichier est il choisi ?
+        if (!isset($file['name']) || empty($file['name'])) {
+            throw new Exception("Vous devez sélectionner une image.");
+        }
+        //le dossier de recption existe il ? si non création.
+        if (!file_exists($repertoire)) mkdir($repertoire, 0777, true);
+        $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        $random = rand(0, 999999);
+        $target_file = $repertoire . "/" . $random . "_" . $file['name'];
+        // test du fichier proposé
+        if (!getimagesize($file["tmp_name"]))
+            throw new Exception("Le fichier n'est pas une image");
+        if ($extension !== "jpg" && $extension !== "jpeg" && $extension !== "png" && $extension !== "gif")
+            throw new Exception("L'extension du fichier n'est pas reconnue");
+        if (file_exists($target_file))
+            throw new Exception("Le fichier existe déjà.");
+        if ($file['size'] > 500000)
+            throw new Exception("Le fichier est trop volumineux (500ko maximum).");
+        if (!move_uploaded_file($file['tmp_name'], $target_file))
+            throw new Exception("L'ajout de l'image n'a pas fonctionné");
+        else return ($random . "_" . $file['name']);
+    }
+    // modification de l'avatar par un générique du site
+    public function modifyAvatarBySite($avatar)
+    {
+        $this->deleteUserAvatar($_SESSION['profile']['login']);
+        $linkAvatar = "site/" . $avatar;
+        if ($this->userManager->ModifyAvatarDB($_SESSION['profile']['login'], $linkAvatar, 1)) {
+            $_SESSION['profile']['avatar'] = $linkAvatar;
+            header('location:' . URL . "account/profile");
+        } else {
+            Tools::alertMessage("Modification de l'image non effectuée.", "red");
+            header('location:' . URL . "account/profile");
+        }
+    }
 }

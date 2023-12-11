@@ -6,10 +6,10 @@ const erreurPassword = document.querySelector(".erreurPassword");
 function verifySamePassword() {
   if (new_password.value === verif_password.value && new_password.value != "") {
     btnValidationPassword.classList.remove("disabled");
-    erreurPassword.classList.add("blind");
+    erreurPassword.classList.add("d-none");
   } else {
     btnValidationPassword.classList.add("disabled");
-    erreurPassword.classList.remove("blind");
+    erreurPassword.classList.remove("d-none");
   }
 }
 
