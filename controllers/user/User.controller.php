@@ -22,19 +22,17 @@ class UserController extends MainController
         $datasUser = $this->userManager->getUserInfo($login);
 
         if ($this->userManager->isCombinationValid($login, $password)) {
-            // if ($this->userManager->isAccountValidated($login)) {
-            Tools::alertMessage("You're welcome !", "alert-success");
-            $_SESSION['profile']['login'] = $login;
-            $_SESSION['profile']['role'] =  $datasUser['role'];
-            $_SESSION['profile']['avatar'] =  $datasUser['avatar'];
-            // Tools::generateCookieConnection();
-            header('Location: ' . URL . 'account/profile');
-            // } else {
-            //     Tools::alertMessage("Compte en attente validation", "alert-warning");
-            //     $msg = "<a id='resendMailValidation' href='resend_validation_mail/" . $login . "'>=> Renvoyer le mail de validation <=</a> ";
-            //     Tools::alertMessage($msg, "alert-warning");
-            //     header('Location: ' . URL . 'connection');
-            // }
+            if ($this->userManager->isAccountValidated($login)) {
+                Tools::alertMessage("You're welcome !", "alert-success");
+                $_SESSION['profile']['login'] = $login;
+                $_SESSION['profile']['role'] =  $datasUser['role'];
+                $_SESSION['profile']['avatar'] =  $datasUser['avatar'];
+                // Tools::generateCookieConnection();
+                header('Location: ' . URL . 'account/profile');
+            } else {
+                Tools::alertMessage("Compte suspendu . Contactez un administrateur", "alert-warning");
+                header('Location: ' . URL . 'connection');
+            }
         } else {
             Tools::alertMessage("Combinaison Mot de Passe / Pseudo invalide.", "alert-danger");
             header('Location: ' . URL . 'connection');
@@ -147,7 +145,7 @@ class UserController extends MainController
         header('Location: ' . URL . 'account/profile');
     }
     // page modification password
-  
+
     // validation modification password
     public function validationNewPassword($old_password, $new_password)
     {
@@ -269,11 +267,11 @@ class UserController extends MainController
                 $_SESSION['profile']['avatar'] = $nomImageBd;
                 header('location:' . URL . "account/profile");
             } else {
-                Tools::alertMessage("Modfication de l'image non effectuée.", "rouge");
+                Tools::alertMessage("Modfication de l'image non effectuée.", "alert-danger");
                 header('location:' . URL . "account/profile");
             }
         } catch (Exception $e) {
-            Tools::alertMessage($e->getMessage(), "red");
+            Tools::alertMessage($e->getMessage(), "alert-danger");
             header('location:' . URL . "account/profile");
         }
     }
@@ -310,7 +308,7 @@ class UserController extends MainController
             $_SESSION['profile']['avatar'] = $linkAvatar;
             header('location:' . URL . "account/profile");
         } else {
-            Tools::alertMessage("Modification de l'image non effectuée.", "red");
+            Tools::alertMessage("Modification de l'image non effectuée.", "alert-danger");
             header('location:' . URL . "account/profile");
         }
     }

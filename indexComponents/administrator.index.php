@@ -22,6 +22,21 @@ switch ($url[1]) {
         $login = Tools::secureHTML($_POST['login']);
         $administratorController->deleteAccountUser($login);
         break;
+        // suppression d'un theme
+    case "delete_theme":
+        $id_theme = Tools::secureHTML($_POST['id_theme']);
+        $editorController->deleteTheme($id_theme);
+        break;
+        // création d'un theme
+    case "create_theme":
+        if (!empty($_POST['new_theme']) && !empty($_POST['description_theme'])) {
+            $new_theme = Tools::secureHTML($_POST['new_theme']);
+            $description_theme = Tools::secureHTML($_POST['description_theme']);
+            $editorController->createTheme($new_theme, $description_theme);
+        } else {
+            Tools::alertMessage("Il faut remplir les 2 champ !", "alert-warning");
+        }
+        break;
 
     default:
         throw new Exception("La page demandée n'existe pas...");

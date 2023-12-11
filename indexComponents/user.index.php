@@ -23,7 +23,7 @@ switch ($url[1]) {
             $verif_password = Tools::secureHTML($_POST["verif_password"]);
             $userController->sendNewPassword($old_password, $new_password, $verif_password);
         } else {
-            Tools::alertMessage("Il faut remplir les 3 champs !", "orange");
+            Tools::alertMessage("Il faut remplir les 3 champs !", "alert-warning");
             header('Location: ' . URL . 'account/modify_password');
         }
         break;
@@ -37,7 +37,7 @@ switch ($url[1]) {
         if ($_FILES['image']['size'] > 0) {
             $userController->modifyAvatarByPerso($_FILES['image']);
         } else {
-            Tools::alertMessage("Image non modifiée", "rouge");
+            Tools::alertMessage("Image non modifiée", "alert-danger");
             header('location:' . URL . "profil");
         }
         break;

@@ -11,20 +11,17 @@
             <div class="w-100">
                 <img src="<?= AVATARS_PATH . $datasUser['avatar'] ?>" alt="avatar utilisateur" class="w-50 rounded-circle border border-3 border-primary mx-auto d-block box-shadow-white">
             </div>
-            <div class="w-100  my-5">
+            <div class="w-100  mt-5">
                 <button class="bg-primary text-light p-3 w-75 mx-auto text-center rounded-3 d-block text-decoration-none" data-bs-toggle="modal" data-bs-target="#avatarSite">Changer l'avatar pour une image du site.</button>
                 <?php require_once("views/components/modalAvatarsSite.php") ?>
-
-<br>
-
+                <br>
                 <form action="<?= URL ?>account/modify_image_by_perso" enctype="multipart/form-data" method="post" class="bg-primary text-light p-3 w-75 mx-auto text-center rounded-3 d-block text-decoration-none cupo">
-                <label for="image" class="cupo">  Changer l'avatar pour une image perso </label>
+                    <label for="image" class="cupo"> Changer l'avatar pour une image perso </label>
                     <input type="file" id="image" name="image" onchange="submit()" value="Parcourir" class="d-none">
                 </form>
 
-
             </div>
-            <div class="row p-3">
+            <div class="row px-3">
                 <div class="col-12 col-md-9 mx-auto my-5">
                     <p><span class="h3">Pseudo : </span> <?= $datasUser['login'] ?></p>
                     <p><span class="h3">Role : </span> <?= $datasUser['role'] ?></p>
@@ -38,14 +35,25 @@
                     <div class="d-none" id="formModifyPassword">
                         <?php require_once("views/components/modifyPasswordBlock.php")  ?>
                     </div>
-                    <div class="mt-3 w-100 mx-auto d-flex flex-column gap-3 justify-content-center align-items-center ">
-                        <button id="btnDeleteAccount" class="btn btn-danger w-100 fs-5 text-light fw-bold">Suppression du compte</button>
-                        <div class="w-100 d-none" id="deleteAccountBlock">
-                            <p class="text-danger text-center fw-bold fs-3">Je comprends que cette suppression <br>est définitive et irréversible</p>
-                            <button id="cancelDelete" class="btn btn-primary w-100 fs-5 text-light fw-bold mb-3">ANNULER</button>
-                            <a href="delete_account" class="w-100"><button class="btn btn-danger w-100 fs-5 text-light fw-bold">Je valide la supression de mon compte</button></a>
+
+                    <?php if ($datasUser['role'] != "admin") : ?>
+                        <div class="mt-3 w-100 mx-auto d-flex flex-column gap-3 justify-content-center align-items-center ">
+                            <button id="btnDeleteAccount" class="btn btn-danger w-100 fs-5 text-light fw-bold">Suppression du compte</button>
+                            <div class="w-100 d-none" id="deleteAccountBlock">
+                                <p class="text-danger text-center fw-bold fs-3">Je comprends que cette suppression <br>est définitive et irréversible</p>
+                                <button id="cancelDelete" class="btn btn-primary w-100 fs-5 text-light fw-bold mb-3">ANNULER</button>
+                                <a href="delete_account" class="w-100"><button class="btn btn-danger w-100 fs-5 text-light fw-bold">Je valide la supression de mon compte</button></a>
+                            </div>
                         </div>
-                    </div>
+                    <?php elseif ($datasUser['role'] == "admin") : ?>
+
+                        <a href="<?= URL ?>administrator/rights_management" class="text-decoration-none"><button class="bg-primary text-light p-3 w-100 mx-auto text-center rounded-3 d-block text-decoration-none">Accés aux comptes utilisateurs.</button></a>
+                        <a href="" class="text-decoration-none"><button class="bg-primary text-light p-3 my-3 w-100 mx-auto text-center rounded-3 d-block text-decoration-none">Ecrire un article</button></a>
+                        <a href="" class="text-decoration-none"><button class="bg-primary text-light p-3 w-100 mx-auto text-center rounded-3 d-block text-decoration-none">Modifier un article</button></a>
+
+                    <?php endif ?>
+
+
                 </div>
             </div>
 

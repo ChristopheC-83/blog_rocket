@@ -2,24 +2,24 @@
 
 // Classe des possibilités pour un utilisateur connecté en tant qu'administrateur
 
-require_once("./controllers/Functions.controller.php");
+require_once("./controllers/Functions.php");
 require_once("./models/Admin/Administrator.model.php");
-require_once("./controllers/Main.controller.php");
-require_once("./models/User/User.model.php");
+require_once("./controllers/MainController.controller.php");
+require_once("./controllers/user/User.controller.php");
 // require_once("./controllers/Images.controller.php");
 
 class AdminstratorController extends MainController
 {
     public $functions;
     public $administratorManager;
-    public $userManager;
+    public $userController;
     // public $imageController;
     public function __construct()
     {
         $this->functions = new Functions();
         $this->administratorManager = new AdministratorManager();
         //  appel à userManager nécessaire pour utiilser une méthode pour la suppression d'un compte
-        $this->userManager = new UserManager();
+        $this->userController = new UserController();
     }
     // page des utilisateurs et paramétrage
     public function rightsManagement()
@@ -28,10 +28,12 @@ class AdminstratorController extends MainController
         $data_page = [
             "page_description" => "Page de gestion des droits",
             "page_title" => "Page de gestion des droits",
-            "view" => "./views/Admin/rightsManagement.view.php",
-            "js" => ['rights_management.js'],
+            "view" => "./views/pages/admin/rightsManagement.view.php",
+            "javascript" => ['rights_management.js'],
             "infoUsers" => $infoUsers,
-            "template" => "views/templates/template.php",
+            
+            "title_page" => "Gestion des utilisateurs",
+            "template" => "views/common/template.php",
         ];
         $this->functions->generatePage($data_page);
     }
@@ -39,9 +41,9 @@ class AdminstratorController extends MainController
     public function modifyRole($login, $newRole)
     {
         if ($this->administratorManager->modifyRoleDB($login, $newRole)) {
-            Tools::alertMessage("Succés de la modification du rôle", "green");
+            Tools::alertMessage("Succés de la modification du rôle", "alert-success");
         } else {
-            Tools::alertMessage("Echec de la modification du rôle", "red");
+            Tools::alertMessage("Echec de la modification du rôle", "alert-danger");
         }
         header('Location: ' . URL . 'administrator/rights_management');
     }
@@ -49,14 +51,14 @@ class AdminstratorController extends MainController
     public function modifyState($login, $is_valid)
     {
         if ($this->administratorManager->modifyStateDB($login, $is_valid)) {
-            Tools::alertMessage("Succés de la modification de l'état.", "green");
+            Tools::alertMessage("Succés de la modification de l'état.", "alert-success");
         } else {
-            Tools::alertMessage("Echec de la modification de l'état.", "red");
+            Tools::alertMessage("Echec de la modification de l'état.", "alert-danger");
         }
         header('Location: ' . URL . 'administrator/rights_management');
     }
     // supprimer le dossier image d'un utilisateur si suppression de son compte
-    private function deleteDirectory($dir)
+    public function deleteDirectory($dir)
     {
         if (!is_dir($dir)) {
             return false;
@@ -76,13 +78,15 @@ class AdminstratorController extends MainController
     public function deleteAccountUser($login)
     {
         // $this->deleteDirectory("public/assets/images/avatars/users/" . $login);
-        $this->deleteUserAvatar($login);
+        $this->userController->deleteUserAvatar($login);
         rmdir("public/assets/images/avatars/users/" . $login);
         if ($this->administratorManager->deleteAccountDB($login)) {
-            Tools::alertMessage("Suppression compte effectuée", "green");
+            Tools::alertMessage("Suppression compte effectuée", "alert-success");
         } else {
-            Tools::alertMessage("Echec de la suppression du compte.", "red");
+            Tools::alertMessage("Echec de la suppression du compte.", "alert-danger");
         }
         header('Location: ' . URL . 'administrator/rights_management');
     }
+    
+
 }

@@ -16,9 +16,13 @@ define("AVATARS_PATH", IMG_PATH . "avatars/");
 
 require_once("./controllers/visitor/Visitor.controller.php");
 require_once("./controllers/user/User.controller.php");
+require_once("./controllers/admin/Administrator.controller.php");
+require_once("./controllers/admin/Editor.controller.php");
 require_once("./controllers/Tools.php");
 $visitorController = new VisitorController();
 $userController = new UserController();
+$administratorController = new AdminstratorController();
+$editorController = new EditorController();
 
 
 
@@ -101,10 +105,16 @@ try {
             if (!Tools::isConnected()) {
                 Tools::alertMessage("Vous devez vous connecter pour accéder à cet espace.", "alert-danger");
                 header('Location: ' . URL . 'connection');
-                // } elseif (!Tools::checkCookieConnection()) {
-                //     Tools::badCookie();
             } else {
                 require_once("./indexComponents/user.index.php");
+            }
+            break;
+        case "administrator":
+            if (!Tools::isAdministrator()) {
+                Tools::alertMessage("Vous n'avez pas le statut requis.", "alert-danger");
+                header('Location: ' . URL . 'home');
+            } else {
+                require_once("./indexComponents/administrator.index.php");
             }
             break;
         default:
