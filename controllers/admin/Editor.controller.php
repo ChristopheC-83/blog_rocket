@@ -37,4 +37,27 @@ class EditorController extends MainController
         }
         header('Location: ' . URL . 'home');
     }
+
+    public function createArticle(){
+        $data_page = [
+            "page_description" => "Page de création d'un article",
+            "page_title" => "Page de création d'un article",
+            "view" => "./views/pages/admin/createArticle.view.php",
+            "title_page" => "Création d'un article",
+            "template" => "views/common/template.php",
+        ];
+        $this->functions->generatePage($data_page);
+    }
+
+    public function  updateArticle(){
+        $data_page = [
+            "page_description" => "Page de modification d'un article",
+            "page_title" => "Page de modification d'un article",
+            "view" => "./views/pages/admin/updateArticle.view.php",
+            "title_page" => "Modification d'un article",
+            "template" => "views/common/template.php",
+        ];
+        $this->functions->generatePage($data_page);
+    
+    }
 }

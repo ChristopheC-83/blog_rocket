@@ -15,22 +15,22 @@ const deleteAccountBlock=document.querySelector('#deleteAccountBlock')
 if (btnModifyMail) {
   btnModifyMail.addEventListener("click", function () {
     formModifyMail.classList.toggle("d-none");
-    formModifyPassword.classList.add("d-none");
-    deleteAccountBlock.classList.add("d-none");
+    formModifyPassword?formModifyPassword.classList.add("d-none"):null;
+    deleteAccountBlock?deleteAccountBlock.classList.add("d-none"):null;
   });
 }
 if (btnModifyPassword) {
   btnModifyPassword.addEventListener("click", function () {
     formModifyPassword.classList.toggle("d-none");
-    formModifyMail.classList.add("d-none");
-    deleteAccountBlock.classList.add("d-none");
+    formModifyMail?formModifyMail.classList.add("d-none"):null;
+    deleteAccountBlock?deleteAccountBlock.classList.add("d-none"):null;
   });
 }
 if (btnDeleteAccount) {
   btnDeleteAccount.addEventListener("click", function () {
     deleteAccountBlock.classList.toggle("d-none");
-    formModifyMail.classList.add("d-none");
-    formModifyPassword.classList.add("d-none");
+    formModifyMail?formModifyMail.classList.add("d-none"):null;
+    formModifyPassword?formModifyPassword.classList.add("d-none"):null;
   });
 }
 if (cancelDelete) {

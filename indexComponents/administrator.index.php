@@ -37,6 +37,12 @@ switch ($url[1]) {
             Tools::alertMessage("Il faut remplir les 2 champ !", "alert-warning");
         }
         break;
+    case "create_article":
+        $editorController->createArticle();
+        break;
+    case "update_article":
+        $editorController->updateArticle();
+        break;
 
     default:
         throw new Exception("La page demandée n'existe pas...");

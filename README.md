@@ -11,6 +11,7 @@ gestion utilisateurs<br>
 Inscription, connexion, mot de passe oublié<br>
 modif mail, mot de passe, suppression compte<br>
 modification de l'avatar par un générique du site ou un perso<br>
+Gestion utilisateurs et thèmes par administrateur<br>
 
 <h3>10/12/23</h3>
 Navbar faite pour le commencement.<br>

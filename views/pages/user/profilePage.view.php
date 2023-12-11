@@ -48,8 +48,10 @@
                     <?php elseif ($datasUser['role'] == "admin") : ?>
 
                         <a href="<?= URL ?>administrator/rights_management" class="text-decoration-none"><button class="bg-primary text-light p-3 w-100 mx-auto text-center rounded-3 d-block text-decoration-none">Accés aux comptes utilisateurs.</button></a>
-                        <a href="" class="text-decoration-none"><button class="bg-primary text-light p-3 my-3 w-100 mx-auto text-center rounded-3 d-block text-decoration-none">Ecrire un article</button></a>
-                        <a href="" class="text-decoration-none"><button class="bg-primary text-light p-3 w-100 mx-auto text-center rounded-3 d-block text-decoration-none">Modifier un article</button></a>
+                        <a href="<?=URL?>administrator/create_article" class="text-decoration-none"><button class="bg-primary text-light p-3 my-3 w-100 mx-auto text-center rounded-3 d-block text-decoration-none">Ecrire un article</button></a>
+
+                        <!-- faire un form pour aller sur la page de l'article à modifier -->
+                        <a href="<?=URL?>administrator/update_article" class="text-decoration-none"><button class="bg-primary text-light p-3 w-100 mx-auto text-center rounded-3 d-block text-decoration-none">Modifier un article</button></a>
 
                     <?php endif ?>
 
