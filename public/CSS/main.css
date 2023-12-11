@@ -23949,4 +23949,10 @@ header {
 
 .cupo {
   cursor: pointer;
+}
+
+.imgAvatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 999px;
 }/*# sourceMappingURL=main.css.map */
