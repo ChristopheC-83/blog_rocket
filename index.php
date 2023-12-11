@@ -63,6 +63,7 @@ try {
                 header('Location: ' . URL . 'connection');
             }
             break;
+            // page d'enregistrement d'un nouveau compte
         case "registration":
             $visitorController->registrationPage();
             break;
@@ -78,17 +79,6 @@ try {
                 header('Location: ' . URL . 'registration');
             }
             break;
-            // envoi d'un mail pour valider le nouveau compte
-        // case "mail_validation_account":
-        //     $login = Tools::secureHTML($url[1]);
-        //     $account_key = Tools::secureHTML($url[2]);
-        //     $userController->validationAccountByLinkMail($login, $account_key);
-        //     break;
-        //     // renvoi d'un mail pour valider le nouveau compte
-        // case "resend_validation_mail":
-        //     $login = Tools::secureHTML($url[1]);
-        //     $userController->resendValidationMail($login);
-        //     break;
             // page pour demande d'un mail avec nouveau mot de passe
         case "forgot_password":
             $userController->forgotPasswordPage();
@@ -105,10 +95,6 @@ try {
                 exit;
             }
             break;
-
-
-
-
             // si l'utilisateur est connecté en tant qu'utilisateur ou plus :
             // les accés sont dans le fichier indexComponents/user.index.php
         case "account":
@@ -121,19 +107,6 @@ try {
                 require_once("./indexComponents/user.index.php");
             }
             break;
-
-
-
-
-
-
-
-
-
-
-
-
-
         default:
             throw new Exception("La page n'existe pas");
     }

@@ -22,10 +22,10 @@
 
                 <button type="submit" class="btn btn-primary w-100 text-light fs-5">Je crée mon compte</button>
                 
-                <a href="" class="text-primary w-100 fs-5 text-center text-decoration-none">
-                    J'ai déjà un compte. Je me connecte !
+                <a href="<?=URL?>connection" class="text-primary w-100 fs-5 text-center text-decoration-none">
+                    J'ai déjà un compte. Je me connecte ICI !
                 </a>
-                <a href="" class="text-primary w-100 fs-5 text-center text-decoration-none">
+                <a href="<?=URL?>forgot_password" class="text-primary w-100 fs-5 text-center text-decoration-none">
                     J'ai oublié mon mot de passe.
                 </a>
             </div>

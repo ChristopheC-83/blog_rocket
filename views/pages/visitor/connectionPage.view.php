@@ -20,7 +20,7 @@
                 <a href="<?=URL?>registration" class="btn btn-primary w-100 text-light  fs-5">
                     Je n'ai pas de compte <br> Je m'inscris !
                 </a>
-                <a href="" class="text-primary w-100 fs-5 text-center text-decoration-none">
+                <a href="<?=URL?>forgot_password" class="text-primary w-100 fs-5 text-center text-decoration-none">
                     J'ai oublié mon mot de passe.
                 </a>
             </div>

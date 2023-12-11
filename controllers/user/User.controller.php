@@ -49,7 +49,7 @@ class UserController extends MainController
             "page_description" => "Page de profil",
             "page_title" => "Page de profil",
             "datasUser" => $datasUser,
-            // "jsm" => ['profile_modify_mail.js', 'profile_delete_account.js', 'profile_modify_avatar.js'],
+            "javascript" => ['profile_modify_mail.js', 'profile_delete_account.js', 'profile_modify_avatar.js'],
             "title_page" => "Profil de " . $_SESSION['profile']['login'] ,
             "view" => "./views/pages/User/profilePage.view.php",
             "template" => "./views/common/template.php",
@@ -200,8 +200,9 @@ class UserController extends MainController
             "page_description" => "mot de passe oublié",
             "page_title" => "mot de passe oublié",
             "jsm" => ['loader.js'],
-            "view" => "./views/Visitor/forgotPasswordPage.view.php",
-            "template" => "./views/templates/template.php",
+            "title_page" => "Mot de passe oublié ?"  ,
+            "view" => "./views/pages/visitor/forgotPasswordPage.view.php",
+            "template" => "./views/common/template.php",
 
         ];
         $this->functions->generatePage($data_page);

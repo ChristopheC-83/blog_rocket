@@ -41,11 +41,7 @@ function hideBlock(form, block) {
 }
 
 btnModifyMail.addEventListener("click", function () {
-  if (formModifyMail.classList.contains("dnone")) {
-    showBlock(formModifyMail, blockModifyMail);
-  } else {
-    hideBlock(formModifyMail, blockModifyMail);
-  }
+  formModifyMail.classList.toggle("d-none");
 });
 
 btnModifyName.addEventListener("click", function () {

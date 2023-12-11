@@ -23945,4 +23945,8 @@ header {
   font-size: clamp(40px, 38px + 2.3vw, 60px);
   border-radius: 999px;
   overflow: hidden;
+}
+
+.cupo {
+  cursor: pointer;
 }/*# sourceMappingURL=main.css.map */

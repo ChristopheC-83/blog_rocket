@@ -20,7 +20,24 @@
             <div class="w-75 mx-auto my-5">
                 <p><span class="h3">Pseudo : </span> <?= $datasUser['login'] ?></p>
                 <p><span class="h3">Role : </span> <?= $datasUser['role'] ?></p>
-                <p><span class="h3">Mail : </span> <?= $datasUser['mail'] ?></p>
+                <p id="btnModifyMail" class="cupo"><span class="h3">Mail : </span> <?= $datasUser['mail'] ?> <i class="fa-solid fa-pen"></i></p>
+            </div>
+            <div class="d-none" id="formModifyMail">
+
+                <?php  require_once("views/components/modifyMailBlock.php")  ?>  
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
         </div>
     </div>
