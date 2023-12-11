@@ -6,6 +6,11 @@
 
 
 
+<h3>11/12/23</h3>
+gestion utilisateurs<br>
+Inscription, connexion, mot de passe oublié<br>
+modif mail, mot de passe, suppression compte<br>
+
 <h3>10/12/23</h3>
 Navbar faite pour le commencement.<br>
 Footer, logos en place.<br>

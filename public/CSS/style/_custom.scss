@@ -4,7 +4,6 @@ header {
   max-height: 500px;
   overflow: hidden;
 }
-
 .video-background {
   position: relative;
   width: 100%;
@@ -12,7 +11,6 @@ header {
   max-height: 500px;
   overflow: hidden;
 }
-
 .video-overlay {
   position: absolute;
   top: 0;
@@ -21,7 +19,6 @@ header {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.66);
 }
-
 .fullscreen-video {
   position: absolute;
   top: 50%;
@@ -33,14 +30,12 @@ header {
   transform: translate(-50%, -50%);
   z-index: -1;
 }
-
 .arizona {
   font-family: "Arizonia", handwriting;
 }
 .text-shadow {
   text-shadow: 2px 2px 5px #00000075;
 }
-
 .text-shadow-white {
   text-shadow: 1px 2px 3px #f1f1f1;
 }
@@ -60,7 +55,6 @@ header {
   border-radius: 999px;
   overflow: hidden;
 }
-
 .cupo {
   cursor: pointer;
 }

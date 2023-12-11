@@ -49,7 +49,7 @@ class UserController extends MainController
             "page_description" => "Page de profil",
             "page_title" => "Page de profil",
             "datasUser" => $datasUser,
-            "javascript" => ['profile_modifications.js', 'profile_delete_account.js', 'profile_modify_avatar.js', 'passwordVerify.js'],
+            "javascript" => ['profile_modifications.js',  'profile_modify_avatar.js', 'passwordVerify.js'],
             "title_page" => "Profil de " . $_SESSION['profile']['login'],
             "view" => "./views/pages/User/profilePage.view.php",
             "template" => "./views/common/template.php",
