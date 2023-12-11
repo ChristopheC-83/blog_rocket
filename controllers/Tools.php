@@ -75,4 +75,6 @@ class Tools
         unset($_SESSION['profile']);
         header('Location: ' . URL . 'connection');
     }
+
+  
 }
