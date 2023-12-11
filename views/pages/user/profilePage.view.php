@@ -12,14 +12,17 @@
                 <img src="<?= AVATARS_PATH . $datasUser['avatar'] ?>" alt="avatar utilisateur" class="w-50 rounded-circle border border-3 border-primary mx-auto d-block box-shadow-white">
             </div>
             <div class="w-100  my-5">
-                <button class="bg-primary text-light p-3 w-75 mx-auto text-center rounded-3 d-block text-decoration-none"
-                data-bs-toggle="modal" data-bs-target="#avatarSite"
-                >Changer l'avatar pour une image du site.</button>
+                <button class="bg-primary text-light p-3 w-75 mx-auto text-center rounded-3 d-block text-decoration-none" data-bs-toggle="modal" data-bs-target="#avatarSite">Changer l'avatar pour une image du site.</button>
                 <?php require_once("views/components/modalAvatarsSite.php") ?>
 
+<br>
 
-                <br>
-                <a href="" class="bg-primary text-light p-3 w-75 mx-auto text-center rounded-3 d-block text-decoration-none">Changer l'avatar pour une image personnelle.</a>
+                <form action="<?= URL ?>account/modify_image_by_perso" enctype="multipart/form-data" method="post" class="bg-primary text-light p-3 w-75 mx-auto text-center rounded-3 d-block text-decoration-none cupo">
+                <label for="image" class="cupo">  Changer l'avatar pour une image perso </label>
+                    <input type="file" id="image" name="image" onchange="submit()" value="Parcourir" class="d-none">
+                </form>
+
+
             </div>
             <div class="row p-3">
                 <div class="col-12 col-md-9 mx-auto my-5">
