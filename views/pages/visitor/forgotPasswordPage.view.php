@@ -15,7 +15,7 @@
 
             <div class="mt-5 w-75 mx-auto d-flex flex-column gap-3 justify-content-center align-items-center ">
 
-                <button type="submit" class="btn btn-primary w-100 text-light fs-5">Envoi nouveau mot de passe</button>
+                <button type="submit" class="btn btn-primary w-100 text-light fs-5" id="btnForgotPassword">Envoi nouveau mot de passe</button>
 
                 <a href="<?= URL ?>registration" class="text-primary w-100 fs-5 text-center text-decoration-none">
                     En fait je n'ai pas de compte. Je m'inscris ICI !

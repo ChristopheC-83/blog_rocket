@@ -110,30 +110,8 @@ class UserController extends MainController
             header('Location: ' . URL . 'registration');
         }
     }
-    // compte déjà activé !?!
-    private function accountAlreadyActivated($login)
-    {
-        $datasUser = $this->userManager->getUserInfo($login);
-        return ((int)$datasUser['is_valid'] === 1);
-    }
-    // réponse au clic sur lien de validation envoyé par mail
-    public function validationAccountByLinkMail($login, $account_key)
-    {
-        if ($this->accountAlreadyActivated($login)) {
-            $_SESSION['profile']['login'] = $login;
-            Tools::alertMessage("Ton compte est déjà activé ! Connecte toi !", "alert-success");
-            header('Location: ' . URL . 'home');
-        } else {
-            if ($this->userManager->validationAccountDB($login, $account_key)) {
-                $_SESSION['profile']['login'] = $login;
-                Tools::alertMessage("Ton compte est activé ! Connecte toi !", "alert-success");
-                header('Location: ' . URL . 'home');
-            } else {
-                Tools::alertMessage("Echec de l'activation du compte, réessaye.", "alert-danger");
-                header('Location: ' . URL . 'registration');
-            }
-        }
-    }
+    
+  
     // modification mail
     public function modifyMail($newMail)
     {
@@ -144,7 +122,7 @@ class UserController extends MainController
         }
         header('Location: ' . URL . 'account/profile');
     }
-    // page modification password
+    
 
     // validation modification password
     public function validationNewPassword($old_password, $new_password)
@@ -184,7 +162,7 @@ class UserController extends MainController
         $data_page = [
             "page_description" => "mot de passe oublié",
             "page_title" => "mot de passe oublié",
-            "jsm" => ['loader.js'],
+            "javascript" =>  ['loader.js'],
             "title_page" => "Mot de passe oublié ?",
             "view" => "./views/pages/visitor/forgotPasswordPage.view.php",
             "template" => "./views/common/template.php",

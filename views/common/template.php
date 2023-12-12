@@ -16,7 +16,8 @@
 
 <body class="min-vh-100 d-flex flex-column bg-dark text-light">
 
-
+    <!-- un loader -->
+    <?php require_once("views/components/overlay.php") ?>
     <!-- insertion du hezader / menu -->
     <?php require_once("views/common/header.php"); ?>
 
