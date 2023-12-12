@@ -4,6 +4,6 @@ alerts.forEach((alert, index) => {
   if (alert) {
     setTimeout(() => {
       alert.remove();
-    }, 4000);
+    }, 200000);
   }
 });

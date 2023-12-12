@@ -1,11 +1,11 @@
-const overlay = document.querySelector(".overlay");
+const overlaySite = document.querySelector(".overlaySite");
 const loader = document.querySelector(".gearbox");
 const btnForgotPassword = document.querySelector("#btnForgotPassword");
 const btnRegistration = document.querySelector("#btnRegistration");
 const resendMailValidation = document.querySelector("#resendMailValidation");
 
 function activeLoader(fichier_php) {
-  overlay.classList.remove("d-none");
+  overlaySite.classList.remove("d-none");
   loader.classList.remove("d-none");
   fetch(fichier_php)
     .then((response) => {
@@ -13,7 +13,7 @@ function activeLoader(fichier_php) {
       return response.json();
     })
     .then((response) => {
-      overlay.classList.add("d-none");
+      overlaySite.classList.add("d-none");
       loader.classList.add("d-none");
       return;
     })

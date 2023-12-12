@@ -14,7 +14,7 @@
 
 </head>
 
-<body class="min-vh-100 d-flex flex-column bg-dark text-light">
+<body class="min-vh-100 d-flex flex-column bg-dark text-light position-relative">
 
     <!-- un loader -->
     <?php require_once("views/components/overlay.php") ?>

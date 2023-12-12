@@ -1,8 +1,8 @@
-<div class="overlay ">
+<div class="overlaySite d-none">
 
 
 
-<div class="gearbox ">
+<div class="gearbox d-none">
     <div class="gear one">
       <div class="gear-inner">
         <div class="bar"></div>

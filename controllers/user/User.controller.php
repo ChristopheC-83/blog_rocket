@@ -110,8 +110,8 @@ class UserController extends MainController
             header('Location: ' . URL . 'registration');
         }
     }
-    
-  
+
+
     // modification mail
     public function modifyMail($newMail)
     {
@@ -122,7 +122,7 @@ class UserController extends MainController
         }
         header('Location: ' . URL . 'account/profile');
     }
-    
+
 
     // validation modification password
     public function validationNewPassword($old_password, $new_password)
@@ -184,9 +184,7 @@ class UserController extends MainController
     public function sendNewPasswordAfterForgot($login, $newMdp)
     {
         $mdpCrypte = password_hash($newMdp, PASSWORD_DEFAULT);
-        if ($this->userManager->modifyPasswordDB($login, $mdpCrypte)) {
-            Tools::alertMessage("Mot de passe provisoire actif", "alert-success");
-        } else {
+        if (!$this->userManager->modifyPasswordDB($login, $mdpCrypte)) {
             Tools::alertMessage("Echec de la mise en place du nouveau mot de passe", "alert-danger");
         }
     }
@@ -205,7 +203,7 @@ class UserController extends MainController
             $destinataire = $mail;
             $sujet = "on a oublié son mdp ?";
             $message = "on va résoudre ça ! \r\nEssaye avec : \r\n \r\n" . $newMdp . " \r\n \r\nChange le sur le site... lui tu ne risques pas de le retenir !";
-            Tools::alertMessage("Nouveau mdp envoyé par mail", "alert-success");
+            Tools::alertMessage("Nouveau mot de passe actif et envoyé par mail", "alert-success");
             Tools::sendMail($destinataire, $sujet, $message,);
             header('location:' . URL . "connection");
         }

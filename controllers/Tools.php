@@ -6,7 +6,7 @@ class Tools
     {
         $_SESSION['alert'][] = [
             "message" => $message,
-            "type" => $type." mt-5 mb-3 text-center"
+            "type" => $type . " mt-5 mb-3 text-center"
         ];
     }
 
@@ -44,9 +44,7 @@ class Tools
     public static function sendMail($to, $subject, $message)
     {
         $headers = "From : christophe@barpat.fun";
-        if (mail($to, $subject, $message, $headers)) {
-            Tools::alertMessage("Mail envoyé.", "alert-success");
-        } else {
+        if (!mail($to, $subject, $message, $headers)) {
             Tools::alertMessage("Mail non envoyé.", "alert-danger");
         }
     }
@@ -76,5 +74,5 @@ class Tools
     //     header('Location: ' . URL . 'connection');
     // }
 
-  
+
 }
