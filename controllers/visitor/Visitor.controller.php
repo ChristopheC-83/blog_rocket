@@ -27,6 +27,9 @@ class VisitorController extends MainController
             "page_description" => "Description de la page d'accueil",
             "page_title" => "Titre de la page d'accueil",
             "view" => "views/pages/visitor/homePage.view.php",
+            "texte_1_page" => "Autour du code",
+            "texte_2_page" => "Partageons, échangeons !",
+            "title_page" => "Seul on va plus vite, ensemble on va plus loin !",
             "psw" => $psw,
             "users" => $users,
             "template" => "./views/common/template.php"
@@ -40,6 +43,8 @@ class VisitorController extends MainController
             "page_description" => "Page de connexion",
             "page_title" => "Page de connexion",
             "javascript" => ['loader.js'],
+            "texte_1_page" => "Et si tu n'es pas inscrit(e),",
+            "texte_2_page" => " ⏬ C'est par là aussi ! ⏬ ",
             "title_page" => "Connexion",
             "view" => "views/pages/Visitor/connectionPage.view.php",
             "template" => "./views/common/template.php"
@@ -52,8 +57,9 @@ class VisitorController extends MainController
         $data_page = [
             "page_description" => "Page de création de compte",
             "page_title" => "Page de création de compte",
-            "jsm" => ['loader.js'],
-            "title_page" => "Création de votre compte.",
+            "texte_1_page" => "Nous n'attendions que toi !",
+            "texte_2_page" => "Installe toi à ton aise 😉 ",
+            "title_page" => "Création de ton compte.",
             "view" => "views/pages/Visitor/registrationPage.view.php",
             "template" => "views/common/template.php",
         ];
@@ -86,7 +92,10 @@ class VisitorController extends MainController
     {
         $data_page = [
             "page_description" => "Page permettant de gérer les erreurs",
-            "page_title" => "Page d'erreur",
+            
+            "texte_1_page" => "On est perdu ?",
+            "texte_2_page" => "Retour à l'accueil et c'est reparti !",
+            "page_title" => $msg,
             "msg" => $msg,
             "view" => "./views/pages/visitor/errorPage.view.php",
             "template" => "views/common/template.php"

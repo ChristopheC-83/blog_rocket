@@ -5,7 +5,13 @@
 
 
 
+<br>
+<h3>11/12/23</h3>
+Mise en place d'un loader le temps de l'envoi d'un nouveau mdp si oublié.<br>
+Personnalisation des textes sur le header pour chacune des pages.<br>
+La gestion des utilisateurs semblent achevées à ce niveau.<br>
 
+<br>
 <h3>11/12/23</h3>
 gestion utilisateurs<br>
 Inscription, connexion, mot de passe oublié<br>
@@ -13,6 +19,7 @@ modif mail, mot de passe, suppression compte<br>
 modification de l'avatar par un générique du site ou un perso<br>
 Gestion utilisateurs et thèmes par administrateur<br>
 
+<br>
 <h3>10/12/23</h3>
 Navbar faite pour le commencement.<br>
 Footer, logos en place.<br>
@@ -21,7 +28,6 @@ $primary: #A565CA <br>
 $secondary: #0485f5 <br>
 $dark: #050011 <br>
 Mise en place de la DB (users, articles, themes, comments... pour le moment)<br>
-
 
 <br>
 <h3>9/12/23</h3>

@@ -74,7 +74,7 @@ try {
         case "forgot_password":
             $userController->forgotPasswordPage();
             break;
-            
+
             // envoi d'un mail avec nouveau mot de passe
         case "send_forgot_password":
             if (!empty($_POST['login']) && !empty($_POST['mail'])) {
@@ -111,6 +111,8 @@ try {
                 header('Location: ' . URL . 'connection');
             }
             break;
+
+
             // si l'utilisateur est connecté en tant qu'utilisateur ou plus :
             // les accés sont dans le fichier indexComponents/user.index.php
         case "account":
@@ -121,6 +123,8 @@ try {
                 require_once("./indexComponents/user.index.php");
             }
             break;
+
+            // si l'utilisateur est connecté et a un statut d'administrateur :
         case "administrator":
             if (!Tools::isConnected()) {
                 Tools::alertMessage("Vous devez vous connecter pour accéder à cet espace.", "alert-danger");
@@ -131,7 +135,6 @@ try {
             } else {
                 require_once("./indexComponents/administrator.index.php");
             }
-
             break;
         default:
             throw new Exception("La page n'existe pas");

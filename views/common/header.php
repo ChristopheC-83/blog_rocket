@@ -3,9 +3,18 @@
   <div class="position-absolute w-100 h-100">
     <div class="video-background">
       <div class="video-overlay d-flex justify-content-center align-items-center flex-column text-light gap-2">
-        <?php if (isset($title_page) && !empty($title_page)) : ?>
+        <?php if (
+          isset($title_page) && !empty($title_page) &&  isset($texte_1_page) && !empty($texte_1_page) &&
+          isset($texte_2_page) && !empty($texte_2_page)
+        ) : ?>
           <h2 class="arizona text-center display-2 text-shadow-white">
-            <?= $title_page ?>
+            <h1><?= $texte_1_page ?></h1>
+            <h2 class="mb-5"><?= $texte_2_page ?></h2>
+            <div class="d-none d-xl-block ">
+              <h2 class="arizona text-center display-3  text-shadow-white">
+                <?= $title_page ?>
+              </h2>
+
           </h2>
 
 

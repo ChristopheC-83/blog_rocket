@@ -48,6 +48,8 @@ class UserController extends MainController
             "page_title" => "Page de profil",
             "datasUser" => $datasUser,
             "javascript" => ['profile_modifications.js',  'profile_modify_avatar.js', 'passwordVerify.js'],
+            "texte_1_page" => "Gestion de ton profil",
+            "texte_2_page" => "Fais comme chez toi !",
             "title_page" => "Profil de " . $_SESSION['profile']['login'],
             "view" => "./views/pages/User/profilePage.view.php",
             "template" => "./views/common/template.php",
@@ -68,23 +70,7 @@ class UserController extends MainController
         }
         header('Location: ' . URL . 'home');
     }
-    // envoi mail validation compte
-    // private function sendMailValidation($login, $mail, $account_key)
-    // {
-    //     $urlValidation = URL . "mail_validation_account/" . $login . "/" . $account_key;
-    //     $sujet = "Validez Compte Barpat";
-    //     $message = "Validez votre compte sur le blog de Barpat ! Nous t'attendons ! Cliquez sur :" . $urlValidation;
-    //     Tools::sendMail($mail, $sujet, $message);
-    // }
-    // renvoi mail validation compte
-    // public function resendValidationMail($login)
-    // {
-
-    //     $datasUser = $this->userManager->getUserInfo($login);
-    //     $this->sendMailValidation($login, $datasUser['mail'], $datasUser['account_key']);
-    //     Tools::alertMessage("Mail de validation renvoyé !", "alert-success");
-    //     header('Location: ' . URL . 'connection');
-    // }
+ 
     // création nouveau compte
     private function registerAccount($login, $password, $mail, $account_key)
     {
@@ -163,6 +149,8 @@ class UserController extends MainController
             "page_description" => "mot de passe oublié",
             "page_title" => "mot de passe oublié",
             "javascript" =>  ['loader.js'],
+            "texte_1_page" => "Ca m'arrive tout le temps !",
+            "texte_2_page" => "mais je ne suis pas une référence ! 😅 ",
             "title_page" => "Mot de passe oublié ?",
             "view" => "./views/pages/visitor/forgotPasswordPage.view.php",
             "template" => "./views/common/template.php",
@@ -191,7 +179,6 @@ class UserController extends MainController
     // envoi mail avec nouveau mot de passe dans mot de passe oublié
     public function sendForgotPassword($login, $mail)
     {
-
         if (!$this->isCombinationMailValid($login, $mail)) {
             Tools::alertMessage("Pas de concordance, Merci de vérifier", "alert-danger");
             header('Location: ' . URL . 'forgot_password');

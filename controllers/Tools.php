@@ -27,14 +27,6 @@ class Tools
     {
         return (!empty($_SESSION['profile']['role']));
     }
-    //  vérifie si l'utilisateur est connecté et est au moins utilisateur
-    public static function isUser()
-    {
-        return ($_SESSION['profile']['role'] === "user" ||
-            $_SESSION['profile']['role'] === "admin"
-        );
-    }
-
     //  vérifie si l'utilisateur est connecté et est administrateur
     public static function isAdministrator()
     {
@@ -73,6 +65,4 @@ class Tools
     //     unset($_SESSION['profile']);
     //     header('Location: ' . URL . 'connection');
     // }
-
-
 }

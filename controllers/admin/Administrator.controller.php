@@ -29,10 +29,11 @@ class AdminstratorController extends MainController
             "page_description" => "Page de gestion des droits",
             "page_title" => "Page de gestion des droits",
             "view" => "./views/pages/admin/rightsManagement.view.php",
+            "texte_1_page" => "Dans l'antre des Dieux !",
+            "texte_2_page" => "Pas de bêtises hein !",
+            "title_page" => "Gestion des droits",
             "javascript" => ['rights_management.js'],
             "infoUsers" => $infoUsers,
-            
-            "title_page" => "Gestion des utilisateurs",
             "template" => "views/common/template.php",
         ];
         $this->functions->generatePage($data_page);
