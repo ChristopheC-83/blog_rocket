@@ -20,9 +20,8 @@ class VisitorController extends MainController
     // Direction vers la parge d'accueil
     public function homePage()
     {
-        $psw=$this->functions->hashFunction("*Santa30420*");
-        // Tools::alertMessage("Alert test", "alert-danger");
-        $users = $this->visitorManager->getUsers();
+        // $themeArticles = $this->visitorManager->getThemeArticles();
+        // $allArticles = $this->visitorManager->getAllArticles();
         $data_page = [
             "page_description" => "Description de la page d'accueil",
             "page_title" => "Titre de la page d'accueil",
@@ -30,8 +29,6 @@ class VisitorController extends MainController
             "texte_1_page" => "Autour du code",
             "texte_2_page" => "Partageons, échangeons !",
             "title_page" => "Seul on va plus vite, ensemble on va plus loin !",
-            "psw" => $psw,
-            "users" => $users,
             "template" => "./views/common/template.php"
         ];
         $this->functions->generatePage($data_page);

@@ -37,12 +37,19 @@ switch ($url[1]) {
             Tools::alertMessage("Il faut remplir les 2 champ !", "alert-warning");
         }
         break;
+        //  creation d'un article titre, pitch, url, theme
     case "create_article":
         $editorController->createArticle();
         break;
+        // on complète un articler créé ou on modifie un article existant
     case "update_article":
         $editorController->updateArticle();
         break;
+        //  suppression d'un article
+    case "delete_article":
+        $editorController->deleteArticle();
+        break;
+        
 
     default:
         throw new Exception("La page demandée n'existe pas...");

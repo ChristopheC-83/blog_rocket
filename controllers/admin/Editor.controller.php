@@ -60,4 +60,8 @@ class EditorController extends MainController
         $this->functions->generatePage($data_page);
     
     }
+
+    public function deleteArticle(){
+        
+    }
 }

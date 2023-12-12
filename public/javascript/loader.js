@@ -1,8 +1,6 @@
 const overlaySite = document.querySelector(".overlaySite");
 const loader = document.querySelector(".gearbox");
 const btnForgotPassword = document.querySelector("#btnForgotPassword");
-const btnRegistration = document.querySelector("#btnRegistration");
-const resendMailValidation = document.querySelector("#resendMailValidation");
 
 function activeLoader(fichier_php) {
   overlaySite.classList.remove("d-none");
@@ -22,18 +20,10 @@ function activeLoader(fichier_php) {
     });
 }
 
-if (resendMailValidation) {
-  resendMailValidation.addEventListener("click", () => {
-    activeLoader("user.controller.php");
-  });
-}
+
 if (btnForgotPassword) {
   btnForgotPassword.addEventListener("click", () => {
     activeLoader("user.controller.php");
   });
 }
-if (btnRegistration) {
-  btnRegistration.addEventListener("click", () => {
-    activeLoader("visitor.controller.php");
-  });
-}
+
