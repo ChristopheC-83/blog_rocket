@@ -34,17 +34,18 @@ $themes = $userManager->getAllThemes();
             <?php foreach ($themes as $theme) : ?>
 
               <li class="d-flex">
-                <a class="dropdown-item text-primary text-capitalize" href="<?= URL ?>theme/<?= $theme['theme'] ?>"><?= $theme['theme'] ?></a>
+                <a class="dropdown-item text-primary text-capitalize mb-2" href="<?= URL ?>theme/<?= $theme['theme'] ?>"><?= $theme['theme'] ?></a>
                 <?php if (isset($_SESSION['profile']['role']) && $_SESSION['profile']['role'] === "admin") : ?>
                   <form action="<?=URL?>administrator/delete_theme" method="post">
                     <input type="hidden" name="id_theme" value="<?= $theme['id_theme'] ?>">
-                    <button type="submit" class="btn btn-danger">X</button>
+                    <button type="submit" class="btn btn-danger py-1 px-2">X</button>
                   </form>
                 <?php endif ?>
               </li>
             <?php endforeach ?>
             <li>
               <?php if (isset($_SESSION['profile']['role']) && $_SESSION['profile']['role'] === "admin") : ?>
+                <p class=" border-top boder-primary pt-2 text-decoration-underline">Nouveau Thème :</p>
                   <form action="<?=URL?>administrator/create_theme" method="post">
                     <label for="new_theme">Theme</label>
                     <input type="text" name="new_theme" >

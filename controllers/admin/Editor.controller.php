@@ -37,19 +37,32 @@ class EditorController extends MainController
         }
         header('Location: ' . URL . 'home');
     }
+    // création de l'article avec titre, pitch, url, theme. Le reste sera remplit avec le formulaire update.
+    public function createArticle()
+    {
 
-    public function createArticle(){
+        $themes = $this->administratorManager->getAllThemes();
         $data_page = [
             "page_description" => "Page de création d'un article",
             "page_title" => "Page de création d'un article",
             "view" => "./views/pages/admin/createArticle.view.php",
-            "title_page" => "Création d'un article",
+            "texte_1_page" => "Titre, pitch, url et thème sont obligatoires.",
+            "texte_2_page" => "On commence par la carte ",
+            "title_page" => "Crées un nouvel article ! ",
+            "themes" => $themes,
             "template" => "views/common/template.php",
         ];
         $this->functions->generatePage($data_page);
     }
 
-    public function  updateArticle(){
+    public function validationCreateArticle ($array){ 
+        Tools :: showArray($_POST);
+    }
+
+
+
+    public function  updateArticle()
+    {
         $data_page = [
             "page_description" => "Page de modification d'un article",
             "page_title" => "Page de modification d'un article",
@@ -58,10 +71,9 @@ class EditorController extends MainController
             "template" => "views/common/template.php",
         ];
         $this->functions->generatePage($data_page);
-    
     }
 
-    public function deleteArticle(){
-        
+    public function deleteArticle()
+    {
     }
 }

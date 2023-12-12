@@ -99,6 +99,4 @@ class VisitorController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
-
-    
 }

@@ -41,6 +41,17 @@ switch ($url[1]) {
     case "create_article":
         $editorController->createArticle();
         break;
+
+
+        
+        // validation creation d'un article : juste sa carte visible sur l'accueil
+    case "validation_creation_article":
+        Tools::showArray($_POST);
+        // $editorController->validationCreateArticle($_POST);
+        break;
+
+
+
         // on complète un articler créé ou on modifie un article existant
     case "update_article":
         $editorController->updateArticle();
