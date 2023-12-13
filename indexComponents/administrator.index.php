@@ -55,12 +55,9 @@ switch ($url[1]) {
             $editorController->validationCreateArticle($title, $theme, $pitch, $url);
         } else {
             Tools::alertMessage("Il faut impérativement remplir les 4 champs !", "alert-warning");
-            
             header('Location: ' . URL . 'administrator/create_article');
         }
         break;
-
-
 
         // on complète un articler créé ou on modifie un article existant
     case "update_article":

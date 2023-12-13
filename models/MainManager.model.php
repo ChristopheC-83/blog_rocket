@@ -18,4 +18,13 @@ class MainManager extends Model{
         $req->closeCursor();
         return $datas;
     }
+
+    public function  getColorTheme($theme){
+        $req = $this->getDB()->prepare("SELECT color FROM themes WHERE theme = :theme");
+        $req->bindValue(":theme", $theme, PDO::PARAM_STR);
+        $req->execute();
+        $datas = $req->fetch(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+        return $datas;
+    }
 }

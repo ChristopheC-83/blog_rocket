@@ -20,8 +20,11 @@ $themes = $userManager->getAllThemes();
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li class="nav-item">
-          <a class="nav-link text-primary fs-4" aria-current="page" href="<?= URL; ?>home">
+          <a class="nav-link text-primary fs-4 d-none d-sm-block" aria-current="page" href="<?= URL; ?>home">
             Accueil
+          </a>
+          <a class="nav-link text-primary fs-4 d-block d-sm-none" aria-current="page" href="<?= URL; ?>home">
+            <i class="fa-solid fa-house"></i>
           </a>
         </li>
 
@@ -36,7 +39,7 @@ $themes = $userManager->getAllThemes();
               <li class="d-flex">
                 <a class="dropdown-item text-primary text-capitalize mb-2" href="<?= URL ?>theme/<?= $theme['theme'] ?>"><?= $theme['theme'] ?></a>
                 <?php if (isset($_SESSION['profile']['role']) && $_SESSION['profile']['role'] === "admin") : ?>
-                  <form action="<?=URL?>administrator/delete_theme" method="post">
+                  <form action="<?= URL ?>administrator/delete_theme" method="post">
                     <input type="hidden" name="id_theme" value="<?= $theme['id_theme'] ?>">
                     <button type="submit" class="btn btn-danger py-1 px-2">X</button>
                   </form>
@@ -46,18 +49,24 @@ $themes = $userManager->getAllThemes();
             <li>
               <?php if (isset($_SESSION['profile']['role']) && $_SESSION['profile']['role'] === "admin") : ?>
                 <p class=" border-top boder-primary pt-2 text-decoration-underline">Nouveau Thème :</p>
-                  <form action="<?=URL?>administrator/create_theme" method="post">
-                    <label for="new_theme">Theme</label>
-                    <input type="text" name="new_theme" >
-                    <label for="description_theme">Description</label>
-                    <textarea name="description_theme" ></textarea>
-                    <button type="submit" class="w-100 text-center border border-0">✅</button>
-                  </form>
-                <?php endif ?>
+                <form action="<?= URL ?>administrator/create_theme" method="post">
+                  <label for="new_theme">Theme</label>
+                  <input type="text" name="new_theme">
+                  <label for="description_theme">Description</label>
+                  <textarea name="description_theme mx-auto"></textarea>
+                  <button type="submit" class="w-100 text-center border border-0">✅</button>
+                </form>
+              <?php endif ?>
             </li>
           </ul>
         </li>
+        <?php if (isset($_SESSION['profile']['role']) && $_SESSION['profile']['role'] === "admin") : ?>
+          <li class="px-2 d-flex align-items-center justify-content-center gap-3 gap-xs-4">
+            <a href="<?= URL . "administrator/create_article" ?>"><i class="fa-regular fa-lightbulb fs-4 d-none d-sm-block"></i></a>
 
+            <a href="<?= URL . "administrator/update_article" ?>"><i class="fa-solid fa-pen-clip fs-4  d-none d-sm-block"></i></a>
+          </li>
+        <?php endif ?>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
 

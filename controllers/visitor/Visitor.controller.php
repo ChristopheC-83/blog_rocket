@@ -20,12 +20,18 @@ class VisitorController extends MainController
     // Direction vers la parge d'accueil
     public function homePage()
     {
-        // $themeArticles = $this->visitorManager->getThemeArticles();
-        // $allArticles = $this->visitorManager->getAllArticles();
+        
+        $mainManager = new MainManager();
+        $themes = $this->visitorManager->getAllThemes();
+        $articles = $this->visitorManager->getAllArticles();
         $data_page = [
             "page_description" => "Description de la page d'accueil",
             "page_title" => "Titre de la page d'accueil",
             "view" => "views/pages/visitor/homePage.view.php",
+            "javascript" => ['home_page_animated_grid.js'],
+            "themes" => $themes,
+            "articles" => $articles,
+            "mainManager" => $mainManager,
             "texte_1_page" => "Autour du code",
             "texte_2_page" => "Partageons, échangeons !",
             "title_page" => "Seul on va plus vite, ensemble on va plus loin !",

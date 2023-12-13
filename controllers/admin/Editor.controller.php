@@ -81,6 +81,8 @@ class EditorController extends MainController
 
     public function  updateArticle()
     {
+
+        
         $data_page = [
             "page_description" => "Page de modification d'un article",
             "page_title" => "Page de modification d'un article",

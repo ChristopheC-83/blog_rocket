@@ -1,5 +1,5 @@
+console.log("coucou");
 const card3D = document.querySelectorAll(".link_card");
-
 card3D.forEach((cards) => {
   cards.addEventListener("onmouseover", () => {
     console.log("je suis over!!!");
@@ -13,8 +13,8 @@ card3D.forEach((cards) => {
     let midCardWidth = elRect.width / 2;
     let midCardHeight = elRect.height / 2;
 
-    let angleY = -(x - midCardWidth) / 5;
-    let angleX = (y - midCardHeight) / 5;
+    let angleY = -(x - midCardWidth) / 10;
+    let angleX = (y - midCardHeight) / 10;
 
     cards.children[0].style.transition = "none";
     cards.children[0].style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
@@ -33,7 +33,7 @@ const currentUrl = window.location.href;
 const delay = 50;
 
 
-const isHomepage = "http://localhost:8090/kiki/barpat_blog_poo";
+const isHomepage = "http://localhost:8090/rocket/projet_passerelle_2";
 const isHomepage2 = isHomepage+"/";
 const isAccueil = isHomepage+"/home";
 const isAccueil2 = isHomepage+"/home/";
