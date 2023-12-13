@@ -21,40 +21,6 @@ url.addEventListener("keyup", () => {
   }
 });
 
-function allFieldsCompleted() {
-  if (
-    title.value !== "" &&
-    pitch.value !== "" &&
-    url.value !== "" &&
-    validateURL(url.value)
-  ) {
-    btnNewArticleCard.classList.remove("disabled");
-  } else {
-    btnNewArticleCard.classList.add("disabled");
-  }
-}
 
-if (title) {
-  title.addEventListener("keyup", () => {
-    allFieldsCompleted();
-  });
-  pitch.addEventListener("keyup", () => {
-    allFieldsCompleted();
-  });
-  url.addEventListener("keyup", () => {
-    allFieldsCompleted();
-  });
-}
 
-// const selectArticle = document.querySelector("#selectArticle");
-// if (selectArticle) {
-//   selectArticle.addEventListener("change", function () {
-//     document.getElementById("containerNewPostCard").submit();
-//   });
-// }
-// const selectTemplate = document.querySelector("#selectTemplate");
-// if (selectTemplate) {
-//   selectTemplate.addEventListener("change", function () {
-//     document.getElementById("containerNewTemplate").submit();
-//   });
-// }
+

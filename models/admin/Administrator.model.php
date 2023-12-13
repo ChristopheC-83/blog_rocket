@@ -51,8 +51,9 @@ class AdministratorManager extends UserManager
         return $isValidate;
     }
 
-    public function createThemeDB($theme, $description_theme){ 
-    
+    public function createThemeDB($theme, $description_theme)
+    {
+
         $req = "INSERT INTO themes (theme, description_theme) VALUES (:theme, :description_theme)";
         $stmt = $this->getDB()->prepare($req);
         $stmt->bindValue(":theme", $theme, PDO::PARAM_STR);
@@ -60,5 +61,54 @@ class AdministratorManager extends UserManager
         $stmt->execute();
         $isValidate = ($stmt->rowCount() > 0);
         $stmt->closeCursor();
-        return $isValidate;}
+        return $isValidate;
+    }
+
+    //  récupère les infos d'un article en fonction de son titre
+    public function getArticleByTitle($title)
+    {
+        $req = "SELECT * FROM articles WHERE title = :title";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":title", $title, PDO::PARAM_STR);
+        $stmt->execute();
+        $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $resultat;
+    }
+    // vérifie si titre dispo à la création d'un article
+    public function isTitleFree($title)
+    {
+        return (empty($this->getArticleByTitle($title)));
+    }
+    //  récupère les infos d'un article en fonction de son url
+    public function getArticleByUrl($url)
+    {
+        $req = "SELECT * FROM articles WHERE url = :url";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":url", $url, PDO::PARAM_STR);
+        $stmt->execute();
+        $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $resultat;
+    }
+    // vérifie si url dispo à la création d'un article
+    public function isUrlFree($url)
+    {
+        return (empty($this->getArticleByURL($url)));
+    }
+
+    // creation article en base de données
+    public function  createArticleDB($title, $theme, $pitch, $url)
+    {
+        $req = "INSERT INTO articles (title, theme, pitch, url) VALUES (:title, :theme, :pitch, :url)";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":title", $title, PDO::PARAM_STR);
+        $stmt->bindValue(":theme", $theme, PDO::PARAM_STR);
+        $stmt->bindValue(":pitch", $pitch, PDO::PARAM_STR);
+        $stmt->bindValue(":url", $url, PDO::PARAM_STR);
+        $stmt->execute();
+        $isValidate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isValidate;
+    }
 }

@@ -34,7 +34,7 @@ switch ($url[1]) {
             $description_theme = Tools::secureHTML($_POST['description_theme']);
             $editorController->createTheme($new_theme, $description_theme);
         } else {
-            Tools::alertMessage("Il faut remplir les 2 champ !", "alert-warning");
+            Tools::alertMessage("Il faut remplir les 2 champs !", "alert-warning");
         }
         break;
         //  creation d'un article titre, pitch, url, theme
@@ -43,11 +43,21 @@ switch ($url[1]) {
         break;
 
 
-        
+
         // validation creation d'un article : juste sa carte visible sur l'accueil
     case "validation_creation_article":
-        Tools::showArray($_POST);
-        // $editorController->validationCreateArticle($_POST);
+        // Tools::showArray($_POST);
+        if (!empty($_POST['title']) && !empty($_POST['theme']) && !empty($_POST['pitch']) && !empty($_POST['url'])) {
+            $title = Tools::secureHTML($_POST['title']);
+            $theme = Tools::secureHTML($_POST['theme']);
+            $pitch = Tools::secureHTML($_POST['pitch']);
+            $url = Tools::secureHTML($_POST['url']);
+            $editorController->validationCreateArticle($title, $theme, $pitch, $url);
+        } else {
+            Tools::alertMessage("Il faut impérativement remplir les 4 champs !", "alert-warning");
+            
+            header('Location: ' . URL . 'administrator/create_article');
+        }
         break;
 
 
@@ -60,7 +70,7 @@ switch ($url[1]) {
     case "delete_article":
         $editorController->deleteArticle();
         break;
-        
+
 
     default:
         throw new Exception("La page demandée n'existe pas...");

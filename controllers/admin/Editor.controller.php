@@ -47,16 +47,32 @@ class EditorController extends MainController
             "page_title" => "Page de création d'un article",
             "view" => "./views/pages/admin/createArticle.view.php",
             "texte_1_page" => "Titre, pitch, url et thème sont obligatoires.",
-            "texte_2_page" => "On commence par la carte ",
-            "title_page" => "Crées un nouvel article ! ",
+            "texte_2_page" => "On commence par la carte de la page d'accueil.",
+            "title_page" => "Crée un nouvel article ! ",
             "themes" => $themes,
             "template" => "views/common/template.php",
         ];
         $this->functions->generatePage($data_page);
     }
 
-    public function validationCreateArticle ($array){ 
-        Tools :: showArray($_POST);
+    public function validationCreateArticle($title, $theme, $pitch, $url)
+    {
+        if (!$this->administratorManager->isTitleFree($title)) {
+            Tools::alertMessage("Ce titre existe déjà, il faut en trouver un autre !", "alert-warning");
+            header('Location: ' . URL . 'administrator/create_article');
+            exit();
+        }
+        if (!$this->administratorManager->isUrlFree($url)) {
+            Tools::alertMessage("Cette url existe déjà, il faut en, trouver une autre !", "alert-warning");
+            header('Location: ' . URL . 'administrator/create_article');
+            exit();
+        }
+        if ($this->administratorManager->createArticleDB($title, $theme, $pitch, $url)) {
+            Tools::alertMessage("Succés de la création de l'article", "alert-success");
+        } else {
+            Tools::alertMessage("Echec de la création de l'article", "alert-danger");
+        }
+        header('Location: ' . URL . 'home'); //aller sur l'article quand la fonction existera
     }
 
 

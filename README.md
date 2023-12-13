@@ -6,10 +6,18 @@
 
 
 <br>
-<h3>11/12/23</h3>
+<h3>13/12/23</h3>
+
+
+
+
+<br>
+<h3>12/12/23</h3>
 Mise en place d'un loader le temps de l'envoi d'un nouveau mdp si oublié.<br>
 Personnalisation des textes sur le header pour chacune des pages.<br>
 La gestion des utilisateurs semblent achevées à ce niveau.<br>
+Création des 1ers pointeurs pour la gestion des articles.<br>
+Récupération des données brutes du formulaire.<br>
 
 <br>
 <h3>11/12/23</h3>
