@@ -8,9 +8,9 @@
           isset($texte_2_page) && !empty($texte_2_page)
         ) : ?>
           <h2 class="arizona text-center display-2 text-shadow-white">
-            <h1><?= $texte_1_page ?></h1>
-            <h2 class="mb-5"><?= $texte_2_page ?></h2>
-            <div class="d-none d-xl-block ">
+            <h1 class="text-center"><?= $texte_1_page ?></h1>
+            <h2 class="mb-5 text-center"><?= $texte_2_page ?></h2>
+            <div class=" d-xl-block ">
               <h2 class="arizona text-center display-3  text-shadow-white">
                 <?= $title_page ?>
               </h2>

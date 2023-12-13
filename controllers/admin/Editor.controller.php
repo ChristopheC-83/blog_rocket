@@ -49,6 +49,8 @@ class EditorController extends MainController
             "texte_1_page" => "Titre, pitch, url et thème sont obligatoires.",
             "texte_2_page" => "On commence par la carte de la page d'accueil.",
             "title_page" => "Crée un nouvel article ! ",
+            
+            "javascript" => ['new_article.js'],
             "themes" => $themes,
             "template" => "views/common/template.php",
         ];

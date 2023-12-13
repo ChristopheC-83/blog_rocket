@@ -18,19 +18,20 @@
             </select>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-1">
                 <label for="url" class="form-label">URL</label>
                 <input type="text" class="form-control text-primary fs-5" id="url" name="url">
+                <p class="text-danger text-center w-100 fw-bold mt-2" id="badUrl">Seulement des lettres minuscules et "_".</p>
             </div>
 
             <div class="mb-3">
                 <label for="pitch" class="form-label">Pitch</label>
-                <input type="text" class="form-control text-primary fs-5" id="pitch" name="pitch">
+                <input type="text" class="form-control text-primary fs-5 mt-0 pt-0" id="pitch" name="pitch">
             </div>
 
             <div class="mt-5 w-75 mx-auto d-flex flex-column gap-3 justify-content-center align-items-center ">
 
-                <button type="submit" class="btn btn-primary w-100 fs-5 text-light ">Je valide cette création.</button>
+                <button type="submit" class="btn btn-primary w-100 fs-5 text-light disabled " id="btnNewArticleCard">Je valide cette création.</button>
                 <a href="<?= URL ?>home" class="btn btn-primary w-100  fs-5">
                     Finalement... je ferai ça plus tard...
                 </a>
