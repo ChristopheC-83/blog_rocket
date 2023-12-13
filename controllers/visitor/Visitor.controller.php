@@ -20,7 +20,7 @@ class VisitorController extends MainController
     // Direction vers la parge d'accueil
     public function homePage()
     {
-        
+
         $mainManager = new MainManager();
         $themes = $this->visitorManager->getAllThemes();
         $articles = $this->visitorManager->getAllArticles();
@@ -72,22 +72,32 @@ class VisitorController extends MainController
 
 
     //  page avec les article pour un theme choisi
-    // public function themePage($theme)
-    // {
-    //     $themePage = $this->visitorArticlesManager->chosenTheme($theme);
-    //     $articlesFromTheme = $this->visitorArticlesManager->articlesFromTheme($theme);
+    public function themePage($theme)
+    {
+        $articles = $this->visitorManager->getArticlesByThemes($theme);
+        if (empty($articles)) {
+            $this->errorPage("Ce thème n'existe pas !");
+            exit();
+        } else {
 
-    //     $data_page = [
-    //         "meta_description" => "Partage d'expérience : ... ",
-    //         "page_title" => "repaire d'un dev !",
-    //         "view" => "views/Visitor/themePage.view.php",
-    //         "template" => "views/templates/template.php",
-    //         "js" => ['home_page_animated_grid.js'],
-    //         "themePage" => $themePage,
-    //         "articlesFromTheme" => $articlesFromTheme,
-    //     ];
-    //     $this->functions->generatePage($data_page);
-    // }
+            $mainManager = new MainManager();
+            $themes = $this->visitorManager->getAllThemes();
+            $data_page = [
+                "page_description" => "Description de la page d'accueil",
+                "page_title" => "Titre de la page d'accueil",
+                "view" => "views/pages/visitor/homePage.view.php",
+                "javascript" => ['home_page_animated_grid.js'],
+                "themes" => $themes,
+                "articles" => $articles,
+                "mainManager" => $mainManager,
+                "texte_1_page" => "Autour du code",
+                "texte_2_page" => "Partageons, échangeons !",
+                "title_page" => "Seul on va plus vite, ensemble on va plus loin !",
+                "template" => "./views/common/template.php"
+            ];
+            $this->functions->generatePage($data_page);
+        }
+    }
 
 
     // Direction vers la page d'erreur
@@ -95,7 +105,7 @@ class VisitorController extends MainController
     {
         $data_page = [
             "page_description" => "Page permettant de gérer les erreurs",
-            
+
             "texte_1_page" => "On est perdu ?",
             "texte_2_page" => "Retour à l'accueil et c'est reparti !",
             "page_title" => $msg,

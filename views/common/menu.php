@@ -20,10 +20,10 @@ $themes = $userManager->getAllThemes();
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li class="nav-item">
-          <a class="nav-link text-primary fs-4 d-none d-sm-block" aria-current="page" href="<?= URL; ?>home">
+          <a class="nav-link text-primary fs-4 d-none d-sm-block" aria-current="page" href="<?= URL ?>home">
             Accueil
           </a>
-          <a class="nav-link text-primary fs-4 d-block d-sm-none" aria-current="page" href="<?= URL; ?>home">
+          <a class="nav-link text-primary fs-4 d-block d-sm-none" aria-current="page" href="<?= URL ?>home">
             <i class="fa-solid fa-house"></i>
           </a>
         </li>

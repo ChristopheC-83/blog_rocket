@@ -112,6 +112,15 @@ try {
             }
             break;
 
+        case "theme":
+            if (!empty($url[1])) {
+                $theme = Tools::secureHTML($url[1]);
+                $visitorController->themePage($theme);
+            } else {
+                Tools::alertMessage("Il faut choisir un thème !", "alert-warning");
+                header('Location: ' . URL . 'home');
+            }
+
 
             // si l'utilisateur est connecté en tant qu'utilisateur ou plus :
             // les accés sont dans le fichier indexComponents/user.index.php
