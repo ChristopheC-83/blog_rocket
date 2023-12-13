@@ -29,10 +29,11 @@ switch ($url[1]) {
         break;
         // création d'un theme
     case "create_theme":
-        if (!empty($_POST['new_theme']) && !empty($_POST['description_theme'])) {
+        if (!empty($_POST['new_theme']) && !empty($_POST['description_theme'])  && !empty($_POST['color'])) {
             $new_theme = Tools::secureHTML($_POST['new_theme']);
             $description_theme = Tools::secureHTML($_POST['description_theme']);
-            $editorController->createTheme($new_theme, $description_theme);
+            $color = Tools::secureHTML($_POST['color']);
+            $editorController->createTheme($new_theme, $description_theme, $color);
         } else {
             Tools::alertMessage("Il faut remplir les 2 champs !", "alert-warning");
         }

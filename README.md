@@ -9,7 +9,7 @@
 <h3>13/12/23</h3>
 creation contenu carte et envoi bdd.<br>
 double controle de champs non vides pour la création d'un article (en js et en php).<br>
-<br>
+affichage cartes à l'accueil du site avec 1 couleur par theme<br>
 <br>
 <br>
 

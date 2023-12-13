@@ -28,9 +28,9 @@ class EditorController extends MainController
         }
         header('Location: ' . URL . 'home');
     }
-    public function  createTheme($new_theme, $description_theme)
+    public function  createTheme($new_theme, $description_theme, $color)
     {
-        if ($this->administratorManager->createThemeDB($new_theme, $description_theme)) {
+        if ($this->administratorManager->createThemeDB($new_theme, $description_theme, $color)) {
             Tools::alertMessage("Succés de la création du thème", "alert-success");
         } else {
             Tools::alertMessage("Echec de la création du thème", "alert-danger");

@@ -51,13 +51,14 @@ class AdministratorManager extends UserManager
         return $isValidate;
     }
 
-    public function createThemeDB($theme, $description_theme)
+    public function createThemeDB($theme, $description_theme, $color)
     {
 
-        $req = "INSERT INTO themes (theme, description_theme) VALUES (:theme, :description_theme)";
+        $req = "INSERT INTO themes (theme, description_theme, color) VALUES (:theme, :description_theme, :color)";
         $stmt = $this->getDB()->prepare($req);
         $stmt->bindValue(":theme", $theme, PDO::PARAM_STR);
         $stmt->bindValue(":description_theme", $description_theme, PDO::PARAM_STR);
+        $stmt->bindValue(":color", $color, PDO::PARAM_STR);
         $stmt->execute();
         $isValidate = ($stmt->rowCount() > 0);
         $stmt->closeCursor();

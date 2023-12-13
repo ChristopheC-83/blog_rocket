@@ -32,12 +32,12 @@ $themes = $userManager->getAllThemes();
           <a class="nav-link dropdown-toggle text-primary fs-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Thèmes
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-menu bg-dark text-light" aria-labelledby="navbarDropdown">
             <!-- boucle sur les Themes -->
             <?php foreach ($themes as $theme) : ?>
 
               <li class="d-flex">
-                <a class="dropdown-item text-primary text-capitalize mb-2" href="<?= URL ?>theme/<?= $theme['theme'] ?>"><?= $theme['theme'] ?></a>
+                <a class="dropdown-item text-<?= $theme['color'] ?> text-capitalize mb-2" href="<?= URL ?>theme/<?= $theme['theme'] ?>"><?= $theme['theme'] ?></a>
                 <?php if (isset($_SESSION['profile']['role']) && $_SESSION['profile']['role'] === "admin") : ?>
                   <form action="<?= URL ?>administrator/delete_theme" method="post">
                     <input type="hidden" name="id_theme" value="<?= $theme['id_theme'] ?>">
@@ -54,7 +54,9 @@ $themes = $userManager->getAllThemes();
                   <input type="text" name="new_theme">
                   <label for="description_theme">Description</label>
                   <textarea name="description_theme mx-auto"></textarea>
-                  <button type="submit" class="w-100 text-center border border-0">✅</button>
+                  <label for="color">Couleur</label>
+                  <input type="text" name="color">
+                  <button type="submit" class="w-100 text-center border border-0 mt-2">✅</button>
                 </form>
               <?php endif ?>
             </li>
