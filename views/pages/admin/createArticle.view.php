@@ -12,10 +12,10 @@
             <div class="mb-3">
                 <label for="theme" class="form-label">Thème</label>
                 <select name="theme" id="theme" class="form-control text-primary fs-5">
-                <?php foreach ($themes as $theme) : ?>
-                    <option value="<?= $theme['theme']  ?>"><?= $theme['theme']  ?></option>
-                <?php endforeach; ?>
-            </select>
+                    <?php foreach ($themes as $theme) : ?>
+                        <option value="<?= $theme['theme']  ?>"><?= $theme['theme']  ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
 
             <div class="mb-1">

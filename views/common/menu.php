@@ -8,7 +8,8 @@ if (empty($_GET['page'])) {
 require_once("./models/MainManager.model.php");
 $userManager = new MainManager();
 $themes = $userManager->getAllThemes();
-
+$colors = $userManager->getPalette();
+// Tools::showArray($colors);
 
 ?>
 
@@ -53,10 +54,24 @@ $themes = $userManager->getAllThemes();
                   <label for="new_theme">Theme</label>
                   <input type="text" name="new_theme">
                   <label for="description_theme">Description</label>
-                  <textarea name="description_theme mx-auto"></textarea>
+                  <textarea name="description_theme"></textarea>
                   <label for="color">Couleur</label>
-                  <input type="text" name="color">
-                  <button type="submit" class="w-100 text-center border border-0 mt-2">✅</button>
+
+                  <select name="color" id="color" class="form-control fs-5 ">
+                    <?php foreach ($colors as $color) : ?>
+                      <option value="<?= $color['color_bs']  ?>" class="
+                      <?php if ($color['color_bs'] === "white" || $color['color_bs'] === "light") {
+                        echo ("text-" . $color['color_bs'] . " bg-dark");
+                      } else {
+                        echo  "text-" . $color['color_bs'];
+                      }
+                      ?>">
+                        <?= $color['real_color']  ?>
+                      </option>
+                    <?php endforeach; ?>
+                  </select>
+
+                  <button type=" submit" class="w-100 text-center border border-0 mt-2">✅</button>
                 </form>
               <?php endif ?>
             </li>

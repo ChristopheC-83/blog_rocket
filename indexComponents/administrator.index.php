@@ -29,6 +29,7 @@ switch ($url[1]) {
         break;
         // création d'un theme
     case "create_theme":
+        // Tools::showArray($_POST);
         if (!empty($_POST['new_theme']) && !empty($_POST['description_theme'])  && !empty($_POST['color'])) {
             $new_theme = Tools::secureHTML($_POST['new_theme']);
             $description_theme = Tools::secureHTML($_POST['description_theme']);

@@ -27,4 +27,15 @@ class MainManager extends Model{
         $req->closeCursor();
         return $datas;
     }
+
+    public function  getPalette(){ 
+        $req = "SELECT * FROM palette";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->execute();
+        $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $datas;
+    
+    
+    }
 }
