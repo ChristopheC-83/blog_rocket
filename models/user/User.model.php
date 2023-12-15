@@ -179,4 +179,5 @@ class UserManager extends MainManager
         $stmt->closeCursor();
         return $validationOk;
     }
+
 }

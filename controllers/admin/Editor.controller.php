@@ -56,6 +56,7 @@ class EditorController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
+  
 
     public function validationCreateArticle($title, $theme, $pitch, $url)
     {
@@ -79,16 +80,23 @@ class EditorController extends MainController
 
 
 
-    public function  updateArticle()
+    public function updateArticle($id)
     {
-
-        
+        $oneArticle = $this->administratorManager->getOneArticle($id);
+        $articles = $this->administratorManager->getAllArticles();
+        $themes = $this->administratorManager->getAllThemes();
         $data_page = [
-            "page_description" => "Page de modification d'un article",
-            "page_title" => "Page de modification d'un article",
+            "page_description" => "Page de création d'un article",
+            "page_title" => "Page de création d'un article",
             "view" => "./views/pages/admin/updateArticle.view.php",
-            "title_page" => "Modification d'un article",
-            "template" => "views/common/template.php",
+            "texte_1_page" => "Pour finaliser la création de l'article,",
+            "texte_2_page" => "Ou compléter un nouveau.",
+            "title_page" => "Vas-y ! Exprime toi !",
+            "javascript" => ['tiny.js', 'update_article.js'],
+            "articles" => $articles,
+            "oneArticle" => $oneArticle,
+            "themes" => $themes,
+            "template" => "views/common/templateUpdateArticle.php",
         ];
         $this->functions->generatePage($data_page);
     }

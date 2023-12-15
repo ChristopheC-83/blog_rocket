@@ -63,8 +63,14 @@ switch ($url[1]) {
 
         // on complète un articler créé ou on modifie un article existant
     case "update_article":
-        $editorController->updateArticle();
+          if (isset($url[2])) {
+            $id_article = Tools::secureHTML($url[2]);
+        } else {
+            $id_article = 1;
+        }
+        $editorController->updateArticle($id_article);
         break;
+   
         //  suppression d'un article
     case "delete_article":
         $editorController->deleteArticle();
