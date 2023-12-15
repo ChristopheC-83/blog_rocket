@@ -121,20 +121,22 @@ class EditorController extends MainController
     }
     public function validationUpdateArticle($id, $title, $theme, $pitch, $url)
     {
-        if (!$this->administratorManager->isTitleFree($title)) {
+        $oneArticle = $this->administratorManager->getOneArticle($id);
+
+        if ($title !== $oneArticle['title'] && !$this->administratorManager->isTitleFree($title)) {
             Tools::alertMessage("Ce titre existe déjà, il faut en trouver un autre !", "alert-warning");
             header('Location: ' . URL . 'administrator/update_article');
             exit();
         }
-        if (!$this->administratorManager->isUrlFree($url)) {
+        if ($url !== $oneArticle['url'] && !$this->administratorManager->isUrlFree($url)) {
             Tools::alertMessage("Cette url existe déjà, il faut en, trouver une autre !", "alert-warning");
             header('Location: ' . URL . 'administrator/update_article');
             exit();
         }
         if ($this->administratorManager->updateArticleDB($id, $title, $theme, $pitch, $url)) {
-            Tools::alertMessage("Succés de la création de l'article", "alert-success");
+            Tools::alertMessage("Succés de la modification de l'article", "alert-success");
         } else {
-            Tools::alertMessage("Echec de la création de l'article", "alert-danger");
+            Tools::alertMessage("Echec de la modification de l'article", "alert-danger");
         }
         header('Location: ' . URL . 'administrator/update_article/'.$id); 
     }

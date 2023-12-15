@@ -131,4 +131,6 @@ class AdministratorManager extends UserManager
         $stmt->closeCursor();
         return $isValidate; 
     }
+
+
 }

@@ -66,7 +66,7 @@ switch ($url[1]) {
         if (isset($url[2])) {
             $id_article = Tools::secureHTML($url[2]);
         } else {
-            $id_article = 1;
+            $id_article = $mainManager->getAllArticles()[0]['id_article'];
         }
         $editorController->updateArticle($id_article);
         break;
