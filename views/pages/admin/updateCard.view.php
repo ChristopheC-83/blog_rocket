@@ -3,7 +3,7 @@
 
 
         <form class="my-4" method="POST" action="<?=URL?>administrator/validation_update_card">
-            <input type="hidden" value="$article['id']">
+            <input type="hidden" value="<?= $article['id_article'] ?>" name="id">
             <div class="mb-3">
                 <label for="title" class="form-label">Titre article</label>
                 <input type="text" class="form-control text-primary fs-5" id="title" name="title"

@@ -92,6 +92,9 @@ class AdministratorManager extends UserManager
         $stmt->closeCursor();
         return $resultat;
     }
+
+
+
     // vérifie si url dispo à la création d'un article
     public function isUrlFree($url)
     {
@@ -111,5 +114,21 @@ class AdministratorManager extends UserManager
         $isValidate = ($stmt->rowCount() > 0);
         $stmt->closeCursor();
         return $isValidate;
+    }
+
+    // mise à jour d'une carte article
+    public function  updateArticleDB($id, $title, $theme, $pitch, $url)
+    {
+       $req = "UPDATE articles set title = :title, theme = :theme, pitch = :pitch, url = :url WHERE id_article= :id_article ";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":id_article", $id, PDO::PARAM_INT);
+        $stmt->bindValue(":title", $title, PDO::PARAM_STR);
+        $stmt->bindValue(":theme", $theme, PDO::PARAM_STR);
+        $stmt->bindValue(":pitch", $pitch, PDO::PARAM_STR);
+        $stmt->bindValue(":url", $url, PDO::PARAM_STR);
+        $stmt->execute();
+        $isValidate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isValidate; 
     }
 }

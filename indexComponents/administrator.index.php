@@ -85,17 +85,19 @@ switch ($url[1]) {
 
         // validation modification d'un article : juste sa carte visible sur l'accueil
     case "validation_update_card":
-        Tools::showArray($_POST);
-        // if (!empty($_POST['title']) && !empty($_POST['theme']) && !empty($_POST['pitch']) && !empty($_POST['url'])) {
-        //     $title = Tools::secureHTML($_POST['title']);
-        //     $theme = Tools::secureHTML($_POST['theme']);
-        //     $pitch = Tools::secureHTML($_POST['pitch']);
-        //     $url = Tools::secureHTML($_POST['url']);
-        //     $editorController->validationCreateArticle($title, $theme, $pitch, $url);
-        // } else {
-        //     Tools::alertMessage("Il faut impérativement remplir les 4 champs !", "alert-warning");
-        //     header('Location: ' . URL . 'administrator/create_article');
-        // }
+        // Tools::showArray($_POST);
+        if (!empty($_POST['title']) && !empty($_POST['theme']) && !empty($_POST['pitch']) && !empty($_POST['url'])) {
+
+            $id = Tools::secureHTML($_POST['id']);
+            $title = Tools::secureHTML($_POST['title']);
+            $theme = Tools::secureHTML($_POST['theme']);
+            $pitch = Tools::secureHTML($_POST['pitch']);
+            $url = Tools::secureHTML($_POST['url']);
+            $editorController->validationUpdateArticle($id,$title, $theme, $pitch, $url);
+        } else {
+            Tools::alertMessage("Il faut impérativement remplir les 4 champs !", "alert-warning");
+            header('Location: ' . URL . 'administrator/create_article');
+        }
         break;
 
         //  suppression d'un article
