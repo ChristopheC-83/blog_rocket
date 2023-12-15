@@ -15,8 +15,8 @@
     <script src="https://cdn.tiny.cloud/1/qldsi9bc7eu78br8qd5z2kyhvytzqmmha2w0wym90ttn4w4w/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script>
-        tinymce.init({
-  selector: 'textarea#default-editor'
+    tinymce.init({
+  selector: 'textarea#default'
 });
     </script>
 </head>

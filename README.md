@@ -6,8 +6,15 @@
 
 
 <br>
+<h3>15/12/23</h3>
+Possibilité MAJ cartes d'articles.<br>
+Vérification de l'existence et du contenu lors de l'afficharge des articles d'un thème choisi.<br>
+Qd on veut modifier ou compléter un article, on arrive sur le plus récent par défaut.<br>
+
+
+<br>
 <h3>14/12/23</h3>
-couleurs au choix (menu déroulant) pour la création des themes<brW>
+couleurs au choix (menu déroulant) pour la création des themes<br>
 
 <br>
 <h3>13/12/23</h3>

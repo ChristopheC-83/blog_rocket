@@ -100,6 +100,22 @@ switch ($url[1]) {
         }
         break;
 
+        //  modif ou creation texte d'un article
+    case "update_text_article":
+        Tools::showArray($_POST);
+        // $editorController->deleteArticle();
+        break;
+
+
+
+
+
+
+
+
+
+
+
         //  suppression d'un article
     case "delete_article":
         $editorController->deleteArticle();
