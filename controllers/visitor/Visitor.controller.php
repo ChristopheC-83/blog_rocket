@@ -71,32 +71,39 @@ class VisitorController extends MainController
 
 
 
-    //  page avec les article pour un theme choisi
+    //  page avec les articles pour un theme choisi.
     public function themePage($theme)
     {
+        $istheme = $this->visitorManager->getColorTheme($theme);
         $articles = $this->visitorManager->getArticlesByThemes($theme);
-        if (empty($articles)) {
-            $this->errorPage("Ce thème n'existe pas !");
-            exit();
-        } else {
 
-            $mainManager = new MainManager();
-            $themes = $this->visitorManager->getAllThemes();
-            $data_page = [
-                "page_description" => "Description de la page d'accueil",
-                "page_title" => "Titre de la page d'accueil",
-                "view" => "views/pages/visitor/homePage.view.php",
-                "javascript" => ['home_page_animated_grid.js'],
-                "themes" => $themes,
-                "articles" => $articles,
-                "mainManager" => $mainManager,
-                "texte_1_page" => "Autour du code",
-                "texte_2_page" => "Partageons, échangeons !",
-                "title_page" => "Seul on va plus vite, ensemble on va plus loin !",
-                "template" => "./views/common/template.php"
-            ];
-            $this->functions->generatePage($data_page);
+        // Si pas de couleur détectée, le theme n'existe pas.
+        if (!isset($istheme['color'])) {
+            $this->errorPage("Ce thème n'existe pas.");
+            exit();
         }
+        // Si couleur détectée mais pas d'article, on le précise.
+        if (empty($articles)) {
+            $this->errorPage("Pas encore d'article sur ce thème. Ca va arriver 😉.");
+            exit();
+        }
+        // si articles, on affiches leurs cartes.
+        $mainManager = new MainManager();
+        $themes = $this->visitorManager->getAllThemes();
+        $data_page = [
+            "page_description" => "Description de la page d'accueil",
+            "page_title" => "Titre de la page d'accueil",
+            "view" => "views/pages/visitor/homePage.view.php",
+            "javascript" => ['home_page_animated_grid.js'],
+            "themes" => $themes,
+            "articles" => $articles,
+            "mainManager" => $mainManager,
+            "texte_1_page" => "Autour du code",
+            "texte_2_page" => "Partageons, échangeons !",
+            "title_page" => "Seul on va plus vite, ensemble on va plus loin !",
+            "template" => "./views/common/template.php"
+        ];
+        $this->functions->generatePage($data_page);
     }
 
 
