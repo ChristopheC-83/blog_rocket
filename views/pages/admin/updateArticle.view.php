@@ -13,11 +13,13 @@
                         </option>
                     <?php endforeach; ?>
                 </select>
-                <p><b>Theme : </b><?= $oneArticle['theme'] ?></p>
-                <p><b>Pitch : </b><?= $oneArticle['pitch'] ?></p>
-                <p><b>URL : </b><?= $oneArticle['url'] ?></p>
+                <p><b class="text-primary">Theme : </b><?= $oneArticle['theme'] ?></p>
+                <p><b class="text-primary">Pitch : </b><?= $oneArticle['pitch'] ?></p>
+                <p><b class="text-primary">URL : </b><?= $oneArticle['url'] ?></p>
             </div>
-
+            <a href="<?= URL ?>administrator/update_card/<?= $oneArticle['id_article'] ?>" class="btn btn-primary w-100 text-light py-3  fs-5">
+                    Je veux modifier cette carte.
+                </a>
 
 
         </form>

@@ -56,6 +56,25 @@ class EditorController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
+    public function updateCard($id)
+    {
+
+        $article = $this->administratorManager->getOneArticle($id);
+        $themes = $this->administratorManager->getAllThemes();
+        $data_page = [
+            "page_description" => "Page de création d'un article",
+            "page_title" => "Page de création d'un article",
+            "view" => "./views/pages/admin/updateCard.view.php",
+            "texte_1_page" => "Titre, pitch, url et thème sont toujours obligatoires.",
+            "texte_2_page" => "On modifie la carte de la page d'accueil.",
+            "title_page" => "Mettons à jour cette carte ! ",
+            "javascript" => ['new_article.js'],
+            "article" => $article,
+            "themes" => $themes,
+            "template" => "views/common/template.php",
+        ];
+        $this->functions->generatePage($data_page);
+    }
   
 
     public function validationCreateArticle($title, $theme, $pitch, $url)
