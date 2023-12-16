@@ -153,4 +153,15 @@ class AdministratorManager extends UserManager
         $stmt->closeCursor();
         return $isValidate;
     }
+    public function addSliderArticleDB($id_article, $slider_folder)
+    {
+        $req = "UPDATE articles set slider_folder = :slider_folder WHERE id_article= :id_article ";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":id_article", $id_article, PDO::PARAM_INT);
+        $stmt->bindValue(":slider_folder", $slider_folder, PDO::PARAM_STR);
+        $stmt->execute();
+        $isValidate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isValidate;
+    }
 }

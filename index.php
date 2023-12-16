@@ -14,7 +14,7 @@ define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" :
     "://" . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
 define("IMG_PATH", URL . "public/assets/images/");
 define("AVATARS_PATH", IMG_PATH . "avatars/");
-define("MEDIA_PATH", URL . "public/assets/articles_media/article_");
+define("MEDIA_PATH", "public/assets/articles_media/article_");
 
 require_once("./controllers/visitor/Visitor.controller.php");
 require_once("./controllers/user/User.controller.php");

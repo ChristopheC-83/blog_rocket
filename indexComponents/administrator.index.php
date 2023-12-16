@@ -111,11 +111,11 @@ switch ($url[1]) {
 
         if (isset($url[2]) && !empty($url[2])) {
             $id_article = Tools::secureHTML($_POST['id']);
-            $files = $_FILES['img1'];
-
-
+            
+            
             switch ($url[2]) {
                 case "image":
+                    $files = $_FILES['img1'];
                     if ($editorController->addImage($id_article, $files)) {
                         Tools::alertMessage("Ajout de l'image effectué", "alert-success");
                     } else {
@@ -123,9 +123,18 @@ switch ($url[1]) {
                     }
                     header('Location: ' . URL . 'administrator/update_article/' . $id_article);
                     break;
-                    // case "slider":
-                    //     $editorController->addSlider($id_article, $files);
-                    //     break;
+                case "slider":
+                    // Tools::showArray($_FILES['photo']);
+                    $files = $_FILES['photo'];
+                    $editorController->addSlider($id_article, $files);
+                    // if ($editorController->addSlider($id_article, $files)) {
+                    //     Tools::alertMessage("Ajout du dossier effectué", "alert-success");
+                    // } else {
+                    //     Tools::alertMessage("Ajout du dossier non effectué", "alert-danger");
+                    // }
+                    // header('Location: ' . URL . 'administrator/update_article/' . $id_article);
+                    break;
+                  
                     // case "video":
                     //     $editorController->addVideo($id_article, $files);
                     //     break;

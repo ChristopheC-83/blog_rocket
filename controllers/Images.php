@@ -14,7 +14,7 @@ class Images
     }
 
     // vider le dossier des médias de l'article s'il y a qq chose dedans
-    private function eraseFolderContent($id_article)
+    public function eraseFolderContent($id_article)
     {
         $folder = "./public/assets/articles_media/article_" . $id_article;
         $files = glob($folder . '/*');
@@ -58,20 +58,25 @@ class Images
 
         else return ($file['name']);
     }
-    function add_slider($file, $id_article)
+    function add_slider($id_article, $file, $folder)
     {
+
+        // echo "truc";
+        // Tools::showArray($file);
+        // Tools::showArray($id_article);
         $lengthArray = count($file['name']);
-        $folder = MEDIA_PATH . $id_article;
-        // $repertoire = sliderPath . $post['theme'] . "/" . $post['slider'] . "/";
+        $final_folder = $folder . $id_article."/";
+        // echo "<br>";
+        // echo $final_folder;
 
         for ($i = 0; $i < $lengthArray; $i++) {
-            $target_file = $folder . basename($file['name'][$i]);
+            $target_file = $final_folder . basename($file['name'][$i]);
             if (!isset($file['name'][$i]) || empty($file['name'][$i])) {
                 throw new Exception("Vous devez sélectionner une image.");
             }
-            if (!file_exists($folder)) mkdir($folder, 0777);
+            if (!file_exists($final_folder)) mkdir($final_folder, 0777);
             $extension = strtolower(pathinfo($file['name'][$i], PATHINFO_EXTENSION));
-            $target_file =  $folder . $file['name'][$i];
+            $target_file =  $final_folder . $file['name'][$i];
             if (!getimagesize($file["tmp_name"][$i]))
                 throw new Exception("Le fichier n'est pas une image");
             if ($extension !== "jpg" && $extension !== "jpeg" && $extension !== "png" && $extension !== "gif")
@@ -81,5 +86,7 @@ class Images
             if (!move_uploaded_file($file['tmp_name'][$i], $target_file))
                 throw new Exception("l'ajout de l'image n'a pas fonctionné");
         }
+
+        return true;
     }
 }
