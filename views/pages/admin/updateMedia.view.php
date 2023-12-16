@@ -1,14 +1,13 @@
-
 <?php if (empty($oneArticle['img1']) && empty($oneArticle['slider_folder']) && empty($oneArticle['video_link'])) : ?>
     <p class="text-center fs-3 m-0">Je souhaite ajouter : </p>
 
-<?php elseif(!empty($oneArticle['img1'])) : ?>
+<?php elseif (!empty($oneArticle['img1'])) : ?>
 
     <div class="d-flex align-items-center justify-content-evenly">
         Je veux remplacer l'image :
-        <img src="<?=URL.MEDIA_PATH.$oneArticle['id_article'] ?>/<?= $oneArticle['img1'] ?>" alt="" class="w-25 img-fluid">
+        <img src="<?= URL . MEDIA_PATH . $oneArticle['id_article'] ?>/<?= $oneArticle['img1'] ?>" alt="" class="w-25 img-fluid">
     </div>
-<?php elseif(!empty($oneArticle['slider_folder'])) : ?>
+<?php elseif (!empty($oneArticle['slider_folder'])) : ?>
 
     <?php $directory = MEDIA_PATH . $oneArticle['id_article'];
     $images = glob($directory . '/*');
@@ -16,15 +15,20 @@
 
     <div class="d-flex flex-column flex-sm-row  text-sm-center align-items-center justify-content-evenly w-100">
         Je veux remplacer le slider commençant par :
-        <img src="<?= URL. $images[0] ?>" alt="image ?" class="w-25 img-fluid">
+        <img src="<?= URL . $images[0] ?>" alt="image ?" class="w-25 img-fluid">
     </div>
 
 <?php endif ?>
 <p class=" text-center text-danger fs-5 mb-4 ">un seul media possible !</p>
-<div class="d-flex justify-content-between justify-content-md-around my-3">
-    <div class="btn btn-primary text-light" id="btn-media-image">Une Image</div>
-    <div class="btn btn-primary text-light" id="btn-media-slider">Un Slider</div>
-    <div class="btn btn-primary text-light" id="btn-media-video">Une Vidéo</div>
+<div class=" d-flex flex-column justify-content-around  my-3">
+    <div class="w-75 mx-auto d-flex justify-content-between justify-content-around my-3">
+        <div class="btn btn-primary text-light " style="width:133px" id="btn-media-image">Une Image</div>
+        <div class="btn btn-primary text-light ms-3" style="width:133px" id="btn-media-slider">Un Slider</div>
+    </div>
+    <div class="w-75 mx-auto d-flex justify-content-between justify-content-around my-3">
+        <div class="btn btn-primary text-light " style="width:133px" id="btn-media-video">Une Vidéo</div>
+        <div class="btn btn-primary text-light ms-3" style="width:133px" id="btn-media-delete">Supprimer</div>
+    </div>
 </div>
 
 

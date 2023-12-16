@@ -8,6 +8,8 @@
 <br>
 <h3>16/12/23</h3>
 Possibilité ajout image dans article<br>
+Possibilité ajout slider dans article<br>
+Possibilité d'enlever le/mes média de l'article<br>
 
 <br>
 <h3>15/12/23</h3>
