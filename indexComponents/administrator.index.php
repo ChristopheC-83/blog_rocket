@@ -111,7 +111,7 @@ switch ($url[1]) {
 
         if (isset($url[2]) && !empty($url[2])) {
             $id_article = Tools::secureHTML($_POST['id']);
-            $files = $_FILES;
+            $files = $_FILES['img1'];
 
 
             switch ($url[2]) {

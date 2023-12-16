@@ -164,9 +164,15 @@ class EditorController extends MainController
     {
         Tools::showArray($files);
         Tools::showArray($id_article);
-
+        // vidage dossier de l'article
         $this->eraseFolderContent($id_article);
-        
+        // vidage img1 / slider / video en bdd
+        $this->administratorManager->eraseMedia($id_article);
+        // ajout de l'image dans les dossiers
+        $this->images->add_image($id_article, $files);
+        // ajout de l'image en bdd
+        $this->administratorManager->addImageArticleDB($id_article, $files['name']);
+
        
     }
 

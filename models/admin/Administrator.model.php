@@ -119,7 +119,7 @@ class AdministratorManager extends UserManager
     // mise à jour d'une carte article
     public function  updateArticleDB($id, $title, $theme, $pitch, $url)
     {
-       $req = "UPDATE articles set title = :title, theme = :theme, pitch = :pitch, url = :url WHERE id_article= :id_article ";
+        $req = "UPDATE articles set title = :title, theme = :theme, pitch = :pitch, url = :url WHERE id_article= :id_article ";
         $stmt = $this->getDB()->prepare($req);
         $stmt->bindValue(":id_article", $id, PDO::PARAM_INT);
         $stmt->bindValue(":title", $title, PDO::PARAM_STR);
@@ -129,8 +129,28 @@ class AdministratorManager extends UserManager
         $stmt->execute();
         $isValidate = ($stmt->rowCount() > 0);
         $stmt->closeCursor();
-        return $isValidate; 
+        return $isValidate;
     }
 
-
+    public function eraseMedia($id_article)
+    {
+        $req = "UPDATE articles set img1 = NULL, slider_folder = NULL, video_link = NULL WHERE id_article= :id_article ";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":id_article", $id_article, PDO::PARAM_INT);
+        $stmt->execute();
+        $isValidate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isValidate;
+    }
+    public function addImageArticleDB($id_article, $img1)
+    {
+        $req = "UPDATE articles set img1 = :img1 WHERE id_article= :id_article ";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":id_article", $id_article, PDO::PARAM_INT);
+        $stmt->bindValue(":img1", $img1, PDO::PARAM_STR);
+        $stmt->execute();
+        $isValidate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isValidate;
+    }
 }
