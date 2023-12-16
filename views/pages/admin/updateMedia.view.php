@@ -5,9 +5,18 @@
 <?php elseif(!empty($oneArticle['img1'])) : ?>
 
     <div class="d-flex align-items-center justify-content-evenly">
+        Je veux remplacer l'image :
+        <img src="<?=URL.MEDIA_PATH.$oneArticle['id_article'] ?>/<?= $oneArticle['img1'] ?>" alt="" class="w-25 img-fluid">
+    </div>
+<?php elseif(!empty($oneArticle['slider_folder'])) : ?>
 
-        Je veux remplacer:
-        <img src="<?= MEDIA_PATH.$oneArticle['id_article'] ?>/<?= $oneArticle['img1'] ?>" alt="" class="w-25 img-fluid">
+    <?php $directory = MEDIA_PATH . $oneArticle['id_article'];
+    $images = glob($directory . '/*');
+    ?>
+
+    <div class="d-flex flex-column flex-sm-row  text-sm-center align-items-center justify-content-evenly w-100">
+        Je veux remplacer le slider commençant par :
+        <img src="<?= URL. $images[0] ?>" alt="image ?" class="w-25 img-fluid">
     </div>
 
 <?php endif ?>

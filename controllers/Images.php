@@ -16,7 +16,7 @@ class Images
     // vider le dossier des médias de l'article s'il y a qq chose dedans
     public function eraseFolderContent($id_article)
     {
-        $folder = "./public/assets/articles_media/article_" . $id_article;
+        $folder = MEDIA_PATH. $id_article;
         $files = glob($folder . '/*');
         foreach ($files as $file) {
             if (is_file($file)) {
@@ -25,7 +25,7 @@ class Images
         }
     }
 
-    function add_image($id_article, $file, $folder)
+    function add_image($id_article, $file)
     {
         //     echo "truc";
         //     Tools::showArray($file);
@@ -34,7 +34,7 @@ class Images
         if (!isset($file['name']) || empty($file['name'])) {
             throw new Exception("Vous devez sélectionner une image.");
         }
-        $final_folder = $folder . $id_article . "/";
+        $final_folder = MEDIA_PATH . $id_article . "/";
         if (!file_exists($final_folder)) mkdir($final_folder, 0777);
         $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
         $target_file =  $final_folder . $file['name'];
@@ -58,14 +58,14 @@ class Images
 
         else return ($file['name']);
     }
-    function add_slider($id_article, $file, $folder)
+    function add_slider($id_article, $file)
     {
 
         // echo "truc";
         // Tools::showArray($file);
         // Tools::showArray($id_article);
         $lengthArray = count($file['name']);
-        $final_folder = $folder . $id_article."/";
+        $final_folder = MEDIA_PATH . $id_article."/";
         // echo "<br>";
         // echo $final_folder;
 

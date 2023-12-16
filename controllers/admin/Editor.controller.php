@@ -155,27 +155,26 @@ class EditorController extends MainController
     {
         // Tools::showArray($files);
         // Tools::showArray($id_article);
-        $folder = "public/assets/articles_media/article_";
+
         // ajout de l'image dans les dossiers
-        $this->images->add_image($id_article, $files, $folder);
+        $this->images->add_image($id_article, $files);
         // ajout de l'image en bdd
-        $this->administratorManager->addImage1ArticleDB($id_article, $files['name']);
+        $this->administratorManager->addImage1ArticleDB($id_article,  $files['name']);
     }
     public function addSlider($id_article, $files)
     {
         // echo "truc";
         // Tools::showArray($files);
         // Tools::showArray($id_article);
-        
+
         // vidage dossier de l'article
         $this->images->eraseFolderContent($id_article);
         // vidage img1 / slider / video en bdd
         $this->administratorManager->eraseMedia($id_article);
-        $folder = "public/assets/articles_media/article_";
         // // ajout de l'image dans les dossiers
-        $this->images->add_slider($id_article, $files, $folder);
+        $this->images->add_slider($id_article, $files);
         // // ajout de l'image en bdd
-        $this->administratorManager->addSliderArticleDB($id_article, $folder.$id_article);
+        $this->administratorManager->addSliderArticleDB($id_article, "article_" . $id_article);
     }
 
 

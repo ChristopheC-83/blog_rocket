@@ -111,30 +111,37 @@ switch ($url[1]) {
 
         if (isset($url[2]) && !empty($url[2])) {
             $id_article = Tools::secureHTML($_POST['id']);
-            
-            
+
+
             switch ($url[2]) {
                 case "image":
-                    $files = $_FILES['img1'];
-                    if ($editorController->addImage($id_article, $files)) {
-                        Tools::alertMessage("Ajout de l'image effectué", "alert-success");
-                    } else {
-                        Tools::alertMessage("Ajout de l'image échoué", "alert-danger");
+                    if (!empty($_FILES['img1']['name'][0])) {
+                        $files = $_FILES['img1'];
+                        if ($editorController->addImage($id_article, $files)) {
+                            Tools::alertMessage("Ajout de l'image effectué", "alert-success");
+                        } else {
+                            Tools::alertMessage("Ajout de l'image échoué", "alert-danger");
+                        }
+                    }else {
+                        Tools::alertMessage("Choisissez une image.", "alert-danger");
                     }
                     header('Location: ' . URL . 'administrator/update_article/' . $id_article);
                     break;
                 case "slider":
                     // Tools::showArray($_FILES['photo']);
-                    $files = $_FILES['photo'];
-                    $editorController->addSlider($id_article, $files);
-                    // if ($editorController->addSlider($id_article, $files)) {
-                    //     Tools::alertMessage("Ajout du dossier effectué", "alert-success");
-                    // } else {
-                    //     Tools::alertMessage("Ajout du dossier non effectué", "alert-danger");
-                    // }
-                    // header('Location: ' . URL . 'administrator/update_article/' . $id_article);
+                    if (!empty($_FILES['photo']['name'][0])) {
+                        $files = $_FILES['photo'];
+                        if ($editorController->addSlider($id_article, $files)) {
+                            Tools::alertMessage("Ajout du dossier effectué", "alert-success");
+                        } else {
+                            Tools::alertMessage("Ajout du dossier non effectué", "alert-danger");
+                        }
+                    } else {
+                        Tools::alertMessage("Choisissez au moins une image !", "alert-danger");
+                    }
+                    header('Location: ' . URL . 'administrator/update_article/' . $id_article);
                     break;
-                  
+
                     // case "video":
                     //     $editorController->addVideo($id_article, $files);
                     //     break;
