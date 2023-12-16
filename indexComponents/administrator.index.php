@@ -71,7 +71,7 @@ switch ($url[1]) {
         $editorController->updateArticle($id_article);
         break;
 
-        // modification d'u contenu d'une carte d'un article
+        // modification du contenu d'une carte d'un article
     case "update_card":
         if (isset($url[2])) {
             $id_article = Tools::secureHTML($url[2]);
@@ -80,7 +80,6 @@ switch ($url[1]) {
             Tools::alertMessage("Il faut choisir un article à modifier !", "alert-warning");
             header('Location: ' . URL . 'administrator/update_article/1');
         }
-
         break;
 
         // validation modification d'un article : juste sa carte visible sur l'accueil
@@ -93,7 +92,7 @@ switch ($url[1]) {
             $theme = Tools::secureHTML($_POST['theme']);
             $pitch = Tools::secureHTML($_POST['pitch']);
             $url = Tools::secureHTML($_POST['url']);
-            $editorController->validationUpdateArticle($id,$title, $theme, $pitch, $url);
+            $editorController->validationUpdateArticle($id, $title, $theme, $pitch, $url);
         } else {
             Tools::alertMessage("Il faut impérativement remplir les 4 champs !", "alert-warning");
             header('Location: ' . URL . 'administrator/create_article');
@@ -105,6 +104,39 @@ switch ($url[1]) {
         Tools::showArray($_POST);
         // $editorController->deleteArticle();
         break;
+
+    case "add_media":
+        // Tools::showArray($_FILES);
+        // Tools::showArray($_POST);
+
+        if (isset($url[2]) && !empty($url[2])) {
+            $id_article = Tools::secureHTML($_POST['id']);
+            $files = $_FILES;
+
+
+            switch ($url[2]) {
+                case "image":
+                    $editorController->addImage($id_article, $files);
+                    break;
+                // case "slider":
+                //     $editorController->addSlider($id_article, $files);
+                //     break;
+                // case "video":
+                //     $editorController->addVideo($id_article, $files);
+                //     break;
+                default:
+                    Tools::alertMessage("Il faut choisir un type de media !", "alert-warning");
+                    header('Location: ' . URL . 'administrator/update_article');
+            }
+        } else {
+
+            Tools::alertMessage("Il faut choisir un type de media !", "alert-warning");
+            header('Location: ' . URL . 'administrator/update_article');
+        }
+
+        // header('Location: ' . URL . 'administrator/update_article');
+        break;
+
 
 
 

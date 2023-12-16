@@ -24,7 +24,7 @@
 
     <!-- Gestion Médias -->
 
-    <div class="col-12 col-lg-10 col-xl-8 col-xxl-6 mx-auto border border-3 border-primary my-5 rounded-3 box-shadow-white p-3 fs-5">
+    <div class="col-12 col-lg-10 col-xl-8 col-xxl-6 mx-auto border border-3 border-primary mt-5 rounded-3 box-shadow-white p-3 pb-0 fs-5">
         <?php require_once ("./views/pages/admin/updateMedia.view.php") ?>
       
 

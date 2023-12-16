@@ -3,6 +3,7 @@
 // Classe des possibilités pour un utilisateur connecté en tant qu'administrateur
 
 require_once("./controllers/Functions.php");
+require_once("./controllers/Images.php");
 require_once("./models/Admin/Administrator.model.php");
 require_once("./controllers/MainController.controller.php");
 require_once("./controllers/user/User.controller.php");
@@ -11,11 +12,13 @@ require_once("./controllers/user/User.controller.php");
 class EditorController extends MainController
 {
     public $functions;
+    public $images;
     public $administratorManager;
     // public $imageController;
     public function __construct()
     {
         $this->functions = new Functions();
+        $this->images = new Images();
         $this->administratorManager = new AdministratorManager();
     }
 
@@ -49,7 +52,7 @@ class EditorController extends MainController
             "texte_1_page" => "Titre, pitch, url et thème sont obligatoires.",
             "texte_2_page" => "On commence par la carte de la page d'accueil.",
             "title_page" => "Crée un nouvel article ! ",
-            
+
             "javascript" => ['new_article.js'],
             "themes" => $themes,
             "template" => "views/common/template.php",
@@ -75,7 +78,7 @@ class EditorController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
-  
+
 
     public function validationCreateArticle($title, $theme, $pitch, $url)
     {
@@ -138,8 +141,36 @@ class EditorController extends MainController
         } else {
             Tools::alertMessage("Echec de la modification de l'article", "alert-danger");
         }
-        header('Location: ' . URL . 'administrator/update_article/'.$id); 
+        header('Location: ' . URL . 'administrator/update_article/' . $id);
     }
+
+    // gestion des medias
+
+
+    // vider le dossier des médias de l'article s'il y a qq chose dedans
+    private function eraseFolderContent($id_article)
+    {
+        $folder = "./public/assets/articles_media/article_" . $id_article;
+        $files = glob($folder . '/*');
+        foreach ($files as $file) {
+            if (is_file($file)) {
+                unlink($file);
+            }
+        }
+    }
+
+    // ajouter une image à un article
+    public function addImage($id_article, $files)
+    {
+        Tools::showArray($files);
+        Tools::showArray($id_article);
+
+        $this->eraseFolderContent($id_article);
+        
+       
+    }
+
+
 
     public function deleteArticle()
     {
