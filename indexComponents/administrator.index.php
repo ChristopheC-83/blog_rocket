@@ -116,14 +116,19 @@ switch ($url[1]) {
 
             switch ($url[2]) {
                 case "image":
-                    $editorController->addImage($id_article, $files);
+                    if ($editorController->addImage($id_article, $files)) {
+                        Tools::alertMessage("Ajout de l'image effectué", "alert-success");
+                    } else {
+                        Tools::alertMessage("Ajout de l'image échoué", "alert-danger");
+                    }
+                    header('Location: ' . URL . 'administrator/update_article/' . $id_article);
                     break;
-                // case "slider":
-                //     $editorController->addSlider($id_article, $files);
-                //     break;
-                // case "video":
-                //     $editorController->addVideo($id_article, $files);
-                //     break;
+                    // case "slider":
+                    //     $editorController->addSlider($id_article, $files);
+                    //     break;
+                    // case "video":
+                    //     $editorController->addVideo($id_article, $files);
+                    //     break;
                 default:
                     Tools::alertMessage("Il faut choisir un type de media !", "alert-warning");
                     header('Location: ' . URL . 'administrator/update_article');

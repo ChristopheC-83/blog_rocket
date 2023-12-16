@@ -7,6 +7,7 @@ require_once("./controllers/Images.php");
 require_once("./models/Admin/Administrator.model.php");
 require_once("./controllers/MainController.controller.php");
 require_once("./controllers/user/User.controller.php");
+require_once("./controllers/Tools.php");
 // require_once("./controllers/Images.controller.php");
 
 class EditorController extends MainController
@@ -147,32 +148,18 @@ class EditorController extends MainController
     // gestion des medias
 
 
-    // vider le dossier des médias de l'article s'il y a qq chose dedans
-    private function eraseFolderContent($id_article)
-    {
-        $folder = "./public/assets/articles_media/article_" . $id_article;
-        $files = glob($folder . '/*');
-        foreach ($files as $file) {
-            if (is_file($file)) {
-                unlink($file);
-            }
-        }
-    }
+
 
     // ajouter une image à un article
     public function addImage($id_article, $files)
     {
-        Tools::showArray($files);
-        Tools::showArray($id_article);
-        // vidage dossier de l'article
-        $this->eraseFolderContent($id_article);
-        // vidage img1 / slider / video en bdd
-        $this->administratorManager->eraseMedia($id_article);
+        // Tools::showArray($files);
+        // Tools::showArray($id_article);
+        $folder = "public/assets/articles_media/article_";
         // ajout de l'image dans les dossiers
-        $this->images->add_image($id_article, $files);
+            $this->images->add_image($id_article, $files, $folder);
         // ajout de l'image en bdd
-        $this->administratorManager->addImageArticleDB($id_article, $files['name']);
-
+            $this->administratorManager->addImage1ArticleDB($id_article, $files['name']);
        
     }
 

@@ -6,6 +6,10 @@
 
 
 <br>
+<h3>16/12/23</h3>
+Possibilité ajout image dans article<br>
+
+<br>
 <h3>15/12/23</h3>
 Possibilité MAJ cartes d'articles.<br>
 Vérification de l'existence et du contenu lors de l'afficharge des articles d'un thème choisi.<br>

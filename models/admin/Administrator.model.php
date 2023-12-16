@@ -142,7 +142,7 @@ class AdministratorManager extends UserManager
         $stmt->closeCursor();
         return $isValidate;
     }
-    public function addImageArticleDB($id_article, $img1)
+    public function addImage1ArticleDB($id_article, $img1)
     {
         $req = "UPDATE articles set img1 = :img1 WHERE id_article= :id_article ";
         $stmt = $this->getDB()->prepare($req);
