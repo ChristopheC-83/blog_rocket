@@ -6,6 +6,11 @@
 
 
 <br>
+<h3>17/12/23</h3>
+Possibilité ajout video (seulement youtube testé)<br>
+
+
+<br>
 <h3>16/12/23</h3>
 Possibilité ajout image dans article<br>
 Possibilité ajout slider dans article<br>
