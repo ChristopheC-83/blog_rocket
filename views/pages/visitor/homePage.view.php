@@ -6,7 +6,7 @@
 
             <!-- connection à un article par id + url -->
             <!-- vérification concordance pour éviter erreurs -->
-                <a href="<?=URL.$article['id_article']?>/<?=$article['url']?>" class=" text-decoration-none link_card">
+                <a href="<?=URL."article/".$article['id_article']?>/<?=$article['url']?>" class=" text-decoration-none link_card">
                     <div class="card border-<?= $mainManager->getColorTheme($article['theme'])['color'] ?>
                  border-4 bg-<?= $mainManager->getColorTheme($article['theme'])['color'] ?>  bg-opacity-25 bg-gradient text-white h-100">
                         <div class="card-header fw-bold"><?= $article['theme']  ?></div>

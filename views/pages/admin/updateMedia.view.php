@@ -1,7 +1,7 @@
 <?php if (empty($oneArticle['img1']) && empty($oneArticle['slider_folder']) && empty($oneArticle['video_link'])) : ?>
 
     <!--  si pas de médias pour cet article, on choisit un type de média à insérer -->
-    <p class="text-center fs-3 m-0">Je souhaite ajouter : </p>
+    <p class="text-center m-0">Je souhaite ajouter : </p>
 
 
     <!--  si l'article possède une image, on visualise une miniature, puis  on choisit un type de média pour remplacer-->

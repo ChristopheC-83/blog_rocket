@@ -25,7 +25,7 @@
     <!-- Gestion Médias -->
 
     <div class="col-12 col-lg-10 col-xl-8 col-xxl-6 mx-auto border border-3 border-primary mt-5 rounded-3 box-shadow-white p-3 pb-0 fs-5">
-        <?php require_once ("./views/pages/admin/updateMedia.view.php") ?>
+        <?php require_once("./views/pages/admin/updateMedia.view.php") ?>
     </div>
 
     <!-- Gestion Texte -->
@@ -34,15 +34,14 @@
         <form class="my-3" method="POST" action="<?= URL ?>administrator/update_text_article/" id="oneArticleForm">
             <input type="hidden" value="<?= $oneArticle['id_article'] ?>" name="id">
             <label for="default" class="form-label">Ajouter ou modifier le texte :</label>
-            <textarea id="default" style="height:50vh" name="text"><?= $oneArticle['text'] ?></textarea>
+            <p>Pour insérer une image hébergée en externe : <br>
+                img src=" " alt=" " entre 2 chevrons
+            </p>
+            <textarea id="default" style="height:50vh" name="text" class="text-light bg-dark"><?= $oneArticle['text'] ?></textarea>
             <button type="submit" class="btn btn-primary w-100 text-light py-3 mt-3 fs-5">
-                Je veux modifier le texte de cet article.
+                Je valide le texte de cet article.
             </button>
         </form>
     </div>
 
-    <div>
-    <?=htmlspecialchars_decode($oneArticle['text'])       ?>    
-
-    </div>
 </div>

@@ -7,13 +7,15 @@
 
 <br>
 <h3>17/12/23</h3>
-Possibilité ajout video (seulement youtube testé)<br>
-
+Possibilité ajout et modif video (seulement youtube testé)<br>
+Possibilité ajout et modif texte pour chaque article.<br>
+Comme texte sécurisé avant passage en DB, il faut le récupérer avec :<br>
+html_entity_decode(htmlspecialchars_decode($article['text'])<br>
 
 <br>
 <h3>16/12/23</h3>
-Possibilité ajout image dans article<br>
-Possibilité ajout slider dans article<br>
+Possibilité ajout et modif image dans article<br>
+Possibilité ajout et modif slider dans article<br>
 Possibilité d'enlever le/mes média de l'article<br>
 
 <br>
@@ -21,7 +23,6 @@ Possibilité d'enlever le/mes média de l'article<br>
 Possibilité MAJ cartes d'articles.<br>
 Vérification de l'existence et du contenu lors de l'afficharge des articles d'un thème choisi.<br>
 Qd on veut modifier ou compléter un article, on arrive sur le plus récent par défaut.<br>
-
 
 <br>
 <h3>14/12/23</h3>
@@ -32,9 +33,6 @@ couleurs au choix (menu déroulant) pour la création des themes<br>
 creation contenu carte et envoi bdd.<br>
 double controle de champs non vides pour la création d'un article (en js et en php).<br>
 affichage cartes à l'accueil du site avec 1 couleur par theme<br>
-<br>
-<br>
-
 
 <br>
 <h3>12/12/23</h3>

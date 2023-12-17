@@ -39,6 +39,57 @@ class VisitorController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
+    // page d'affichge d'un article
+
+    public function articlePage($id_article, $url)
+    {
+        $article = $this->visitorManager->getOneArticle($id_article);
+        // Si pas d'article, on le précise.
+        if (empty($article)) {
+            Tools::alertMessage("Cet article n'existe pas... ou pas encore !", "alert-warning");
+            header('Location: ' . URL . 'home');
+            exit();
+        }
+        // Si url ne correspond pas à l'url de l'id de l'article, on rejette.
+        if ($article['url'] != $url) {
+            Tools::alertMessage("Problème dans l'url de l'article, réessayez.", "alert-warning");
+            header('Location: ' . URL . 'home');
+            exit();
+        }
+        //  si pas de texte, article inaccessible.
+        if (empty($article['text'])) {
+            Tools::alertMessage("Article en cours de rédaction, merci de patienter.", "alert-warning");
+            header('Location: ' . URL . 'home');
+            exit();
+        }
+        // si article, on affiche sa carte.
+        // $mainManager = new MainManager();
+        // $themes = $this->visitorManager->getAllThemes();
+        $data_page = [
+            "page_description" => "Description de la page d'accueil",
+            "page_title" => "Titre de la page d'accueil",
+            "view" => "views/pages/visitor/articlePage.view.php",
+            "javascript" => ['home_page_animated_grid.js'],
+            "article" => $article,
+            // "themes" => $themes,
+            // "mainManager" => $mainManager,
+            "texte_1_page" => "Catégorie : " . $article['theme'],
+            "texte_2_page" => "_________________________",
+            "title_page" => $article['title'],
+            "template" => "./views/common/template.php"
+        ];
+        $this->functions->generatePage($data_page);
+    }
+
+
+
+
+
+
+
+
+
+
     // connexion
     public function connectionPage()
     {

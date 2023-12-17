@@ -44,9 +44,23 @@ try {
 
     // 1ere partie, les pages accessibles à tous les visiteurs
     switch ($page) {
+            // page d'accueil
         case "home":
             $visitorController->homePage();
             break;
+            // page d'affichage d'un article
+        case "article":
+            if (!empty($url[1]) && !empty($url[2])) {
+                $id_article = Tools::secureHTML($url[1]);
+                $url = Tools::secureHTML($url[2]);
+                $visitorController->articlePage($id_article, $url);
+            } else {
+                Tools::alertMessage("Il faut choisir un article !", "alert-warning");
+                header('Location: ' . URL . 'home');
+            }
+            break;
+
+
         case "compte":
             switch ($url[1]) {
                 case "profil":
