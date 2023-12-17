@@ -11,6 +11,9 @@ Possibilité ajout et modif video (seulement youtube testé)<br>
 Possibilité ajout et modif texte pour chaque article.<br>
 Comme texte sécurisé avant passage en DB, il faut le récupérer avec :<br>
 html_entity_decode(htmlspecialchars_decode($article['text'])<br>
+Ajout de commentaires par tous les utilisateurs connectés.<br>
+Suppression commentaires par les administrateurs.<br>
+Suppression des articles par Administrateurs.<br>
 
 <br>
 <h3>16/12/23</h3>
