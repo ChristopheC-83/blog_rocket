@@ -196,4 +196,14 @@ class AdministratorManager extends UserManager
         $stmt->closeCursor(); 
         return $isValidate;
     }
+
+    public function  deleteArticleDB($id_article){ 
+        $req = "DELETE FROM articles WHERE id_article = :id_article";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":id_article", $id_article, PDO::PARAM_INT);
+        $stmt->execute();
+        $isValidate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor(); 
+        return $isValidate;
+    }
 }

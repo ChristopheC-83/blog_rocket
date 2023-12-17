@@ -55,3 +55,14 @@ btnVideo.addEventListener("click", () => {
 btnErase.addEventListener("click", () => {
   toggleForm(formErase, btnErase);
 });
+
+// suppression article
+const btnDelete = document.getElementById("btnDeleteArticle");
+const formDeleteArticle = document.getElementById("formDeleteArticle");
+
+if(btnDelete){
+  btnDelete.addEventListener("click", () => {
+    formDeleteArticle.classList.toggle('d-none');
+    btnDelete.innerHTML =  formDeleteArticle.classList.contains('d-none')  ? ' Je veux supprimer cet article.' : ' Je ne veux supprimer pas cet article.';
+  });
+}

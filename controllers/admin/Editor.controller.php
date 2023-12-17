@@ -215,7 +215,20 @@ class EditorController extends MainController
 
 
 
-    public function deleteArticle()
+    public function deleteArticle($id_article)
     {
+        // vidage dossier de l'article
+        $this->images->eraseFolderContent($id_article);
+        // vidage img1 / slider / video en bdd
+        $this->administratorManager->eraseMedia($id_article);
+        //suppression du dossier des média de l'article
+        rmdir(MEDIA_PATH . $id_article);
+        //suppression de l'article
+        if ($this->administratorManager->deleteArticleDB($id_article)) {
+            Tools::alertMessage("Succés de la suppression de l'article", "alert-success");
+        } else {
+            Tools::alertMessage("Echec de la suppression de l'article", "alert-danger");
+        }
+        header('Location: ' . URL . 'home');
     }
 }

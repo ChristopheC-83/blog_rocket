@@ -44,5 +44,16 @@
             </button>
         </form>
     </div>
+    <div class="col-12 col-lg-10 col-xl-8 col-xxl-6 mx-auto border border-3 border-primary   rounded-3 box-shadow-white px-3 fs-5">
+        <div class="btn btn-danger w-100 text-light py-3 my-3 fs-5" id="btnDeleteArticle">
+            Je veux supprimer cet article.
+        </div>
+        <form class="my-3 d-none" method="POST" action="<?= URL ?>administrator/delete_article" id="formDeleteArticle">
+           <input type="hidden" value="<?= $oneArticle['id_article']?>" name="id_article">
+           <button type="submit" class="btn btn-danger w-100 text-dark fw-bold py-3 mt-3 fs-3">
+                Suppression définitive et irréversible !
+            </button>
+        </form>
 
+    </div>
 </div>

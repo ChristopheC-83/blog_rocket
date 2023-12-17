@@ -161,7 +161,7 @@ switch ($url[1]) {
         header('Location: ' . URL . 'article/' . $_POST['id_article'] . "/" . $_POST['url']);
         break;
     case "delete_article":
-        $editorController->deleteArticle();
+        $editorController->deleteArticle($_POST['id_article']);
         break;
     default:
         throw new Exception("La page demandée n'existe pas...");
