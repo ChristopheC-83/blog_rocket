@@ -10,8 +10,8 @@
         <?php $directory = MEDIA_PATH . $article['id_article'];
         $images = glob($directory . '/*');
         ?>
-        <div class="d-flex justify-content-center">
-            <img src="<?= URL . $images[0] ?>" alt="image ?" class="w-50 img-fluid">
+        <div class="d-flex justify-content-center container-fluid">
+            <img src="<?= URL . $images[0] ?>" alt="image ?" class="w-100 w-lg-50 w-xl-25 img-fluid">
         </div>
 
     <?php elseif (!empty($article['video_link'])) : ?>

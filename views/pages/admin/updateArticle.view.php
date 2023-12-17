@@ -35,7 +35,8 @@
             <input type="hidden" value="<?= $oneArticle['id_article'] ?>" name="id">
             <label for="default" class="form-label">Ajouter ou modifier le texte :</label>
             <p>Pour insérer une image hébergée en externe : <br>
-                img src=" " alt=" " entre 2 chevrons
+                img src=" " alt=" " entre 2 chevrons <br>
+                mettre largeur à 280.
             </p>
             <textarea id="default" style="height:50vh" name="text" class="text-light bg-dark"><?= $oneArticle['text'] ?></textarea>
             <button type="submit" class="btn btn-primary w-100 text-light py-3 mt-3 fs-5">

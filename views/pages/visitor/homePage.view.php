@@ -11,7 +11,8 @@
                  border-4 bg-<?= $mainManager->getColorTheme($article['theme'])['color'] ?>  bg-opacity-25 bg-gradient text-white h-100">
                         <div class="card-header fw-bold"><?= $article['theme']  ?></div>
                         <div class="card-body ">
-                            <h5 class="card-title text-shadow"><?= strtoupper($article['title'])  ?></h5>
+                            <h5 class="card-title text-shadow"><?= $article['title']  ?></h5>
+                            <br>
                             <p class="card-text h-100"><?= $article['pitch']  ?></p>
                         </div>
                     </div>
