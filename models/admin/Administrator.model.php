@@ -164,4 +164,15 @@ class AdministratorManager extends UserManager
         $stmt->closeCursor();
         return $isValidate;
     }
+    public function addVideoArticleDB($id_article, $video_link)
+    {
+        $req = "UPDATE articles set video_link = :video_link WHERE id_article= :id_article ";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":id_article", $id_article, PDO::PARAM_INT);
+        $stmt->bindValue(":video_link", $video_link, PDO::PARAM_STR);
+        $stmt->execute();
+        $isValidate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isValidate;
+    }
 }

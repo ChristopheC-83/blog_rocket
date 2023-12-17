@@ -13,13 +13,15 @@ oneArticle.addEventListener("change", function () {
 const btnImage = document.getElementById("btn-media-image");
 const btnSlider = document.getElementById("btn-media-slider");
 const btnVideo = document.getElementById("btn-media-video");
+const btnErase = document.getElementById("btn-media-erase");
 
 const formImage = document.getElementById("form-image");
 const formSlider = document.getElementById("form-slider");
 const formVideo = document.getElementById("form-video");
+const formErase = document.getElementById("form-erase");
 
-const forms = [formImage, formSlider, formVideo];
-const btns = [btnImage, btnSlider, btnVideo];
+const forms = [formImage, formSlider, formVideo, formErase];
+const btns = [btnImage, btnSlider, btnVideo, btnErase];
 
 function toggleForm(formToShow, btnToShow) {
   forms.forEach((form) => {
@@ -39,7 +41,6 @@ function toggleForm(formToShow, btnToShow) {
     }
   });
 }
-
 btnImage.addEventListener("click", () => {
   toggleForm(formImage, btnImage);
   btnImage.classList.add("fw-bold");
@@ -48,7 +49,9 @@ btnImage.addEventListener("click", () => {
 btnSlider.addEventListener("click", () => {
   toggleForm(formSlider, btnSlider);
 });
-
 btnVideo.addEventListener("click", () => {
   toggleForm(formVideo, btnVideo);
+});
+btnErase.addEventListener("click", () => {
+  toggleForm(formErase, btnErase);
 });

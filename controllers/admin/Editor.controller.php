@@ -176,6 +176,30 @@ class EditorController extends MainController
         // // ajout de l'image en bdd
         $this->administratorManager->addSliderArticleDB($id_article, "article_" . $id_article);
     }
+    public function addVideo($id_article, $video_link)
+    {
+        // echo "truc";
+        // Tools::showArray($files);
+        // Tools::showArray($id_article);
+
+        // vidage dossier de l'article
+        $this->images->eraseFolderContent($id_article);
+        // vidage img1 / slider / video en bdd
+        $this->administratorManager->eraseMedia($id_article);
+        // // ajout de l'image en bdd
+        $this->administratorManager->addVideoArticleDB($id_article, $video_link);
+    }
+
+
+    public function eraseMedia($id_article)
+    {
+        // vidage dossier de l'article
+        $this->images->eraseFolderContent($id_article);
+        // vidage img1 / slider / video en bdd
+        $this->administratorManager->eraseMedia($id_article);
+        //suppression du dossier des média de l'article
+        rmdir(MEDIA_PATH. $id_article);
+    }
 
 
 

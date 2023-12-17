@@ -117,12 +117,8 @@ switch ($url[1]) {
                 case "image":
                     if (!empty($_FILES['img1']['name'][0])) {
                         $files = $_FILES['img1'];
-                        if ($editorController->addImage($id_article, $files)) {
-                            Tools::alertMessage("Ajout de l'image effectué", "alert-success");
-                        } else {
-                            Tools::alertMessage("Ajout de l'image échoué", "alert-danger");
-                        }
-                    }else {
+                        $editorController->addImage($id_article, $files);
+                    } else {
                         Tools::alertMessage("Choisissez une image.", "alert-danger");
                     }
                     header('Location: ' . URL . 'administrator/update_article/' . $id_article);
@@ -142,9 +138,20 @@ switch ($url[1]) {
                     header('Location: ' . URL . 'administrator/update_article/' . $id_article);
                     break;
 
-                    // case "video":
-                    //     $editorController->addVideo($id_article, $files);
-                    //     break;
+                    case "video":
+                        if (!empty($_POST['video'])) {
+                            $video_link = ($_POST['video']);
+                            $editorController->addVideo($id_article, $video_link);
+                        } else {
+                            Tools::alertMessage("Choisissez un lien pour une video.", "alert-danger");
+                        }
+                        header('Location: ' . URL . 'administrator/update_article/' . $id_article);
+                        break;
+
+                    case "erase":
+                        $editorController->eraseMedia($id_article);
+                        header('Location: ' . URL . 'administrator/update_article/' . $id_article);
+                        break;
                 default:
                     Tools::alertMessage("Il faut choisir un type de media !", "alert-warning");
                     header('Location: ' . URL . 'administrator/update_article');
