@@ -98,18 +98,24 @@
 
         <!-- Les commentaires de l'article -->
         <?php foreach ($commentaires as $commentaire) : ?>
-            <div class="card bg-dark border border-2 mb-2 pb-2">
-                <div class="d-flex justify-content-between text-primary px-3 pb-0">
-                    <?= $commentaire['author'] ?><?php if ($_SESSION['profile']['role'] === "admin") : ?>
-                        <form action="<?= URL ?>delete_comment"></form>
-                        <input type="hidden" value=<?=$commentaire['id_comment']?>>
-                        <button class="text-decoration-none fw-bold rounded-circle text-primary" >X</button>
+            <div class="card bg-dark border border-2 mb-3 pb-2">
+                <div class="d-flex justify-content-between text-primary px-3 pt-2 pb-0">
+                    <?php
+                    $date = new DateTime($commentaire['date']);
+                    $date = $date->format('d/m/Y');
+                    ?>
+                    <?= $commentaire['author'] .", le ".$date?>
+                    <?php if ($_SESSION['profile']['role'] === "admin") : ?>
+                        <form action="<?= URL ?>administrator/delete_comment" method="POST">
+                            <input type="hidden" value=<?=$commentaire['id_comment']?> name="id_comment">
+                            <input type="hidden" value=<?=$article['id_article']?> name="id_article">
+                            <input type="hidden" value=<?=$article['url']?> name="url">
+                            <button class="text-decoration-none fw-bold rounded-circle text-primary" >X</button>
+                        </form>
                     <?php endif ?>
                 </div>
                 <div class="card-body py-1">
-
                     <p class="card-text text-light"><?= $commentaire['comment'] ?></p>
-                   
                 </div>
             </div>
         <?php endforeach ?>

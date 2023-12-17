@@ -184,8 +184,8 @@ class UserManager extends MainManager
     // ajoute un commentaire d'article en base de données
     public function postCommentDB($id_article, $author, $comment)
     {
-        $req = "INSERT INTO comments (id_article, author, comment)
-        VALUES(:id_article, :author, :comment)   
+        $req = "INSERT INTO comments (id_article, author, comment, date)
+        VALUES(:id_article, :author, :comment, NOW())   
         ";
         $stmt = $this->getDB()->prepare($req);
         $stmt->bindValue(":id_article", $id_article, PDO::PARAM_INT);

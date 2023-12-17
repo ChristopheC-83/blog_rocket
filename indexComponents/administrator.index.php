@@ -156,6 +156,10 @@ switch ($url[1]) {
         // header('Location: ' . URL . 'administrator/update_article');
         break;
         //  suppression d'un article
+    case "delete_comment":
+        $editorController->deleteComment($_POST['id_comment']);
+        header('Location: ' . URL . 'article/' . $_POST['id_article'] . "/" . $_POST['url']);
+        break;
     case "delete_article":
         $editorController->deleteArticle();
         break;

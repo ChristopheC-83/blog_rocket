@@ -203,6 +203,16 @@ class EditorController extends MainController
         }
     }
 
+    //effacer un commentaire
+    public function  deleteComment($id_comment){ 
+        if ($this->administratorManager->deleteCommentDB($id_comment)) {
+            Tools::alertMessage("Succés de la suppression du commentaire", "alert-success");
+        } else {
+            Tools::alertMessage("Echec de la suppression du commentaire", "alert-danger");
+        }
+        // header('Location: ' . URL . 'administrator/update_article/' . $id_comment);
+    }
+
 
 
     public function deleteArticle()
