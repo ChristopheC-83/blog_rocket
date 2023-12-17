@@ -70,7 +70,7 @@ class UserController extends MainController
         }
         header('Location: ' . URL . 'home');
     }
- 
+
     // création nouveau compte
     private function registerAccount($login, $password, $mail, $account_key)
     {
@@ -274,5 +274,27 @@ class UserController extends MainController
             Tools::alertMessage("Modification de l'image non effectuée.", "alert-danger");
             header('location:' . URL . "account/profile");
         }
+    }
+
+    public function postComment($id_article, $author, $text, $url)
+    {
+
+        // echo $text;
+        // echo "<br>";
+        // echo $id_article;
+        // echo "<br>";
+        // echo $author;
+        // echo "<br>";
+        // echo $url;
+        // $this->userManager->postCommentDB($id_article, $author,$text );
+        if(
+        $this->userManager->postCommentDB($id_article, $author,$text )){
+            Tools::alertMessage("Commentaire posté !", "alert-success");
+
+        }else{
+            Tools::alertMessage("Commentaire non posté !", "alert-danger");
+        }
+        header('Location: ' . URL . 'article/'.$id_article.'/'.$url);
+
     }
 }

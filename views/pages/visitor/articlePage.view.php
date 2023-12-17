@@ -58,9 +58,54 @@
 
     </div>
 
+    <div class="d-flex flex-column justify-content-center border-top border-3 m-0 py-3
+    ">
+        <?php if (empty($_SESSION['profile']['login'])) : ?>
 
+            <a href="<?= URL ?>connection" class="btn btn-primary mb-4 w-50 mx-auto text-light">
+                Connecte toi pour ajouter un commentaire ou poser une question.
+            </a>
 
+        <?php else : ?>
 
+            <button type="button" class="btn btn-primary mb-4 w-50 mx-auto text-light" data-bs-toggle="modal" data-bs-target="#commentModal">
+                Ajoute un commentaire ou pose une question !
+            </button>
 
+            <div class="modal fade" id="commentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5 text-primary" id="staticBackdropLabel">Ajoute ton commentaire :</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="<?= URL ?>account/post_comment" method="POST">
+                            <input type="hidden" name="author" value="<?= $_SESSION['profile']['login'] ?>">
+                            <input type="hidden" name="id_article" value="<?= $article['id_article'] ?>">
+                            <input type="hidden" name="url" value="<?= $article['url'] ?>">
+                            <div class="modal-body d-flex justify-content-center">
+                                <textarea name="text" id="" cols="50" rows="10"></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                <button type="submit" class="btn btn-primary">Envoyer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <?php endif ?>
 
-</div>
+        <!-- Les commentaires de l'article -->
+        <?php foreach ($commentaires as $commentaire) : ?>
+            <div class="card bg-dark border border-2 mb-2 pb-2">
+                <div class="card-header text-primary pb-0">
+                    <?= $commentaire['author'] ?>
+                </div>
+                <div class="card-body py-1">
+                    
+                    <p class="card-text text-light"><?= $commentaire['comment'] ?></p>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </div>

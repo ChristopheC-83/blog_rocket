@@ -65,17 +65,19 @@ class VisitorController extends MainController
         // si article, on affiche sa carte.
         // $mainManager = new MainManager();
         // $themes = $this->visitorManager->getAllThemes();
+        $commentaires = $this->visitorManager->getCommentsByArticle($id_article);
         $data_page = [
             "page_description" => "Description de la page d'accueil",
             "page_title" => "Titre de la page d'accueil",
             "view" => "views/pages/visitor/articlePage.view.php",
-            "javascript" => ['home_page_animated_grid.js'],
+            // "javascript" => ['home_page_animated_grid.js'],
             "article" => $article,
             // "themes" => $themes,
             // "mainManager" => $mainManager,
             "texte_1_page" => "Catégorie : " . $article['theme'],
             "texte_2_page" => "_________________________",
             "title_page" => $article['title'],
+            "commentaires" => $commentaires,
             "template" => "./views/common/template.php"
         ];
         $this->functions->generatePage($data_page);

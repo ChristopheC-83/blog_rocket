@@ -180,4 +180,20 @@ class UserManager extends MainManager
         return $validationOk;
     }
 
+
+    // ajoute un commentaire d'article en base de données
+    public function postCommentDB($id_article, $author, $comment)
+    {
+        $req = "INSERT INTO comments (id_article, author, comment)
+        VALUES(:id_article, :author, :comment)   
+        ";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":id_article", $id_article, PDO::PARAM_INT);
+        $stmt->bindValue(":author", $author, PDO::PARAM_STR);
+        $stmt->bindValue(":comment", $comment, PDO::PARAM_STR);
+        $stmt->execute();
+        $isCreate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isCreate;
+    }
 }

@@ -45,6 +45,20 @@ switch ($url[1]) {
     case "delete_account":
         $userController->deleteAccount();
         break;
+
+    case 'post_comment':
+        $id_article = Tools::secureHTML($_POST['id_article']);
+        $author = Tools::secureHTML($_POST['author']);
+        $url = Tools::secureHTML($_POST['url']);
+
+        if (isset($_POST['text']) && !empty($_POST['text'])) {
+            $text = Tools::secureHTML($_POST['text']);
+            $userController->postComment($id_article, $author,$text, $url );
+        } else {
+            Tools::alertMessage("Avec du texte, c'est mieux !", "alert-warning");
+            header('Location: ' . URL . 'article/' . $id_article . '/' . $url);
+        }
+        break;
     default:
         throw new Exception("La page demandée n'existe pas...");
 }

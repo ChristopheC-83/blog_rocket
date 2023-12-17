@@ -43,9 +43,6 @@ switch ($url[1]) {
     case "create_article":
         $editorController->createArticle();
         break;
-
-
-
         // validation creation d'un article : juste sa carte visible sur l'accueil
     case "validation_creation_article":
         // Tools::showArray($_POST);
@@ -60,7 +57,6 @@ switch ($url[1]) {
             header('Location: ' . URL . 'administrator/create_article');
         }
         break;
-
         // on complète un articler créé ou on modifie un article existant
     case "update_article":
         if (isset($url[2])) {
@@ -70,7 +66,6 @@ switch ($url[1]) {
         }
         $editorController->updateArticle($id_article);
         break;
-
         // modification du contenu d'une carte d'un article
     case "update_card":
         if (isset($url[2])) {
@@ -81,12 +76,10 @@ switch ($url[1]) {
             header('Location: ' . URL . 'administrator/update_article/1');
         }
         break;
-
         // validation modification d'un article : juste sa carte visible sur l'accueil
     case "validation_update_card":
         // Tools::showArray($_POST);
         if (!empty($_POST['title']) && !empty($_POST['theme']) && !empty($_POST['pitch']) && !empty($_POST['url'])) {
-
             $id = Tools::secureHTML($_POST['id']);
             $title = Tools::secureHTML($_POST['title']);
             $theme = Tools::secureHTML($_POST['theme']);
@@ -98,7 +91,6 @@ switch ($url[1]) {
             header('Location: ' . URL . 'administrator/create_article');
         }
         break;
-
         //  modif ou creation texte d'un article
     case "update_text_article":
         // Tools::showArray($_POST);
@@ -111,16 +103,11 @@ switch ($url[1]) {
         }
         header('Location: ' . URL . 'administrator/update_article/' . $id_article);
         break;
-
-
     case "add_media":
         // Tools::showArray($_FILES);
         // Tools::showArray($_POST);
-
         if (isset($url[2]) && !empty($url[2])) {
             $id_article = Tools::secureHTML($_POST['id']);
-
-
             switch ($url[2]) {
                 case "image":
                     if (!empty($_FILES['img1']['name'][0])) {
@@ -145,7 +132,6 @@ switch ($url[1]) {
                     }
                     header('Location: ' . URL . 'administrator/update_article/' . $id_article);
                     break;
-
                 case "video":
                     if (!empty($_POST['video'])) {
                         $video_link = ($_POST['video']);
@@ -155,7 +141,6 @@ switch ($url[1]) {
                     }
                     header('Location: ' . URL . 'administrator/update_article/' . $id_article);
                     break;
-
                 case "erase":
                     $editorController->eraseMedia($id_article);
                     header('Location: ' . URL . 'administrator/update_article/' . $id_article);
@@ -165,31 +150,15 @@ switch ($url[1]) {
                     header('Location: ' . URL . 'administrator/update_article');
             }
         } else {
-
             Tools::alertMessage("Il faut choisir un type de media !", "alert-warning");
             header('Location: ' . URL . 'administrator/update_article');
         }
-
         // header('Location: ' . URL . 'administrator/update_article');
         break;
-
-
-
-
-
-
-
-
-
-
-
-
         //  suppression d'un article
     case "delete_article":
         $editorController->deleteArticle();
         break;
-
-
     default:
         throw new Exception("La page demandée n'existe pas...");
 }

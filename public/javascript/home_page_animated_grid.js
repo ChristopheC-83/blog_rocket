@@ -1,4 +1,4 @@
-console.log("coucou");
+
 const card3D = document.querySelectorAll(".link_card");
 card3D.forEach((cards) => {
   cards.addEventListener("onmouseover", () => {
