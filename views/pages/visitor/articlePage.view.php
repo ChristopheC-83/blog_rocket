@@ -15,16 +15,16 @@
         // on extrait les images du dossier
         $images = glob($directory . '/*');
         ?>
-        <div id="article_slider" class="carousel slide my-5">
+        <div id="article_slider" class="carousel slide my-5 d-flex justify-content-center align-items-center">
             <div class="carousel-indicators">
                 <?php for ($i = 0; $i < count($images); $i++) : ?>
                     <button type="button" data-bs-target="#article_slider" data-bs-slide-to="<?= $i ?>" class="<?= $i === 0 ? "active" : "" ?>" aria-current="true" aria-label="Slide <?= $i ?>"></button>
                 <?php endfor ?>
             </div>
-            <div class="carousel-inner ">
+            <div class="carousel-inner row">
                 <?php for ($i = 0; $i < count($images); $i++) : ?>
-                    <div class="carousel-item <?= $i === 0 ? "active" : "" ?>">
-                        <img src="<?= URL . $images[$i] ?>" class="d-block  w-75 mx-auto  " alt="...">
+                    <div class="carousel-item m-0 col-12 col-md-10 col-lg-8 col-xl-6  <?= $i === 0 ? "active" : "" ?>">
+                        <img src="<?= URL . $images[$i] ?>" class="d-block w-100 " alt="...">
                     </div>
                 <?php endfor ?>
             </div>
