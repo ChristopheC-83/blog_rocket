@@ -101,9 +101,17 @@ switch ($url[1]) {
 
         //  modif ou creation texte d'un article
     case "update_text_article":
-        Tools::showArray($_POST);
-        // $editorController->deleteArticle();
+        // Tools::showArray($_POST);
+        $id_article = Tools::secureHTML($_POST['id']);
+        if (isset($_POST['text']) && !empty($_POST['text'])) {
+            $text = Tools::secureHTML($_POST['text']);
+            $editorController->updateTextArticle($id_article, $text);
+        } else {
+            Tools::alertMessage("Il faut remplir le champ TEXTE !", "alert-warning");
+        }
+        header('Location: ' . URL . 'administrator/update_article/' . $id_article);
         break;
+
 
     case "add_media":
         // Tools::showArray($_FILES);
@@ -138,20 +146,20 @@ switch ($url[1]) {
                     header('Location: ' . URL . 'administrator/update_article/' . $id_article);
                     break;
 
-                    case "video":
-                        if (!empty($_POST['video'])) {
-                            $video_link = ($_POST['video']);
-                            $editorController->addVideo($id_article, $video_link);
-                        } else {
-                            Tools::alertMessage("Choisissez un lien pour une video.", "alert-danger");
-                        }
-                        header('Location: ' . URL . 'administrator/update_article/' . $id_article);
-                        break;
+                case "video":
+                    if (!empty($_POST['video'])) {
+                        $video_link = ($_POST['video']);
+                        $editorController->addVideo($id_article, $video_link);
+                    } else {
+                        Tools::alertMessage("Choisissez un lien pour une video.", "alert-danger");
+                    }
+                    header('Location: ' . URL . 'administrator/update_article/' . $id_article);
+                    break;
 
-                    case "erase":
-                        $editorController->eraseMedia($id_article);
-                        header('Location: ' . URL . 'administrator/update_article/' . $id_article);
-                        break;
+                case "erase":
+                    $editorController->eraseMedia($id_article);
+                    header('Location: ' . URL . 'administrator/update_article/' . $id_article);
+                    break;
                 default:
                     Tools::alertMessage("Il faut choisir un type de media !", "alert-warning");
                     header('Location: ' . URL . 'administrator/update_article');

@@ -175,4 +175,15 @@ class AdministratorManager extends UserManager
         $stmt->closeCursor();
         return $isValidate;
     }
+
+    public function  updateTextArticleDB($id_article, $text){ 
+        $req = "UPDATE articles set text = :text WHERE id_article= :id_article ";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":id_article", $id_article, PDO::PARAM_INT);
+        $stmt->bindValue(":text", $text, PDO::PARAM_STR);
+        $stmt->execute();
+        $isValidate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor(); 
+        return $isValidate;
+    }
 }

@@ -147,9 +147,6 @@ class EditorController extends MainController
 
     // gestion des medias
 
-
-
-
     // ajouter une image à un article
     public function addImage($id_article, $files)
     {
@@ -161,12 +158,9 @@ class EditorController extends MainController
         // ajout de l'image en bdd
         $this->administratorManager->addImage1ArticleDB($id_article,  $files['name']);
     }
+    // ajouter un slider à un article
     public function addSlider($id_article, $files)
     {
-        // echo "truc";
-        // Tools::showArray($files);
-        // Tools::showArray($id_article);
-
         // vidage dossier de l'article
         $this->images->eraseFolderContent($id_article);
         // vidage img1 / slider / video en bdd
@@ -176,12 +170,9 @@ class EditorController extends MainController
         // // ajout de l'image en bdd
         $this->administratorManager->addSliderArticleDB($id_article, "article_" . $id_article);
     }
+    // ajouter une video à un article
     public function addVideo($id_article, $video_link)
     {
-        // echo "truc";
-        // Tools::showArray($files);
-        // Tools::showArray($id_article);
-
         // vidage dossier de l'article
         $this->images->eraseFolderContent($id_article);
         // vidage img1 / slider / video en bdd
@@ -189,7 +180,7 @@ class EditorController extends MainController
         // // ajout de l'image en bdd
         $this->administratorManager->addVideoArticleDB($id_article, $video_link);
     }
-
+    // suppression des medias d'un article
 
     public function eraseMedia($id_article)
     {
@@ -198,7 +189,18 @@ class EditorController extends MainController
         // vidage img1 / slider / video en bdd
         $this->administratorManager->eraseMedia($id_article);
         //suppression du dossier des média de l'article
-        rmdir(MEDIA_PATH. $id_article);
+        rmdir(MEDIA_PATH . $id_article);
+    }
+
+    // gestion du texte d'un article
+    public function updateTextArticle($id_article, $text)
+    {
+
+        if ($this->administratorManager->updateTextArticleDB($id_article, $text)) {
+            Tools::alertMessage("Succés de la modification du texte de l'article", "alert-success");
+        } else {
+            Tools::alertMessage("Echec de la modification du texte de l'article", "alert-danger");
+        }
     }
 
 
