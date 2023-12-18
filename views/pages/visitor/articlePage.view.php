@@ -15,32 +15,29 @@
         // on extrait les images du dossier
         $images = glob($directory . '/*');
         ?>
+      
+
         <div class=" col-md-10 col-lg-8 col-xl-6 mx-auto">
-            <div id="article_slider" class="carousel slide my-5 d-flex justify-content-center align-items-center w-100 w-lg-75 w-xl-50 mx-auto"
-            style="max-width:700px">
-                <div class="carousel-indicators">
+            <div id="carouselExampleFade" class="carousel slide carousel-fade  my-5 d-flex justify-content-center align-items-center w-100 w-lg-75 w-xl-50 mx-auto rounded-2  overflow-hidden box-shadow-white" style="max-width:700px">
+            <div class="carousel-indicators">
                     <?php for ($i = 0; $i < count($images); $i++) : ?>
                         <button type="button" data-bs-target="#article_slider" data-bs-slide-to="<?= $i ?>" class="<?= $i === 0 ? "active" : "" ?>" aria-current="true" aria-label="Slide <?= $i ?>"></button>
                     <?php endfor ?>
                 </div>
-                <div class="carousel-inner ">
-                    <?php for ($i = 0; $i < count($images); $i++) : ?>
-                        <div class="carousel-item m-0 <?= $i === 0 ? "active" : "" ?>">
-                            <img src="<?= URL . $images[$i] ?>" class="d-block w-100 " alt="...">
+                <div class="carousel-inner">
+                    <?php foreach ($images as $index => $image) : ?>
+                        <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
+                            <img src="<?= URL . $image ?>" class="d-block w-100" alt="...">
                         </div>
-                    <?php endfor ?>
+                    <?php endforeach ?>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#article_slider" data-bs-slide="prev">
-                    <div class="p-1 overflow-hidden rounded-circle bg-primary d-flex justify-content-center align-items-center">
-                        <span class="carousel-control-prev-icon " aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#article_slider" data-bs-slide="next">
-                    <div class="p-1 overflow-hidden rounded-circle bg-primary d-flex justify-content-center align-items-center">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </div>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
                 </button>
             </div>
         </div>
@@ -107,13 +104,13 @@
                     $date = new DateTime($commentaire['date']);
                     $date = $date->format('d/m/Y');
                     ?>
-                    <?= $commentaire['author'] .", le ".$date?>
+                    <?= $commentaire['author'] . ", le " . $date ?>
                     <?php if ($_SESSION['profile']['role'] === "admin") : ?>
                         <form action="<?= URL ?>administrator/delete_comment" method="POST">
-                            <input type="hidden" value=<?=$commentaire['id_comment']?> name="id_comment">
-                            <input type="hidden" value=<?=$article['id_article']?> name="id_article">
-                            <input type="hidden" value=<?=$article['url']?> name="url">
-                            <button class="text-decoration-none fw-bold rounded-circle text-primary" >X</button>
+                            <input type="hidden" value=<?= $commentaire['id_comment'] ?> name="id_comment">
+                            <input type="hidden" value=<?= $article['id_article'] ?> name="id_article">
+                            <input type="hidden" value=<?= $article['url'] ?> name="url">
+                            <button class="text-decoration-none fw-bold rounded-circle text-primary">X</button>
                         </form>
                     <?php endif ?>
                 </div>

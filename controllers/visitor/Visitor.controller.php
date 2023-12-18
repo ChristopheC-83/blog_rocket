@@ -130,6 +130,7 @@ class VisitorController extends MainController
         $istheme = $this->visitorManager->getColorTheme($theme);
         $articles = $this->visitorManager->getArticlesByThemes($theme);
         $choosenTheme = $this->visitorManager->getChoosenTheme($theme);
+
         // Si pas de couleur détectée, le theme n'existe pas.
         if (!isset($istheme['color'])) {
             $this->errorPage("Ce thème n'existe pas.");
@@ -137,8 +138,8 @@ class VisitorController extends MainController
         }
         // Si couleur détectée mais pas d'article, on le précise.
         if (empty($articles)) {
-            $this->errorPage("Pas encore d'article sur ce thème. Ca va arriver 😉.");
-            exit();
+           Tools::alertMessage("Pas encore d'article sur ce thème. Ca va arriver 😉.", "alert-warning");
+          
         }
         // si articles, on affiches leurs cartes.
         $mainManager = new MainManager();
@@ -154,7 +155,7 @@ class VisitorController extends MainController
             "mainManager" => $mainManager,
             "texte_1_page" => ucfirst($choosenTheme['theme']),
             "texte_2_page" => "_______________________________",
-            "title_page" => $choosenTheme['description_theme'],
+            "title_page" =>  $choosenTheme['description_theme'],
             "template" => "./views/common/template.php"
         ];
         $this->functions->generatePage($data_page);

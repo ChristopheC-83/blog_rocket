@@ -136,7 +136,7 @@ try {
                 Tools::alertMessage("Il faut choisir un thème !", "alert-warning");
                 header('Location: ' . URL . 'home');
             }
-
+            break;
 
             // si l'utilisateur est connecté en tant qu'utilisateur ou plus :
             // les accés sont dans le fichier indexComponents/user.index.php
