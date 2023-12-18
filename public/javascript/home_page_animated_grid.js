@@ -13,8 +13,8 @@ card3D.forEach((cards) => {
     let midCardWidth = elRect.width / 2;
     let midCardHeight = elRect.height / 2;
 
-    let angleY = -(x - midCardWidth) / 10;
-    let angleX = (y - midCardHeight) / 10;
+    let angleY = -(x - midCardWidth) / 8;
+    let angleX = (y - midCardHeight) / 8;
 
     cards.children[0].style.transition = "none";
     cards.children[0].style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
