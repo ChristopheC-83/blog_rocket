@@ -1,4 +1,5 @@
 //  MAJ de l'id de l'article dans le formulaire de update_article
+// pour travailler sur l'article choisi
 
 const oneArticleForm = document.getElementById("oneArticleForm");
 const oneArticle = document.getElementById("oneArticle");
@@ -57,6 +58,7 @@ btnErase.addEventListener("click", () => {
 });
 
 // suppression article
+// on va éviter une fausse manip en demandant une confirmation
 const btnDelete = document.getElementById("btnDeleteArticle");
 const formDeleteArticle = document.getElementById("formDeleteArticle");
 

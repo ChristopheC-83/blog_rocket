@@ -1,3 +1,5 @@
+<!-- bloc de modif du mdp dans la page de profil -->
+
 <form class="my-4" method="POST" action="modify_password">
     <div class="mb-3 w-100 mx-auto">
         <label for="password" class="form-label w-100 text-center">Mon ancien mot de passe :</label>

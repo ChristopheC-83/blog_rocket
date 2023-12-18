@@ -27,7 +27,6 @@ class UserManager extends MainManager
         $stmt->closeCursor();
         return $resultat['mail'];
     }
-
     // vérifie concordance login/mdp pour connexion
     public function isCombinationValid($login, $password)
     {
@@ -78,18 +77,6 @@ class UserManager extends MainManager
         $isCreate = ($stmt->rowCount() > 0);
         $stmt->closeCursor();
         return $isCreate;
-    }
-    // validation compte après clic sur lien envoyé par mail
-    public function validationAccountDB($login, $account_key)
-    {
-        $req = "UPDATE users set is_valid = 1 WHERE login= :login and account_key= :account_key ";
-        $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":login", $login, PDO::PARAM_STR);
-        $stmt->bindValue(":account_key", $account_key, PDO::PARAM_INT);
-        $stmt->execute();
-        $isValidate = ($stmt->rowCount() > 0);
-        $stmt->closeCursor();
-        return $isValidate;
     }
     //  modifie mail en bdd
     public function modifyMailDB($login, $mail)
@@ -179,8 +166,6 @@ class UserManager extends MainManager
         $stmt->closeCursor();
         return $validationOk;
     }
-
-
     // ajoute un commentaire d'article en base de données
     public function postCommentDB($id_article, $author, $comment)
     {

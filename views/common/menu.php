@@ -1,3 +1,5 @@
+<!-- menu inclus dans le header -->
+
 <?php
 if (empty($_GET['page'])) {
   $url[0] = "accueil";
@@ -39,6 +41,7 @@ $colors = $userManager->getPalette();
 
               <li class="d-flex">
                 <a class="dropdown-item text-<?= $theme['color'] ?> text-capitalize mb-2" href="<?= URL ?>theme/<?= $theme['theme'] ?>"><?= $theme['theme'] ?></a>
+                <!-- si connecté, possibilité de gestion des themes -->
                 <?php if (isset($_SESSION['profile']['role']) && $_SESSION['profile']['role'] === "admin") : ?>
                   <form action="<?= URL ?>administrator/delete_theme" method="post">
                     <input type="hidden" name="id_theme" value="<?= $theme['id_theme'] ?>">
@@ -77,6 +80,7 @@ $colors = $userManager->getPalette();
             </li>
           </ul>
         </li>
+                <!-- si connecté, possibilité de creation et MAJ des articles -->
         <?php if (isset($_SESSION['profile']['role']) && $_SESSION['profile']['role'] === "admin") : ?>
           <li class="px-2 d-flex align-items-center justify-content-center gap-3 gap-xs-4">
             <a href="<?= URL . "administrator/create_article" ?>"><i class="fa-regular fa-lightbulb fs-4 d-none d-sm-block"></i></a>
@@ -89,11 +93,11 @@ $colors = $userManager->getPalette();
 
 
         <!-- si pas connecté -->
-        <!-- inscription dans la page de connexion -->
+        <!-- inscription/connexion dans la page de connexion -->
         <?php if (isset($_SESSION['profile']['login']) && !empty($_SESSION['profile']['login'])) :   ?>
 
           <!-- si connecté -->
-          <!-- profil sera l'avatar de l'utilisateur -->
+          <!-- l'avatar sera le lien vers la page de profil de l'utilisateur -->
           <li class="nav-item">
             <a class="nav-link " aria-current="page" href="<?= URL ?>account/profile">
 
@@ -116,9 +120,6 @@ $colors = $userManager->getPalette();
             </a>
           </li>
         <?php endif ?>
-
-
-
       </ul>
     </div>
   </div>

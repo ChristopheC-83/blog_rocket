@@ -1,7 +1,10 @@
 <?php
 
+// afin de ne pas avoir un index.php à rallonge, 
+// ici, la partie administrateur connecté
+
 switch ($url[1]) {
-        // page répertoriant les utilisateur
+        // page répertoriant les utilisateurs et leurs droits
     case "rights_management":
         $administratorController->rightsManagement();
         break;
@@ -11,7 +14,7 @@ switch ($url[1]) {
         $newRole = Tools::secureHTML($_POST['role']);
         $administratorController->modifyRole($login, $newRole);
         break;
-        //  validation compte des utilisateurs
+        //  validation/suspension compte des utilisateurs
     case "modify_state":
         $login = Tools::secureHTML($_POST['login']);
         $is_valid = Tools::secureHTML($_POST['is_valid']);
@@ -57,7 +60,7 @@ switch ($url[1]) {
             header('Location: ' . URL . 'administrator/create_article');
         }
         break;
-        // on complète un articler créé ou on modifie un article existant
+        // on complète un article créé ou on modifie un article existant
     case "update_article":
         if (isset($url[2])) {
             $id_article = Tools::secureHTML($url[2]);
@@ -78,7 +81,6 @@ switch ($url[1]) {
         break;
         // validation modification d'un article : juste sa carte visible sur l'accueil
     case "validation_update_card":
-        // Tools::showArray($_POST);
         if (!empty($_POST['title']) && !empty($_POST['theme']) && !empty($_POST['pitch']) && !empty($_POST['url'])) {
             $id = Tools::secureHTML($_POST['id']);
             $title = Tools::secureHTML($_POST['title']);
@@ -93,7 +95,6 @@ switch ($url[1]) {
         break;
         //  modif ou creation texte d'un article
     case "update_text_article":
-        // Tools::showArray($_POST);
         $id_article = Tools::secureHTML($_POST['id']);
         if (isset($_POST['text']) && !empty($_POST['text'])) {
             $text = Tools::secureHTML($_POST['text']);
@@ -103,12 +104,13 @@ switch ($url[1]) {
         }
         header('Location: ' . URL . 'administrator/update_article/' . $id_article);
         break;
+        // ajout d'un media principal à un article
+        // principal car on peut ajouter images dans champ texte.
     case "add_media":
-        // Tools::showArray($_FILES);
-        // Tools::showArray($_POST);
         if (isset($url[2]) && !empty($url[2])) {
             $id_article = Tools::secureHTML($_POST['id']);
             switch ($url[2]) {
+                    // media principale : une image
                 case "image":
                     if (!empty($_FILES['img1']['name'][0])) {
                         $files = $_FILES['img1'];
@@ -118,8 +120,8 @@ switch ($url[1]) {
                     }
                     header('Location: ' . URL . 'administrator/update_article/' . $id_article);
                     break;
+                    // media principale : un slider
                 case "slider":
-                    // Tools::showArray($_FILES['photo']);
                     if (!empty($_FILES['photo']['name'][0])) {
                         $files = $_FILES['photo'];
                         if ($editorController->addSlider($id_article, $files)) {
@@ -132,6 +134,7 @@ switch ($url[1]) {
                     }
                     header('Location: ' . URL . 'administrator/update_article/' . $id_article);
                     break;
+                    // media principale : une video
                 case "video":
                     if (!empty($_POST['video'])) {
                         $video_link = ($_POST['video']);
@@ -141,6 +144,7 @@ switch ($url[1]) {
                     }
                     header('Location: ' . URL . 'administrator/update_article/' . $id_article);
                     break;
+                    // suppression du media principal
                 case "erase":
                     $editorController->eraseMedia($id_article);
                     header('Location: ' . URL . 'administrator/update_article/' . $id_article);
@@ -153,13 +157,13 @@ switch ($url[1]) {
             Tools::alertMessage("Il faut choisir un type de media !", "alert-warning");
             header('Location: ' . URL . 'administrator/update_article');
         }
-        // header('Location: ' . URL . 'administrator/update_article');
         break;
-        //  suppression d'un article
+        //  suppression d'un commentaire
     case "delete_comment":
         $editorController->deleteComment($_POST['id_comment']);
         header('Location: ' . URL . 'article/' . $_POST['id_article'] . "/" . $_POST['url']);
         break;
+        // suppression d'un article
     case "delete_article":
         $editorController->deleteArticle($_POST['id_article']);
         break;

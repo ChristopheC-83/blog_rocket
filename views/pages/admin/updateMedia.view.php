@@ -1,3 +1,5 @@
+<!-- composant de gestion du media principal de chaque article -->
+
 <?php if (empty($oneArticle['img1']) && empty($oneArticle['slider_folder']) && empty($oneArticle['video_link'])) : ?>
 
     <!--  si pas de médias pour cet article, on choisit un type de média à insérer -->
@@ -13,7 +15,7 @@
     </div>
 
 
-    <!--  si l'article possède unslider,  on visualise une miniature de la 1ere image, puis  on choisit un type de média pour remplacer-->
+    <!--  si l'article possède un slider,  on visualise une miniature de la 1ere image, puis  on choisit un type de média pour remplacer-->
 <?php elseif (!empty($oneArticle['slider_folder'])) : ?>
 
     <?php $directory = MEDIA_PATH . $oneArticle['id_article'];

@@ -1,7 +1,7 @@
 <?php
 
 // fichier avec des fonctions récurrentes
-// importé par injection de dépendances dans chaque classe controller
+// importé par injection de dépendances dans chaque classe controller qui le nécessite
 
 class Functions
 {
@@ -15,7 +15,6 @@ class Functions
         $page_content = ob_get_clean();
         require_once($template);
     }
-
     // pour hasher et sécuriser les mdp utilisateurs avant envoi dans la DB
     public function hashFunction($psw)
     {

@@ -1,5 +1,7 @@
 <?php
 
+// afin de ne pas avoir un index.php à rallonge, 
+// ici, la partie utilisateur connecté
 
 switch ($url[1]) {
         //  accés à la page de profil

@@ -1,3 +1,5 @@
+<!-- bloc de modif du mail dans la page de profil -->
+
 <form class="my-4" method="POST" action="modify_mail">
     <div class="mb-3 w-100 mx-auto">
         <label for="new_mail" class="form-label w-100 text-center">Ma nouvelle adresse Mail</label>

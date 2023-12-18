@@ -1,3 +1,5 @@
+<!-- template de base -->
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -19,7 +21,7 @@
 
     <!-- un loader -->
     <?php require_once("views/components/overlay.php") ?>
-    <!-- insertion du hezader / menu -->
+    <!-- insertion du header / menu -->
     <?php require_once("views/common/header.php"); ?>
 
     <!-- afficharge des alertes s'il y en a -->

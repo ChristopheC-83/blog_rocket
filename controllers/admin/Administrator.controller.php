@@ -18,7 +18,7 @@ class AdminstratorController extends MainController
     {
         $this->functions = new Functions();
         $this->administratorManager = new AdministratorManager();
-        //  appel à userManager nécessaire pour utiilser une méthode pour la suppression d'un compte
+        //  appel à userManager nécessaire pour utiliser une méthode pour la suppression d'un compte
         $this->userController = new UserController();
     }
     // page des utilisateurs et paramétrage
@@ -27,10 +27,10 @@ class AdminstratorController extends MainController
         $infoUsers = $this->administratorManager->getUsers();
         $data_page = [
             "page_description" => "Page de gestion des droits",
-            "page_title" => "Page de gestion des droits",
+            "page_title" => "BARPAT | gestion des droits",
             "view" => "./views/pages/admin/rightsManagement.view.php",
             "texte_1_page" => "Dans l'antre des Dieux !",
-            "texte_2_page" => "Pas de bêtises hein !",
+            "texte_2_page" => "Pas de bêtises hein !?!",
             "title_page" => "Gestion des droits",
             "javascript" => ['rights_management.js'],
             "infoUsers" => $infoUsers,
@@ -48,7 +48,7 @@ class AdminstratorController extends MainController
         }
         header('Location: ' . URL . 'administrator/rights_management');
     }
-    //  modifier le statut d'un utlistauer inscrit (valider son compte)
+    //  modifier le statut d'un utilisatuer inscrit (valider son compte)
     public function modifyState($login, $is_valid)
     {
         if ($this->administratorManager->modifyStateDB($login, $is_valid)) {
@@ -68,17 +68,16 @@ class AdminstratorController extends MainController
         foreach ($files as $file) {
             $path = $dir . DIRECTORY_SEPARATOR . $file;
             if (is_dir($path)) {
-                $this->deleteDirectory($path); // Appel récursif pour les sous-répertoires
+                $this->deleteDirectory($path); // Appel récursif pour les sous-répertoires, pas utilisé ici
             } else {
                 unlink($path); // Suppression des fichiers
             }
         }
-        return rmdir($dir); // Suppression du répertoire principal
+        return rmdir($dir); // Suppression du répertoire principal de l'utilisateur
     }
     //  suppression compte utilisateur
     public function deleteAccountUser($login)
     {
-        // $this->deleteDirectory("public/assets/images/avatars/users/" . $login);
         $this->userController->deleteUserAvatar($login);
         rmdir("public/assets/images/avatars/users/" . $login);
         if ($this->administratorManager->deleteAccountDB($login)) {

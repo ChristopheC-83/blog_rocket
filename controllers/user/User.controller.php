@@ -6,7 +6,6 @@ require_once("./controllers/MainController.controller.php");
 require_once("./models/User/User.model.php");
 require_once("controllers/Tools.php");
 
-
 class UserController extends MainController
 {
     public $userManager;
@@ -21,12 +20,15 @@ class UserController extends MainController
     {
         $datasUser = $this->userManager->getUserInfo($login);
 
+        // la combinaison login / password est elle valide ?
         if ($this->userManager->isCombinationValid($login, $password)) {
+            // le compte est il actif ou suspendu ?
             if ($this->userManager->isAccountValidated($login)) {
                 Tools::alertMessage("You're welcome !", "alert-success");
+                // on stocke les infos de l'utilisateur dans la session pour usage ultérieur 
                 $_SESSION['profile']['login'] = $login;
                 $_SESSION['profile']['role'] =  $datasUser['role'];
-                $_SESSION['profile']['avatar'] =  $datasUser['avatar'];
+                $_SESSION['profile']['avatar'] =  $datasUser['avatar']; //affichage logo
                 // Tools::generateCookieConnection();
                 header('Location: ' . URL . 'account/profile');
             } else {
@@ -45,23 +47,21 @@ class UserController extends MainController
 
         $data_page = [
             "page_description" => "Page de profil",
-            "page_title" => "Page de profil",
+            "page_title" => "BARPAT | ".$_SESSION['profile']['login'],
             "datasUser" => $datasUser,
-            "javascript" => ['profile_modifications.js',  'profile_modify_avatar.js', 'passwordVerify.js'],
+            "javascript" => ['profile_modifications.js', 'profile_modify_avatar.js', 'passwordVerify.js'],
             "texte_1_page" => "Gestion de ton profil",
             "texte_2_page" => "Fais comme chez toi !",
             "title_page" => "Profil de " . $_SESSION['profile']['login'],
             "view" => "./views/pages/User/profilePage.view.php",
             "template" => "./views/common/template.php",
-
         ];
         $this->functions->generatePage($data_page);
     }
-    // déconnexion de l'utilisateur + desctruction cookie
+    // déconnexion de l'utilisateur + desctruction cookie s'il existe
     public function logout()
     {
         unset($_SESSION['profile']);
-        unset($_SESSION['profil']);
         // setcookie(Tools::COOKIE_NAME, '', time() - 3600 * 24 * 365);
         if ($_SESSION['profile']) {
             Tools::alertMessage("La déconnexion a échoué.", "alert-danger");
@@ -70,13 +70,12 @@ class UserController extends MainController
         }
         header('Location: ' . URL . 'home');
     }
-
     // création nouveau compte
     private function registerAccount($login, $password, $mail, $account_key)
     {
+        // envoi d'un avatar par défaut
         $avatar = "site/astroshiba.jpg";
         if ($this->userManager->registerAccountDB($login, $password, $mail, $account_key, $avatar)) {
-            // $this->sendMailValidation($login, $mail, $account_key);
             Tools::alertMessage($login . ", votre compte est créé !", "alert-success");
             header('Location: ' . URL . 'home');
         } else {
@@ -87,6 +86,7 @@ class UserController extends MainController
     // validation création compte
     public function validationRegistration($login, $password, $mail)
     {
+        // test si login disponible
         if ($this->userManager->isLoginFree($login)) {
             $password_crypt = password_hash($password, PASSWORD_DEFAULT);
             $account_key = rand(0, 999999);
@@ -96,8 +96,6 @@ class UserController extends MainController
             header('Location: ' . URL . 'registration');
         }
     }
-
-
     // modification mail
     public function modifyMail($newMail)
     {
@@ -113,6 +111,7 @@ class UserController extends MainController
     // validation modification password
     public function validationNewPassword($old_password, $new_password)
     {
+        // on redemande le mdp à l'utilisateur avant qu'il n'en porpose un nouveau (vérification)
         if ($this->userManager->isCombinationValid($_SESSION['profile']['login'], $old_password)) {
             $password_crypt = password_hash($new_password, PASSWORD_DEFAULT);
             if ($this->userManager->modifyPasswordDB($_SESSION['profile']['login'], $password_crypt)) {
@@ -128,7 +127,6 @@ class UserController extends MainController
         }
     }
     // envoi nouveau password si oubblié
-
     public function sendNewPassword($old_password, $new_password, $verif_password)
     {
         if ($old_password === $new_password) {
@@ -144,10 +142,10 @@ class UserController extends MainController
     // page mot de passe oublié
     public function forgotPasswordPage()
     {
-
         $data_page = [
             "page_description" => "mot de passe oublié",
-            "page_title" => "mot de passe oublié",
+            "page_title" => "BARPAT | mot de passe oublié",
+            // loader : le temps que le mail soit préparé et envoyé.
             "javascript" =>  ['loader.js'],
             "texte_1_page" => "Ca m'arrive tout le temps !",
             "texte_2_page" => "mais je ne suis pas une référence ! 😅 ",
@@ -161,6 +159,7 @@ class UserController extends MainController
     //  validation mail/login avant envoi nouveau mot de passe dans mot de passe oublié
     public function  isCombinationMailValid($login, $mail)
     {
+        // A défaut de mdp, on teste si le login possède bien un mail
         $maildBd = $this->userManager->getMailUser($login);
         if ($maildBd === $mail) {
             return true;
@@ -179,6 +178,7 @@ class UserController extends MainController
     // envoi mail avec nouveau mot de passe dans mot de passe oublié
     public function sendForgotPassword($login, $mail)
     {
+        // A défaut de mdp, on teste la concordance login/adresse mail
         if (!$this->isCombinationMailValid($login, $mail)) {
             Tools::alertMessage("Pas de concordance, Merci de vérifier", "alert-danger");
             header('Location: ' . URL . 'forgot_password');
@@ -198,6 +198,7 @@ class UserController extends MainController
     //  suppression irréversible du compte
     public function deleteAccount()
     {
+        // ici, on déconnecte, efface l'avatar et le dossier associé, puis on supprime le compte de la bdd
         $login = $_SESSION['profile']['login'];
         $this->deleteUserAvatar($login);
         rmdir("public/assets/images/avatars/users/" . $login);
@@ -210,6 +211,7 @@ class UserController extends MainController
         }
     }
     // efface l'avatar personnalisé de l'utilisateur s'il en change
+    // si l'avatar est un avatar du site, on ne l'efface pas !
     public function deleteUserAvatar($login)
     {
         if ($this->userManager->getImageSiteUser($login) == 0) {
@@ -218,9 +220,10 @@ class UserController extends MainController
         }
         return;
     }
-    // modifie l'avatar de l'utilisateur
+    // modifie l'avatar de l'utilisateur dans la bdd
     public function modifyAvatarByPerso($file)
     {
+        // on vide le dossier avatar de l'utilisateur
         $this->deleteUserAvatar($_SESSION['profile']['login']);
         try {
             $repertoire = "public/assets/images/avatars/users/"  . $_SESSION['profile']['login'] . "/";
@@ -238,7 +241,7 @@ class UserController extends MainController
             header('location:' . URL . "account/profile");
         }
     }
-    // ajoute l'avatar personnalisé à la bdd
+    // ajoute l'avatar personnalisé sur notre serveur
     public function addImage($file, $repertoire)
     {   // le fichier est il choisi ?
         if (!isset($file['name']) || empty($file['name'])) {
@@ -262,7 +265,7 @@ class UserController extends MainController
             throw new Exception("L'ajout de l'image n'a pas fonctionné");
         else return ($random . "_" . $file['name']);
     }
-    // modification de l'avatar par un générique du site
+    // modification de l'avatar par un générique du site dans la bdd / efface avatar perso du serveur
     public function modifyAvatarBySite($avatar)
     {
         $this->deleteUserAvatar($_SESSION['profile']['login']);
@@ -275,18 +278,9 @@ class UserController extends MainController
             header('location:' . URL . "account/profile");
         }
     }
-
+    // poste un commentaire sous un article
     public function postComment($id_article, $author, $text, $url)
     {
-
-        // echo $text;
-        // echo "<br>";
-        // echo $id_article;
-        // echo "<br>";
-        // echo $author;
-        // echo "<br>";
-        // echo $url;
-        // $this->userManager->postCommentDB($id_article, $author,$text );
         if(
         $this->userManager->postCommentDB($id_article, $author,$text )){
             Tools::alertMessage("Commentaire posté !", "alert-success");

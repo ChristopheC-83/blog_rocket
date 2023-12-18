@@ -1,3 +1,5 @@
+<!--  ce template incorpore le js tinyMCE pour le formulaire texte pour les articles -->
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -24,7 +26,7 @@
 
     <!-- un loader -->
     <?php require_once("views/components/overlay.php") ?>
-    <!-- insertion du hezader / menu -->
+    <!-- insertion du header / menu -->
     <?php require_once("views/common/header.php"); ?>
 
     <!-- afficharge des alertes s'il y en a -->
@@ -55,6 +57,7 @@
 
     <!-- fichier js de bootstrap, isolé pour être saugardé après purge -->
     <script src="<?= URL ?>public/javascript/bootstrap.bundle.js"></script>
+    <!-- fichier alert car utilisées partout ! -->
     <script src="<?= URL ?>public/javascript/alert.js"></script>
     <!-- pozsibilité d'avoir des fichiers js spécifiques par page -->
     <?php if (!empty($javascript)) : ?>

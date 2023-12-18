@@ -1,10 +1,9 @@
 <?php
 
-// Tous les chemins passent par ce point : "index.php"
+// Tous les chemins passent par ce point de départ : "index.php"
 
 // on démarre une SESSION
 // A la connexion, l'utilisateur y stockera son login, role, avatar pour validation et utilisations ultérieures
-
 session_start();
 
 
@@ -16,6 +15,7 @@ define("IMG_PATH", URL . "public/assets/images/");
 define("AVATARS_PATH", IMG_PATH . "avatars/");
 define("MEDIA_PATH", "public/assets/articles_media/article_");
 
+// appel des controllers dans le cadre de l'appel de leurs méthodes 
 require_once("./controllers/visitor/Visitor.controller.php");
 require_once("./controllers/user/User.controller.php");
 require_once("./controllers/admin/Administrator.controller.php");
@@ -27,8 +27,6 @@ $userController = new UserController();
 $administratorController = new AdminstratorController();
 $editorController = new EditorController();
 $mainManager = new MainManager();
-
-
 
 try {
     // si pas de page demandée, on affiche la page d'accueil
@@ -48,6 +46,16 @@ try {
         case "home":
             $visitorController->homePage();
             break;
+            // page d'affichage des articles d'un theme sélectionné
+        case "theme":
+            if (!empty($url[1])) {
+                $theme = Tools::secureHTML($url[1]);
+                $visitorController->themePage($theme);
+            } else {
+                Tools::alertMessage("Il faut choisir un thème !", "alert-warning");
+                header('Location: ' . URL . 'home');
+            }
+            break;
             // page d'affichage d'un article
         case "article":
             if (!empty($url[1]) && !empty($url[2])) {
@@ -59,20 +67,10 @@ try {
                 header('Location: ' . URL . 'home');
             }
             break;
-
-
-        case "compte":
-            switch ($url[1]) {
-                case "profil":
-                    $visitorController->homePage();
-            }
-            break;
-
             // page d'enregistrement d'un nouveau compte
         case "registration":
             $visitorController->registrationPage();
             break;
-
             // validation de l'enregistrement d'un nouveau compte
         case "validation_registration":
             if (!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['mail'])) {
@@ -85,12 +83,10 @@ try {
                 header('Location: ' . URL . 'registration');
             }
             break;
-
             // page pour demande d'un mail avec nouveau mot de passe
         case "forgot_password":
             $userController->forgotPasswordPage();
             break;
-
             // envoi d'un mail avec nouveau mot de passe
         case "send_forgot_password":
             if (!empty($_POST['login']) && !empty($_POST['mail'])) {
@@ -103,15 +99,12 @@ try {
                 exit;
             }
             break;
-
             // on empêche un utilisateur connecté de retourner sur la page de connexion
         case "connection":
             if (Tools::isConnected()) {
-
                 Tools::alertMessage("Vous êtes déjà connecté !", "alert-warning");
                 header('Location: ' . URL . 'home');
             } else {
-
                 $visitorController->connectionPage();
             }
             break;
@@ -128,16 +121,6 @@ try {
             }
             break;
 
-        case "theme":
-            if (!empty($url[1])) {
-                $theme = Tools::secureHTML($url[1]);
-                $visitorController->themePage($theme);
-            } else {
-                Tools::alertMessage("Il faut choisir un thème !", "alert-warning");
-                header('Location: ' . URL . 'home');
-            }
-            break;
-
             // si l'utilisateur est connecté en tant qu'utilisateur ou plus :
             // les accés sont dans le fichier indexComponents/user.index.php
         case "account":
@@ -148,7 +131,6 @@ try {
                 require_once("./indexComponents/user.index.php");
             }
             break;
-
             // si l'utilisateur est connecté et a un statut d'administrateur :
         case "administrator":
             if (!Tools::isConnected()) {
