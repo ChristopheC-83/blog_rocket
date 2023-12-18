@@ -5,7 +5,7 @@
     <!-- si le media est une image -->
     <?php if (!empty($article['img1'])) : ?>
         <div class="d-flex justify-content-center">
-            <img src="<?= URL . MEDIA_PATH . $article['id_article'] ?>/<?= $article['img1'] ?>" alt="" class="w-50 img-fluid">
+            <img src="<?= URL . MEDIA_PATH . $article['id_article'] ?>/<?= $article['img1'] ?>" alt="" class="w-50 img-fluid rounded-2 box-shadow-white mb-5">
         </div>
 
         <!-- si le media est un slider -->

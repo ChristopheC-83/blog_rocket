@@ -17,6 +17,18 @@
 
           </h2>
 
+        <?php elseif (isset($choosenTheme) && !empty($choosenTheme)) : ?>
+
+          <h2 class="arizona text-center display-2 text-shadow-white">
+            <h1 class="text-center"><?= $choosenTheme['theme'] ?></h1>
+            <h2 class="mb-5 text-center"><?= $texte_2_page ?></h2>
+            <div class=" d-xl-block ">
+              <h2 class="arizona text-center display-3  text-shadow-white">
+                <?= $choosenTheme['description_theme'] ?>
+              </h2>
+
+          </h2>
+
 
         <?php else : ?>
           <h1>Autour du code</h1>

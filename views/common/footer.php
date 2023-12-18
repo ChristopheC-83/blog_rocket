@@ -1,6 +1,6 @@
 <div class="container ">
     <footer class="border-top mt-5 pt-3">
-        <h5 class="text-center">Site développé dans un but éducatif. Retrouvez son code est libre de droit 
+        <h5 class="text-center">Site développé dans un but éducatif. Retrouvez son code libre de droit 
             <a href="https://github.com/ChristopheC-83/blog_rocket">ICI</a>
         </h5>
         <div class="pt-1 mb-5 mx-auto w-100 w-lg-75 w-xl-50 d-flex justify-content-evenly align-items-center fs-3">

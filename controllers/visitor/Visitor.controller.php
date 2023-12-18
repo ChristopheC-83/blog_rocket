@@ -129,7 +129,7 @@ class VisitorController extends MainController
     {
         $istheme = $this->visitorManager->getColorTheme($theme);
         $articles = $this->visitorManager->getArticlesByThemes($theme);
-
+        $choosenTheme = $this->visitorManager->getChoosenTheme($theme);
         // Si pas de couleur détectée, le theme n'existe pas.
         if (!isset($istheme['color'])) {
             $this->errorPage("Ce thème n'existe pas.");
@@ -148,12 +148,13 @@ class VisitorController extends MainController
             "page_title" => "Titre de la page d'accueil",
             "view" => "views/pages/visitor/homePage.view.php",
             "javascript" => ['home_page_animated_grid.js'],
+            "choosenTheme"=> $choosenTheme,
             "themes" => $themes,
             "articles" => $articles,
             "mainManager" => $mainManager,
-            "texte_1_page" => "Autour du code",
-            "texte_2_page" => "Partageons, échangeons !",
-            "title_page" => "Seul on va plus vite, ensemble on va plus loin !",
+            "texte_1_page" => ucfirst($choosenTheme['theme']),
+            "texte_2_page" => "_______________________________",
+            "title_page" => $choosenTheme['description_theme'],
             "template" => "./views/common/template.php"
         ];
         $this->functions->generatePage($data_page);
