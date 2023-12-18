@@ -7,6 +7,13 @@
 
 <br>
 <h3>17/12/23</h3>
+Slider en mode fade.<br>
+Centrage images ajoutées dans le texte avec tinyMCE.<br>
+Personnalisation su texte du header qq soit la page (à ma connaissance 😅).<br>
+<br>
+
+<br>
+<h3>17/12/23</h3>
 Possibilité ajout et modif video (seulement youtube testé)<br>
 Possibilité ajout et modif texte pour chaque article.<br>
 Comme texte sécurisé avant passage en DB, il faut le récupérer avec :<br>

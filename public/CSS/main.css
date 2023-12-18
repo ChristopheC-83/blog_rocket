@@ -24142,4 +24142,17 @@ header {
   width: 100px;
   height: 100px;
   border-radius: 999px;
+}
+
+.iCome {
+  opacity: 0;
+  transform: translateY(-100%);
+  animation: icomeAnim 0.33s ease-out forwards;
+}
+
+@keyframes icomeAnim {
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }/*# sourceMappingURL=main.css.map */

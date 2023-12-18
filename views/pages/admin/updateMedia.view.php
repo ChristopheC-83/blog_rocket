@@ -39,7 +39,7 @@
 
     <!-- les boutons font disparaitre les input et apparaitre l'input correspondant au média choisit. -->
 <?php endif ?>
-<p class=" text-center text-danger fs-5 mb-4 ">un seul media possible !</p>
+<p class=" text-center text-danger fs-5 my-4 ">un seul media possible !</p>
 <div class=" d-flex flex-column justify-content-around  my-3">
     <div class="w-75 mx-auto d-flex justify-content-between justify-content-around my-3">
         <div class="btn btn-primary text-light " style="width:133px" id="btn-media-image">Une Image</div>
