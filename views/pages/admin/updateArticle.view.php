@@ -37,7 +37,7 @@
             <label for="default" class="form-label">Ajouter ou modifier le texte :</label>
             <!-- pour ajouter une image au milieur du texte (seulement hébergée en externe) -->
             <p>Pour insérer une image hébergée en externe : <br>
-                <i>img src=" url_img " class="d-block mx-auto w-50" alt=" "</i> <br>
+                <i>img src=" url_img " class="d-block mx-auto w-75" alt=" "</i> <br>
                 entre 2 chevrons <...>.<br>
             </p>
             <textarea id="default" style="height:50vh" name="text" class="text-light bg-dark"><?= $oneArticle['text'] ?></textarea>

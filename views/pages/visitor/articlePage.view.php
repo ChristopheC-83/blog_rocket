@@ -65,11 +65,11 @@
 
         <div class="d-flex flex-column justify-content-center border-top border-3 m-0 py-3">
             <?php if (empty($_SESSION['profile']['login'])) : ?>
-                <a href="<?= URL ?>connection" class="btn btn-primary mb-4 w-50 mx-auto text-light">
+                <a href="<?= URL ?>connection" class="btn btn-primary mb-4 w-100 w-md-75 w-lg-50 mx-auto text-light">
                     Connecte toi pour ajouter un commentaire ou poser une question.
                 </a>
             <?php else : ?>
-                <button type="button" class="btn btn-primary mb-4 w-50 mx-auto text-light" data-bs-toggle="modal" data-bs-target="#commentModal">
+                <button type="button" class="btn btn-primary mb-4 w-100 w-md-75 w-lg-50 mx-auto text-light" data-bs-toggle="modal" data-bs-target="#commentModal">
                     Ajoute un commentaire ou pose une question !
                 </button>
                 <div class="modal fade" id="commentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

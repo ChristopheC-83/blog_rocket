@@ -83,6 +83,8 @@ $colors = $userManager->getPalette();
           </ul>
         </li>
         <!-- si connecté, possibilité de creation et MAJ des articles -->
+        <!-- l'écriture et la modification d'un article étant plus faciile sur desktop -->
+        <!-- les raccourcis ne sont pas dispo sur mobile mais tout de même dans le profil... au cas où ! -->
         <?php if (isset($_SESSION['profile']['role']) && $_SESSION['profile']['role'] === "admin") : ?>
           <li class="px-2 d-flex align-items-center justify-content-center gap-3 gap-xs-4">
             <a href="<?= URL . "administrator/create_article" ?>"
