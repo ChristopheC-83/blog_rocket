@@ -40,7 +40,9 @@ $colors = $userManager->getPalette();
             <?php foreach ($themes as $theme) : ?>
 
               <li class="d-flex">
-                <a class="dropdown-item text-<?= $theme['color'] ?> text-capitalize mb-2" href="<?= URL ?>theme/<?= $theme['theme'] ?>"><?= $theme['theme'] ?></a>
+                <a class="dropdown-item text-<?= $theme['color'] ?> text-capitalize mb-2" href="<?= URL ?>theme/<?= $theme['theme'] ?>"
+                
+                ><?= $theme['theme'] ?></a>
                 <!-- si connecté, possibilité de gestion des themes -->
                 <?php if (isset($_SESSION['profile']['role']) && $_SESSION['profile']['role'] === "admin") : ?>
                   <form action="<?= URL ?>administrator/delete_theme" method="post">
@@ -80,12 +82,15 @@ $colors = $userManager->getPalette();
             </li>
           </ul>
         </li>
-                <!-- si connecté, possibilité de creation et MAJ des articles -->
+        <!-- si connecté, possibilité de creation et MAJ des articles -->
         <?php if (isset($_SESSION['profile']['role']) && $_SESSION['profile']['role'] === "admin") : ?>
           <li class="px-2 d-flex align-items-center justify-content-center gap-3 gap-xs-4">
-            <a href="<?= URL . "administrator/create_article" ?>"><i class="fa-regular fa-lightbulb fs-4 d-none d-sm-block"></i></a>
-
-            <a href="<?= URL . "administrator/update_article" ?>"><i class="fa-solid fa-pen-clip fs-4  d-none d-sm-block"></i></a>
+            <a href="<?= URL . "administrator/create_article" ?>"
+            data-bs-toggle="tooltip" data-bs-placement="bottom" title="Créer un nouvel article"
+            ><i class="fa-regular fa-lightbulb fs-4 d-none d-sm-block"></i></a>
+            <a href="<?= URL . "administrator/update_article" ?>"
+            data-bs-toggle="tooltip" data-bs-placement="bottom" title="Compléter ou modifier un article"
+            ><i class="fa-solid fa-pen-clip fs-4  d-none d-sm-block"></i></a>
           </li>
         <?php endif ?>
       </ul>
@@ -99,20 +104,26 @@ $colors = $userManager->getPalette();
           <!-- si connecté -->
           <!-- l'avatar sera le lien vers la page de profil de l'utilisateur -->
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="<?= URL ?>account/profile">
+            <a class="nav-link " aria-current="page" href="<?= URL ?>account/profile"
+            
+            data-bs-toggle="tooltip" data-bs-placement="bottom" title="Mon profil"
+            >
 
               <img src="<?= AVATARS_PATH ?><?= $_SESSION['profile']['avatar'] ?>" <?= $_SESSION['profile']['avatar'] ?> class="pastille-menu" alt="">
 
             </a>
           </li>
           <li class="nav-item d-flex align-items-center ">
-            <a class="nav-link text-primary px-3 px-md-5" aria-current="page" href="<?= URL ?>account/logout">
+            <a class="nav-link text-primary px-3 px-md-5" aria-current="page" href="<?= URL ?>account/logout"
+            
+            data-bs-toggle="tooltip" data-bs-placement="bottom" title="Déconnexion"
+            >
               <i class="fa-solid fa-right-from-bracket fs-1"></i>
             </a>
           </li>
         <?php else : ?>
           <li class="nav-item ml-auto">
-            <a class="nav-link text-primary fs-3 d-none d-md-block" aria-current="page" href="<?= URL ?>connection">
+            <a class="nav-link text-primary fs-3 d-none d-md-block" aria-current="page" href="<?= URL ?>connection" >
               Connexion
             </a>
             <a class="nav-link text-primary fs-3  d-block d-md-none  " aria-current="page" href="<?= URL ?>connection">
@@ -123,4 +134,6 @@ $colors = $userManager->getPalette();
       </ul>
     </div>
   </div>
+
+  
 </nav>
