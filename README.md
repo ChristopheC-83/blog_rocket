@@ -7,6 +7,10 @@
 
 <br>
 <h3>17/12/23</h3>
+Mise en place de ToolTip sur les icones sans texte.<br>
+
+<br>
+<h3>17/12/23</h3>
 Slider en mode fade.<br>
 Centrage images ajoutées dans le texte avec tinyMCE.<br>
 Personnalisation su texte du header qq soit la page (à ma connaissance 😅).<br>

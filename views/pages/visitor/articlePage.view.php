@@ -1,14 +1,14 @@
 <!-- affichage article complet -->
 
-<div class="container row">
+<div class="container row mx-auto">
 
     <div class="col-12 col-lg-10 col-xl-8   mx-auto">
         <h3 class="text-center my-5 text-decoration-underline"><?= $article['pitch'] ?></h3>
 
         <!-- si le media est une image -->
         <?php if (!empty($article['img1'])) : ?>
-            <div class="d-flex justify-content-center">
-                <img src="<?= URL . MEDIA_PATH . $article['id_article'] ?>/<?= $article['img1'] ?>" alt="" class="w-50 img-fluid rounded-2 box-shadow-white mb-5">
+            <div class="col-12 col-lg-10 mx-auto d-flex justify-content-center">
+                <img src="<?= URL . MEDIA_PATH . $article['id_article'] ?>/<?= $article['img1'] ?>" alt="" class="w-100 w-75 img-fluid rounded-2 box-shadow-white mb-5">
             </div>
 
             <!-- si le media est un slider -->
@@ -19,7 +19,7 @@
             $images = glob($directory . '/*');
             ?>
             <!-- on affiche le slider / caroussel -->
-            <div class=" col-md-10 col-lg-8 col-xl-6 mx-auto">
+            <div class=" w-100 w-lg-75 mx-auto">
                 <div id="carouselExampleFade" class="carousel slide carousel-fade  my-5 d-flex justify-content-center align-items-center w-100 w-lg-75 w-xl-50 mx-auto rounded-2  overflow-hidden box-shadow-white" style="max-width:700px">
                     <div class="carousel-indicators">
                         <?php for ($i = 0; $i < count($images); $i++) : ?>
@@ -47,7 +47,7 @@
             <!-- si le media est une video -->
         <?php elseif (!empty($article['video_link'])) : ?>
             <div class="d-flex justify-content-center">
-                <div class="ratio ratio-16x9 w-75 mb-5">
+                <div class="ratio ratio-16x9 w-100 w-md-75 mb-5">
                     <?= $article['video_link'] ?>
                 </div>
             </div>

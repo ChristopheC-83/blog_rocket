@@ -1,4 +1,4 @@
-<div class="container row">
+<div class="container row  mx-auto">
     <div class="w-100 col-12 col-lg-10 col-xl-8  mx-auto border border-3 border-primary mt-5 p-2 ">
 
         <table class="table table-striped table-hover m-0">

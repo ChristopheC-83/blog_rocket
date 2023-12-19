@@ -1,6 +1,6 @@
 <!-- MAJ de l'article -->
 
-<div class="container">
+<div class="container row mx-auto">
 
     <!--  Gestion Carte -->
     <div class="col-12 col-lg-10 col-xl-8  mx-auto border border-3 border-primary my-5 rounded-3 box-shadow-white px-3 fs-5">

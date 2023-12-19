@@ -1,6 +1,6 @@
 <!-- page de profil d'un utilisateur connecté -->
 
-<div class="container">
+<div class="container row  mx-auto">
 
 
     <div class="col-12 col-lg-10 col-xl-8  mx-auto border border-3 border-primary mt-5 rounded-3 box-shadow-white fs-5">

@@ -1,9 +1,9 @@
 <!-- Page d'accueil avec tous les articles ou articles en fonction d'un theme choisi -->
 
 <div class="container mt-3 text-light">
-    <div class="row w-100">
+    <div class="row w-100 mx-auto">
         <?php foreach ($articles as $article) : ?>
-            <div class="col-6 col-md-4 col-lg-3 g-4  ">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 g-4  ">
                 <!-- connection à un article par id + url -->
                 <!-- vérification concordance pour éviter erreurs -->
                 <a href="<?= URL . "article/" . $article['id_article'] ?>/<?= $article['url'] ?>" class=" text-decoration-none link_card ">
