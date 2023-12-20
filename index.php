@@ -9,8 +9,7 @@ session_start();
 
 //  on définit la constante URL comme racine du site
 // des constantes pour les chemins des images, avatars, sliders, videos...
-define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") .
-    "://" . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
+define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
 define("IMG_PATH", URL . "public/assets/images/");
 define("AVATARS_PATH", IMG_PATH . "avatars/");
 define("MEDIA_PATH", "public/assets/articles_media/article_");
