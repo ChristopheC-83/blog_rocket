@@ -5,7 +5,7 @@
 require_once("controllers/Tools.php");
 require_once("controllers/Functions.php");
 require_once("./controllers/Images.php");
-require_once("./models/Admin/Administrator.model.php");
+require_once("./models/admin/Administrator.model.php");
 require_once("./controllers/MainController.controller.php");
 require_once("./controllers/user/User.controller.php");
 
