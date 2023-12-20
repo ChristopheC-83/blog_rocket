@@ -2,7 +2,7 @@
 
 <div class="container row mx-auto">
 
-    <div class="col-12 col-lg-10 col-xl-8   mx-auto">
+    <div class="col-12 col-lg-10   mx-auto">
         <h3 class="text-center my-5 text-decoration-underline"><?= $article['pitch'] ?></h3>
 
         <!-- si le media est une image -->
@@ -21,9 +21,9 @@
             <!-- on affiche le slider / caroussel -->
             <div class=" w-100 w-lg-75 mx-auto">
                 <div id="carouselExampleFade" class="carousel slide carousel-fade  my-5 d-flex justify-content-center align-items-center w-100 w-lg-75 w-xl-50 mx-auto rounded-2  overflow-hidden box-shadow-white" style="max-width:700px">
-                    <div class="carousel-indicators">
+                    <div class="carousel-indicators ">
                         <?php for ($i = 0; $i < count($images); $i++) : ?>
-                            <button type="button" data-bs-target="#article_slider" data-bs-slide-to="<?= $i ?>" class="<?= $i === 0 ? "active" : "" ?>" aria-current="true" aria-label="Slide <?= $i ?>"></button>
+                            <button type="button" data-bs-target="#article_slider" data-bs-slide-to="<?= $i ?>" class="<?= $i === 0 ? "active" : "" ?> " aria-current="true" aria-label="Slide <?= $i ?>"></button>
                         <?php endfor ?>
                     </div>
                     <div class="carousel-inner">
@@ -33,12 +33,12 @@
                             </div>
                         <?php endforeach ?>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon bg-primary rounded-circle p-3" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="carousel-control-next-icon bg-primary rounded-circle p-3" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
@@ -54,22 +54,22 @@
         <?php endif ?>
 
         <!--  le texte de l'article -->
-        <div class="mx-auto">
-            <p>
-                <!-- double désencodage pour faire apparaitre images dans le textes -->
-                <?= html_entity_decode(htmlspecialchars_decode($article['text'])) ?>
-            </p>
+        <div class="mx-auto customP">
+
+            <!-- double désencodage pour faire apparaitre images dans le textes -->
+            <?= html_entity_decode(htmlspecialchars_decode($article['text'])) ?>
+
         </div>
 
         <!--  pour ajouter un commentaire, il faut être connecté -->
 
         <div class="d-flex flex-column justify-content-center border-top border-3 m-0 py-3">
             <?php if (empty($_SESSION['profile']['login'])) : ?>
-                <a href="<?= URL ?>connection" class="btn btn-primary mb-4 w-100 w-md-75 w-lg-50 mx-auto text-light">
+                <a href="<?= URL ?>connection" class="btn btn-primary mb-4 w-100 w-md-75 w-lg-50 mx-auto text-light customP">
                     Connecte toi pour ajouter un commentaire ou poser une question.
                 </a>
             <?php else : ?>
-                <button type="button" class="btn btn-primary mb-4 w-100 w-md-75 w-lg-50 mx-auto text-light" data-bs-toggle="modal" data-bs-target="#commentModal">
+                <button type="button" class="btn btn-primary mb-4 w-100 w-md-75 w-lg-50 mx-auto text-light customP" data-bs-toggle="modal" data-bs-target="#commentModal">
                     Ajoute un commentaire ou pose une question !
                 </button>
                 <div class="modal fade" id="commentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -123,3 +123,4 @@
 
     </div>
 </div>
+

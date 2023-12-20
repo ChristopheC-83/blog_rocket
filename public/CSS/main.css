@@ -24144,15 +24144,6 @@ header {
   border-radius: 999px;
 }
 
-.iCome {
-  opacity: 0;
-  transform: translateY(-100%);
-  animation: icomeAnim 0.33s ease-out forwards;
-}
-
-@keyframes icomeAnim {
-  to {
-    opacity: 1;
-    transform: translateY(0%);
-  }
+.customP {
+  font-size: clamp(16px, 14px + 0.6vw, 20px);
 }/*# sourceMappingURL=main.css.map */
