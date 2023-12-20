@@ -2,7 +2,8 @@
 
 // Classe des possibilités pour un utilisateur connecté en tant qu'administrateur
 
-require_once("./controllers/Functions.php");
+require_once("controllers/Tools.php");
+require_once("controllers/Functions.php");
 require_once("./controllers/Images.php");
 require_once("./models/Admin/Administrator.model.php");
 require_once("./controllers/MainController.controller.php");

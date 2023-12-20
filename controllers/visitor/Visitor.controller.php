@@ -3,7 +3,9 @@
 // Classe des pages/fonctions propres à l'utilisateur non connecté (ou en cours de connection/inscription) 
 
 require_once("./controllers/MainController.controller.php");
-require_once("./models/Visitor/Visitor.model.php");
+require_once("./models/visitor/Visitor.model.php");
+require_once("controllers/Tools.php");
+require_once("controllers/Functions.php");
 
 class VisitorController extends MainController
 {
@@ -129,7 +131,7 @@ class VisitorController extends MainController
             "texte_1_page" => "Nous n'attendions que toi !",
             "texte_2_page" => "Installe toi à ton aise 😉 ",
             "title_page" => "Création de ton compte.",
-            "view" => "views/pages/Visitor/registrationPage.view.php",
+            "view" => "views/pages/visitor/registrationPage.view.php",
             "template" => "views/common/template.php",
         ];
         $this->functions->generatePage($data_page);
@@ -144,7 +146,7 @@ class VisitorController extends MainController
             "texte_1_page" => "Et si tu n'es pas inscrit(e),",
             "texte_2_page" => " ⏬ C'est par là aussi ! ⏬ ",
             "title_page" => "Connexion",
-            "view" => "views/pages/Visitor/connectionPage.view.php",
+            "view" => "views/pages/visitor/connectionPage.view.php",
             "template" => "./views/common/template.php"
         ];
         $this->functions->generatePage($data_page);

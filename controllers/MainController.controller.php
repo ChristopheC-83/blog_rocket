@@ -1,5 +1,7 @@
 <?php
 
+
+require_once("controllers/Tools.php");
 require_once("controllers/Functions.php");
 
 

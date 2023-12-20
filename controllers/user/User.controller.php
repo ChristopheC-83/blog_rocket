@@ -3,8 +3,9 @@
 // Classe des possibilités pour un utilisateur connecté
 
 require_once("./controllers/MainController.controller.php");
-require_once("./models/User/User.model.php");
+require_once("./models/user/User.model.php");
 require_once("controllers/Tools.php");
+require_once("controllers/Functions.php");
 
 class UserController extends MainController
 {
@@ -53,7 +54,7 @@ class UserController extends MainController
             "texte_1_page" => "Gestion de ton profil",
             "texte_2_page" => "Fais comme chez toi !",
             "title_page" => "Profil de " . $_SESSION['profile']['login'],
-            "view" => "./views/pages/User/profilePage.view.php",
+            "view" => "./views/pages/user/profilePage.view.php",
             "template" => "./views/common/template.php",
         ];
         $this->functions->generatePage($data_page);

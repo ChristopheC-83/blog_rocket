@@ -20,7 +20,9 @@ require_once("./controllers/user/User.controller.php");
 require_once("./controllers/admin/Administrator.controller.php");
 require_once("./controllers/admin/Editor.controller.php");
 require_once("./models/MainManager.model.php");
-require_once("./controllers/Tools.php");
+require_once("controllers/Tools.php");
+require_once("controllers/Functions.php");
+
 $visitorController = new VisitorController();
 $userController = new UserController();
 $administratorController = new AdminstratorController();

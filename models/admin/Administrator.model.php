@@ -1,7 +1,7 @@
 <?php
 
 
-require_once("./models/User/User.model.php");
+require_once("./models/user/User.model.php");
 
 class AdministratorManager extends UserManager
 {
