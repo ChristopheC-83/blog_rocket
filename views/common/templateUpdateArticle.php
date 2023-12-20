@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?= $page_description ?>">
     <title><?= $page_title ?></title>
-    <link href="<?= URL ?>public/css/main.css" rel="stylesheet" />
+    <link href="<?= URL ?>public/css/cleaned_css/final_css.css" rel="stylesheet" />
     <!-- tiny -->
     <script src="https://cdn.tiny.cloud/1/qldsi9bc7eu78br8qd5z2kyhvytzqmmha2w0wym90ttn4w4w/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>

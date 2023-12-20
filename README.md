@@ -2,7 +2,7 @@
 <br><br>
 <br><br>
 
-19 & 20/12/23<br>
+<h3>19 & 20/12/23</h3>
 Création de contenu <br>
 Correction de bugs mineurs<br>
 
