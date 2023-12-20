@@ -3,7 +3,7 @@
 // Classe des possibilités pour un utilisateur connecté
 
 require_once("./controllers/MainController.controller.php");
-require_once("./models/User/User.model.php");
+require_once("./models/user/User.model.php");
 require_once("controllers/Tools.php");
 
 class UserController extends MainController

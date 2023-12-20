@@ -3,7 +3,7 @@
 // Classe des pages/fonctions propres à l'utilisateur non connecté (ou en cours de connection/inscription) 
 
 require_once("./controllers/MainController.controller.php");
-require_once("./models/Visitor/Visitor.model.php");
+require_once("./models/visitor/Visitor.model.php");
 
 class VisitorController extends MainController
 {

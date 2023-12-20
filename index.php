@@ -21,6 +21,7 @@ require_once("./controllers/admin/Administrator.controller.php");
 require_once("./controllers/admin/Editor.controller.php");
 require_once("./models/MainManager.model.php");
 require_once("./controllers/Tools.php");
+
 $visitorController = new VisitorController();
 $userController = new UserController();
 $administratorController = new AdminstratorController();
@@ -35,7 +36,7 @@ try {
         //  on "explose" l'url pour récupérer la page demandée
         // peut se décomposer en $url[0]/$url[1]/...
         //pratique en cas de formulaire GET ! 
-        $url = explode("/", filter_var($_GET['page'], FILTER_SANITIZE_URL));
+        $url = explode("/", $_GET['page'], FILTER_SANITIZE_URL);
         $page = $url[0];
     }
 
