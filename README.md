@@ -2,7 +2,9 @@
 <br><br>
 <br><br>
 
-
+19 & 20/12/23<br>
+Création de contenu <br>
+Correction de bugs mineurs<br>
 
 
 <br>
