@@ -38,7 +38,7 @@ try {
         //  on "explose" l'url pour récupérer la page demandée
         // peut se décomposer en $url[0]/$url[1]/...
         //pratique en cas de formulaire GET ! 
-        $url = explode("/", $_GET['page'], FILTER_SANITIZE_URL);
+        $url = explode("/", filter_var($_GET['page'], FILTER_SANITIZE_URL));
         $page = $url[0];
     }
 

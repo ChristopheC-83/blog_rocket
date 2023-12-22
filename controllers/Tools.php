@@ -8,7 +8,7 @@ class Tools
     {
         $_SESSION['alert'][] = [
             "message" => $message,
-            "type" => $type . " mt-5 mb-3 text-center fw-bold"
+            "type" => $type . " mt-5 mb-3 text-center fw-bold",
         ];
     }
     // affichage lisible de données en tableau
@@ -36,7 +36,7 @@ class Tools
     // fonction d'envoi d'un mail
     public static function sendMail($to, $subject, $message)
     {
-        $headers = "From : christophe@barpat.fun";
+        $headers = "From: christophe@barpat.fun";
         if (!mail($to, $subject, $message, $headers)) {
             Tools::alertMessage("Mail non envoyé.", "alert-danger");
         }

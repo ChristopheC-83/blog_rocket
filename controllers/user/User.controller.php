@@ -4,8 +4,8 @@
 
 require_once("./controllers/MainController.controller.php");
 require_once("./models/user/User.model.php");
-require_once("controllers/Tools.php");
-require_once("controllers/Functions.php");
+require_once("./controllers/Tools.php");
+require_once("./controllers/Functions.php");
 
 class UserController extends MainController
 {
@@ -50,7 +50,7 @@ class UserController extends MainController
             "page_description" => "Page de profil",
             "page_title" => "BARPAT | ".$_SESSION['profile']['login'],
             "datasUser" => $datasUser,
-            "javascript" => ['profile_modifications.js', 'profile_modify_avatar.js', 'passwordVerify.js'],
+            "javascript" => ['profile_modifications.js', 'passwordVerify.js'],
             "texte_1_page" => "Gestion de ton profil",
             "texte_2_page" => "Fais comme chez toi !",
             "title_page" => "Profil de " . $_SESSION['profile']['login'],
@@ -192,7 +192,7 @@ class UserController extends MainController
             $sujet = "on a oublié son mdp ?";
             $message = "on va résoudre ça ! \r\nEssaye avec : \r\n \r\n" . $newMdp . " \r\n \r\nChange le sur le site... lui tu ne risques pas de le retenir !";
             Tools::alertMessage("Nouveau mot de passe actif et envoyé par mail", "alert-success");
-            Tools::sendMail($destinataire, $sujet, $message,);
+            Tools::sendMail($destinataire, $sujet, $message);
             header('location:' . URL . "connection");
         }
     }

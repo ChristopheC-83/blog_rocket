@@ -40,6 +40,7 @@ switch ($url[1]) {
             $editorController->createTheme($new_theme, $description_theme, $color);
         } else {
             Tools::alertMessage("Il faut remplir les 2 champs !", "alert-warning");
+            header('Location: ' . URL . 'home');
         }
         break;
         //  creation d'un article titre, pitch, url, theme

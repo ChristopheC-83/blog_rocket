@@ -105,7 +105,7 @@
                         $date = $date->format('d/m/Y');
                         ?>
                         <?= $commentaire['author'] . ", le " . $date ?>
-                        <?php if ($_SESSION['profile']['role'] === "admin") : ?>
+                        <?php if (isset($_SESSION['profile']['role']) && $_SESSION['profile']['role'] === "admin") : ?>
                             <form action="<?= URL ?>administrator/delete_comment" method="POST">
                                 <input type="hidden" value=<?= $commentaire['id_comment'] ?> name="id_comment">
                                 <input type="hidden" value=<?= $article['id_article'] ?> name="id_article">
