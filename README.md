@@ -10,13 +10,13 @@ creation d'un fichier views/common/dont_forget_css.php pour inclure les fichiers
 
 <br>
 <h3>18/12/23</h3>
-Mise en place de ToolTip sur les icones sans texte.<br>
+Mise en place de ToolTip BS sur les icones sans texte.<br>
 
 <br>
 <h3>17/12/23</h3>
 Slider en mode fade.<br>
 Centrage images ajoutées dans le texte avec tinyMCE.<br>
-Personnalisation su texte du header qq soit la page (à ma connaissance 😅).<br>
+Personnalisation du texte du header qq soit la page (à ma connaissance 😅).<br>
 <br>
 
 <br>
@@ -91,7 +91,7 @@ Footer à changer par des liens (github, codepen, linkedin, barpat.fun).<br>
 Conception d'un blog.<br>
 Technos : <br>
 - php en POO sur un design pattern MVC.<br>
-- CRUD appliqué aux articles.<br>
+- CRUD appliqué aux articles et données perso.<br>
 - style avec un Bootstrap personnalisé.<br>
 - gestion des utilisateurs (inscription, connexion, commentaires, gestion administrateur).<br>
 - 3 niveaux : Visiteurs / Utilisateurs / Admnistrateurs.<br>
