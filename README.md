@@ -5,6 +5,7 @@
 <h3>19 & 20/12/23</h3>
 Création de contenu <br>
 Correction de bugs mineurs<br>
+creation d'un fichier views/common/dont_forget_css.php pour inclure les fichiers css oubliés par purge_css car appelés seulement lors d'un affichage dynamique des données.<br>
 
 
 <br>
