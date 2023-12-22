@@ -125,11 +125,8 @@ switch ($url[1]) {
                 case "slider":
                     if (!empty($_FILES['photo']['name'][0])) {
                         $files = $_FILES['photo'];
-                        if ($editorController->addSlider($id_article, $files)) {
-                            Tools::alertMessage("Ajout du dossier effectué", "alert-success");
-                        } else {
-                            Tools::alertMessage("Ajout du dossier non effectué", "alert-danger");
-                        }
+                        $editorController->addSlider($id_article, $files);
+                        Tools::alertMessage("Ajout du dossier effectué", "alert-success");
                     } else {
                         Tools::alertMessage("Choisissez au moins une image !", "alert-danger");
                     }
@@ -149,6 +146,7 @@ switch ($url[1]) {
                 case "erase":
                     $editorController->eraseMedia($id_article);
                     header('Location: ' . URL . 'administrator/update_article/' . $id_article);
+                    Tools::alertMessage("Les médias de cet article ont été supprimés.", "alert-success");
                     break;
                 default:
                     Tools::alertMessage("Il faut choisir un type de media !", "alert-warning");
