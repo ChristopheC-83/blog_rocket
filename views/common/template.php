@@ -12,8 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?= $page_description ?>">
     <title><?= $page_title ?></title>
-    <link href="<?= URL ?>public/css/main.css" rel="stylesheet" />
-    <!-- <link href="<?= URL ?>public/css/cleaned_css/final_css.css" rel="stylesheet" /> -->
+    <!-- <link href="<?= URL ?>public/css/main.css" rel="stylesheet" /> -->
+    <link href="<?= URL ?>public/css/cleaned_css/final_css.css" rel="stylesheet" />
   
     </script>
 </head>
