@@ -67,3 +67,6 @@ header {
 .customP {
   font-size: clamp(16px, calc(14px + 0.6vw), 20px);
 }
+.aHoverDark:hover {
+  color: #333 !important;
+}

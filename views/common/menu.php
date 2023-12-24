@@ -40,7 +40,11 @@ $colors = $userManager->getPalette();
             <?php foreach ($themes as $theme) : ?>
 
               <li class="d-flex">
-                <a class="dropdown-item text-<?= $theme['color'] ?> text-capitalize mb-2" href="<?= URL ?>theme/<?= $theme['theme'] ?>"
+                <a class="dropdown-item text-<?= $theme['color'] ?> text-capitalize mb-2
+                <?= $theme['color'] === "light"? "aHoverDark":"" ?> 
+                <?= $theme['color'] === "white"? "aHoverDark":"" ?> 
+                " 
+                href="<?= URL ?>theme/<?= $theme['theme'] ?>"
                 
                 ><?= $theme['theme'] ?></a>
                 <!-- si connecté, possibilité de gestion des themes -->
