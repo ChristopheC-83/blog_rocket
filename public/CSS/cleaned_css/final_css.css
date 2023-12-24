@@ -376,7 +376,6 @@ button,
 [type=reset],
 [type=submit] {
   -webkit-appearance: button;
-  appearance: button;
 }
 button:not(:disabled),
 [type=button]:not(:disabled),
@@ -427,7 +426,6 @@ textarea {
 ::file-selector-button {
   font: inherit;
   -webkit-appearance: button;
-  appearance: button;
 }
 
 summary {
@@ -3039,7 +3037,6 @@ button,
 [type=reset],
 [type=submit] {
   -webkit-appearance: button;
-  appearance: button;
 }
 button:not(:disabled),
 [type=button]:not(:disabled),
@@ -3090,7 +3087,6 @@ textarea {
 ::file-selector-button {
   font: inherit;
   -webkit-appearance: button;
-  appearance: button;
 }
 
 summary {
@@ -5574,4 +5570,8 @@ header {
 
 .customP {
   font-size: clamp(16px, 14px + 0.6vw, 20px);
+}
+
+.aHoverDark:hover {
+  color: #333 !important;
 }
