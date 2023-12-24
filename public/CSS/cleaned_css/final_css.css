@@ -2173,6 +2173,10 @@ textarea.form-control {
   overflow: hidden !important;
 }
 
+.overflow-x-auto {
+  overflow-x: auto !important;
+}
+
 .d-block {
   display: block !important;
 }
@@ -4832,6 +4836,10 @@ textarea.form-control {
 
 .overflow-hidden {
   overflow: hidden !important;
+}
+
+.overflow-x-auto {
+  overflow-x: auto !important;
 }
 
 .d-block {
