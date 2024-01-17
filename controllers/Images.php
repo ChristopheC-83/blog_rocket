@@ -37,7 +37,9 @@ class Images
         }
         //  on cible le dossier recepteur
         $final_folder = MEDIA_PATH . $id_article . "/";
+
         if (!file_exists($final_folder)) mkdir($final_folder, 0777);
+        
         $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
         $target_file =  $final_folder . $file['name'];
         // test sur l'image (taille, extension, nom, nmo unique)

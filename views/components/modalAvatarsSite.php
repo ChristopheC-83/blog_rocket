@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-dark">
-                <h1 class="modal-title fs-3" id="exampleModalLabel">Choisissez votre nouvel Avatar !</h1>
+                <h1 class="modal-title fs-3" id="exampleModalLabel">Choisissez votre nouvel Avatar !!!</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body bg-dark ">

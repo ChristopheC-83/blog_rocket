@@ -43,6 +43,8 @@ $colors = $userManager->getPalette();
                 <a class="dropdown-item text-<?= $theme['color'] ?> text-capitalize mb-2
                 <?= $theme['color'] === "light"? "aHoverDark":"" ?> 
                 <?= $theme['color'] === "white"? "aHoverDark":"" ?> 
+                <?= $theme['color'] === "black"? "text-white aHoverDark":"" ?> 
+                <?= $theme['color'] === "dark"? "text-white aHoverDark":"" ?> 
                 " 
                 href="<?= URL ?>theme/<?= $theme['theme'] ?>"
                 
