@@ -2,5 +2,37 @@ RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
 RewriteRule ^(.*)$ index.php?page=$1
+
+# Activation du module de cache
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # Mise en cache des fichiers statiques (images, styles, scripts) pendant 1 mois
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# Compression Gzip pour réduire la taille des fichiers
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Contrôle de la mise en cache pour les fichiers statiques
+<FilesMatch "\.(jpg|jpeg|png|gif|js|css)$">
+  Header set Cache-Control "max-age=2592000, public"
+</FilesMatch>
+
+# Désactivation de la mise en cache pour les fichiers dynamiques
+<FilesMatch "\.(php|cgi|pl|htm)$">
+  Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+</FilesMatch>
