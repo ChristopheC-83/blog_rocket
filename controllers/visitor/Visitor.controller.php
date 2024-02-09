@@ -166,4 +166,11 @@ class VisitorController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
+
+     //api de tous les articles
+     public function sendApiArticles()
+     {
+        $articles = $this->visitorManager->getAllArticles();
+         echo json_encode($articles);
+     }
 }

@@ -123,6 +123,11 @@ try {
             }
             break;
 
+            // pour récupérer les articles sous forme d'api pour inrégration dans un autre site
+
+        case "api":
+            require_once("./indexComponents/api.index.php");
+
             // si l'utilisateur est connecté en tant qu'utilisateur ou plus :
             // les accés sont dans le fichier indexComponents/user.index.php
         case "account":

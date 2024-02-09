@@ -292,4 +292,10 @@ class UserController extends MainController
         header('Location: ' . URL . 'article/'.$id_article.'/'.$url);
 
     }
+
+   
+
+
+
+
 }
